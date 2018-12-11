@@ -1,0 +1,18 @@
+{
+    "compilerOptions": { //Specifies options for compiling
+        "target": "es6", //Target is the version of Javascript to compile to
+        "sourceMap": true, //Generate a source map
+        "noImplicitAny": true, //Automatically assume declaration if not specified
+        "noImplicitReturns": true, //Notifies you if a declaration is missing
+        "removeComments": true, //Removes comments after compiling
+        "out": "build/app.js", //Destination of the compiled files
+        "noEmitOnError": true //Stops compiling if there's an error
+    },
+    "include": [ //Add a folder or file to be compiled
+        "src/**/*"
+    ],
+    "exclude": [ //Ignore a folder or file while compiling
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
