@@ -4,7 +4,9 @@ class Startscreen {
     private _canvas: Canvas;
     private levelsUnlocked: number;
     private userName: string;
-    private backgroundImage= "../assets/images/greenenergy.jpg"
+    private backgroundImage= [
+        "../assets/images/greenenergy.jpg"
+    ];
 
     constructor(canvas: Canvas){
         this._canvas = canvas;
@@ -13,7 +15,7 @@ class Startscreen {
 
     public draw(){
         this._canvas.clearScreen();
-        this._canvas.writeImageToCanvas(this.backgroundImage, 10, 10);
+        this._canvas.writeImageToCanvas("../assets/images/greenenergy.jpg", 10, 10);
     };
 
 };
