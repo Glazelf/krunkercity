@@ -1,5 +1,5 @@
 class ClickHelper {
     public ClickEventHandler() {
 
-    }
-}
+    };
+};

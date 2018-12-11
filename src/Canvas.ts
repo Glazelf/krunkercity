@@ -7,7 +7,12 @@ class Canvas {
         this._ctx = this._canvasElement.getContext('2d');
         this._canvasElement.width = window.innerWidth;
         this._canvasElement.height = window.innerHeight;
-    }
+    };
+
+    public clearScreen(): void{
+        // clear the screen
+        this._ctx.clearRect(0, 0, this._canvasElement.width, this._canvasElement.height);
+    };
 
     public writeTextToCanvas(
         text: string,
@@ -21,7 +26,7 @@ class Canvas {
         this._ctx.fillStyle = color;
         this._ctx.textAlign = alignment;
         this._ctx.fillText(text, xCoordinate, yCoordinate);
-    }
+    };
 
     public writeImageToCanvas(
         src: string,
@@ -33,18 +38,18 @@ class Canvas {
         element.addEventListener("load", () => {
             this._ctx.drawImage(element, xCoordinate, yCoordinate);
         });
-    }
+    };
 
     public randomNumber(min: number, max: number): number {
         return Math.round(Math.random() * (max - min) + min);
-    }
+    };
 
     public getWidth(): number {
         return this._canvasElement.width
-    }
+    };
 
     public getHeight(): number {
         return this._canvasElement.height
-    }
+    };
 
-}
+};

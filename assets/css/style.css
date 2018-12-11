@@ -1,0 +1,9 @@
+/* canvas{
+    background-image: url("../images/greenenergy.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+html, body {
+    overflow: hidden;
+}
