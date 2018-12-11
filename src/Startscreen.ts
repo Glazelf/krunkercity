@@ -4,9 +4,6 @@ class Startscreen {
     private _canvas: Canvas;
     private levelsUnlocked: number;
     private userName: string;
-    private backgroundImage= [
-        "../assets/images/greenenergy.jpg"
-    ];
 
     constructor(canvas: Canvas){
         this._canvas = canvas;
