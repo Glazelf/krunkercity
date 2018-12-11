@@ -15,7 +15,7 @@ class Startscreen {
 
     public draw(){
         this._canvas.clearScreen();
-        this._canvas.writeImageToCanvas("../assets/images/greenenergy.jpg", 10, 10);
+        this._canvas.writeImageToCanvas("./assets/images/greenenergy.jpg", 10, 10);
     };
 
 };
