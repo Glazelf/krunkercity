@@ -121,13 +121,12 @@ class Level3 extends LevelHelper {
 class Startscreen {
     constructor(canvas) {
         this.backgroundImage = [
-            "../assets/images/greenenergy.jpg"
+            "./assets/images/greenenergy.jpg"
         ];
         this._canvas = canvas;
     }
     draw() {
-        this._canvas.clearScreen();
-        this._canvas.writeImageToCanvas("./assets/images/greenenergy.jpg", 10, 10);
+        this._canvas.writeImageToCanvas("./assets/images/greenenergy.jpg", 0, 0);
     }
     ;
 }
