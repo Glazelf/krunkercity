@@ -43,12 +43,13 @@ class ClickHelper {
 ;
 class Game {
     constructor() {
-        this.drawStart = () => {
-            this._startscreen.draw();
+        this.drawHelp = () => {
+            this._Helpscreen.drawHelp();
         };
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
         this._startscreen = new Startscreen(this._canvas);
+        this._Helpscreen = new Helpscreen(this._canvas);
     }
     ;
 }
@@ -56,7 +57,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const KrunkerCity = new Game();
-    window.setInterval(KrunkerCity.drawStart, 1000 / 60);
+    window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
 }
 ;
 class GameItem {
@@ -85,7 +86,11 @@ class GameItem {
     }
 }
 class Helpscreen {
+    constructor(canvas) {
+        this._canvas = canvas;
+    }
     drawHelp() {
+        this._canvas.writeImageToCanvas("./assets/images/greenenergy.jpg", 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     }
     ;
 }
