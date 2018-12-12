@@ -37,12 +37,34 @@ class Canvas {
         return this._canvasElement.height;
     }
     ;
+    clickEventHandler() {
+        document.addEventListener('click', (event) => {
+            this.onClick(event);
+        });
+    }
+    ;
+    onClick(event) {
+        let hasClicked = event;
+        let clickedX = event.x;
+        let clickedY = event.y;
+        console.log(hasClicked);
+    }
+    ;
 }
 ;
 class ClickHelper {
-    ClickEventHandler() {
+    clickEventHandler() {
+        document.addEventListener('click', (event) => {
+            this.onClick(event);
+        });
     }
     ;
+    onClick(event) {
+        let clickedX = event.X;
+        let clickedY = event.X;
+        console.log(clickedX);
+        console.log(clickedY);
+    }
 }
 ;
 class Game {
@@ -53,6 +75,7 @@ class Game {
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
         this._startscreen = new Startscreen(this._canvas);
+        this._canvas.clickEventHandler();
     }
     ;
 }

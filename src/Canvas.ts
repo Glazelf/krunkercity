@@ -54,4 +54,16 @@ class Canvas {
         return this._canvasElement.height
     };
 
+    public clickEventHandler(): void {
+        document.addEventListener('click', (event: MouseEvent) => {
+            this.onClick(event);
+        });
+    };
+
+    private onClick(event: any): void {
+        let hasClicked = event;
+        let clickedX = event.x;
+        let clickedY = event.y;
+        console.log(hasClicked);
+    };
 };

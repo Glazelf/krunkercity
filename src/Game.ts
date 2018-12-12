@@ -8,6 +8,7 @@ class Game {
         this._canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
         this._startscreen = new Startscreen(this._canvas);
+        this._canvas.clickEventHandler();
     };
 
     public drawStart=()=>{
