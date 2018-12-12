@@ -32,11 +32,13 @@ class Canvas {
         src: string,
         xCoordinate: number,
         yCoordinate: number,
+        height: number,
+        width: number
     ) {
         let element = document.createElement("img");
         element.src = src;
         element.addEventListener("load", () => {
-            this._ctx.drawImage(element, xCoordinate, yCoordinate);
+            this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
         });
     };
 
