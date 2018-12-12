@@ -23,7 +23,7 @@ class GameItem {
     }
 
     public draw() {
-        this._canvas.writeImageToCanvas(this._imgSource, this._xPos, this._yPos);
+        this._canvas.writeImageToCanvas(this._imgSource, this._xPos, this._yPos, this._width, this._height);
     }
 
     public getX(): number {

@@ -17,11 +17,11 @@ class Canvas {
         this._ctx.fillText(text, xCoordinate, yCoordinate);
     }
     ;
-    writeImageToCanvas(src, xCoordinate, yCoordinate) {
+    writeImageToCanvas(src, xCoordinate, yCoordinate, width, height) {
         let element = document.createElement("img");
         element.src = src;
         element.addEventListener("load", () => {
-            this._ctx.drawImage(element, xCoordinate, yCoordinate);
+            this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
         });
     }
     ;
@@ -73,7 +73,7 @@ class GameItem {
         this._height = height;
     }
     draw() {
-        this._canvas.writeImageToCanvas(this._imgSource, this._xPos, this._yPos);
+        this._canvas.writeImageToCanvas(this._imgSource, this._xPos, this._yPos, this._width, this._height);
     }
     getX() {
         return this._xPos;
@@ -121,13 +121,12 @@ class Level3 extends LevelHelper {
 class Startscreen {
     constructor(canvas) {
         this.backgroundImage = [
-            "../assets/images/greenenergy.jpg"
+            "./assets/images/greenenergy.jpg"
         ];
         this._canvas = canvas;
     }
     draw() {
-        this._canvas.clearScreen();
-        this._canvas.writeImageToCanvas("../assets/images/greenenergy.jpg", 10, 10);
+        this._canvas.writeImageToCanvas("./assets/images/greenenergy.jpg", 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     }
     ;
 }
