@@ -3,12 +3,12 @@ class GameItem {
     public _yPos: number;
     protected _height: number;
     protected _width: number;
-    protected _imgSource: string
+    protected _imgSource: HTMLImageElement
     protected _canvas: Canvas
 
     public constructor(
         canvas: HTMLCanvasElement,
-        imageSource: string,
+        imageSource: HTMLImageElement,
         xCoor: number,
         yCoor: number,
         width: number,

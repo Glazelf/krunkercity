@@ -6,7 +6,20 @@ class LevelHelper{
     protected energy: number;
     protected money: number
     protected production: number;
-    protected imgSources: string //Array
+    public _level1background: HTMLImageElement;
+    public _level2background: HTMLImageElement;
+    public _level3background: HTMLImageElement;
+
+    constructor(canvas: Canvas) {
+        this._canvas = canvas;
+        this._level1background = new Image()
+        this._level1background.src = ""
+        this._level2background = new Image()
+        this._level2background.src = "./assets/images/level2.png"
+        this._level3background = new Image()
+        this._level3background.src = "./assets/images/level3.png"
+        console.log(canvas);
+    }
 
     public drawBuildSpots(){
         

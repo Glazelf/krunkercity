@@ -10,7 +10,7 @@ class Game {
         this._startscreen = new Startscreen(this._canvas);
     };
 
-    public drawStart=()=>{
+    public drawStart = () => {
         //console.log(this._canvas)
         this._startscreen.draw();
     };

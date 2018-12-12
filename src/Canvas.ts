@@ -9,7 +9,7 @@ class Canvas {
         this._canvasElement.height = window.innerHeight;
     };
 
-    public clearScreen(): void{
+    public clearScreen(): void {
         // clear the screen
         this._ctx.clearRect(0, 0, this._canvasElement.width, this._canvasElement.height);
     };
@@ -29,19 +29,14 @@ class Canvas {
     };
 
     public writeImageToCanvas(
-        src: string,
+        element: HTMLImageElement,
         xCoordinate: number,
         yCoordinate: number,
         width: number,
         height: number,
     ) {
-        let element = document.createElement("img");
-        element.src = src;
-        element.addEventListener("load", () => {
-            this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
-        });
+        this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
     };
-
     public randomNumber(min: number, max: number): number {
         return Math.round(Math.random() * (max - min) + min);
     };
