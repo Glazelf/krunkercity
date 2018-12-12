@@ -32,8 +32,8 @@ class Canvas {
         src: string,
         xCoordinate: number,
         yCoordinate: number,
-        height: number,
-        width: number
+        width: number,
+        height: number
     ) {
         let element = document.createElement("img");
         element.src = src;

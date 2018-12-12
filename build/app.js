@@ -17,7 +17,7 @@ class Canvas {
         this._ctx.fillText(text, xCoordinate, yCoordinate);
     }
     ;
-    writeImageToCanvas(src, xCoordinate, yCoordinate, height, width) {
+    writeImageToCanvas(src, xCoordinate, yCoordinate, width, height) {
         let element = document.createElement("img");
         element.src = src;
         element.addEventListener("load", () => {
