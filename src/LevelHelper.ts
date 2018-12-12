@@ -1,9 +1,12 @@
 class LevelHelper{
-    private co2: number;
-    private energy: number;
-    private money: number
-    private production: number;
-    private imgSources: string //Array
+    protected readonly _canvasElement: HTMLCanvasElement;
+    protected readonly _ctx: CanvasRenderingContext2D;
+    protected _canvas: Canvas;
+    protected co2: number;
+    protected energy: number;
+    protected money: number
+    protected production: number;
+    protected imgSources: string //Array
 
     public drawBuildSpots(){
         
