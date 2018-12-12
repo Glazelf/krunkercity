@@ -25,8 +25,8 @@ class Startscreen {
 
     public draw = () => {
         this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
-        this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 15, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4)
-        this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 15 * 5, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4)
-        this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 15 * 9, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4)
+        this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 15 * 1.2, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4)
+        this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 15 * 5 * 1.2, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4)
+        this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 15 * 9 * 1.2, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4)
     };
 };
