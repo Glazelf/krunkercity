@@ -19,7 +19,7 @@ class Canvas {
         fontSize: number,
         xCoordinate: number,
         yCoordinate: number,
-        color: string = "white",
+        color: string = "black",
         alignment: CanvasTextAlign = "center"
     ) {
         this._ctx.font = `${fontSize}px Minecraft`;

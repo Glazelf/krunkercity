@@ -10,7 +10,7 @@ class Canvas {
         this._ctx.clearRect(0, 0, this._canvasElement.width, this._canvasElement.height);
     }
     ;
-    writeTextToCanvas(text, fontSize, xCoordinate, yCoordinate, color = "white", alignment = "center") {
+    writeTextToCanvas(text, fontSize, xCoordinate, yCoordinate, color = "black", alignment = "center") {
         this._ctx.font = `${fontSize}px Minecraft`;
         this._ctx.fillStyle = color;
         this._ctx.textAlign = alignment;
