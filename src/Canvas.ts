@@ -22,7 +22,7 @@ class Canvas {
         color: string = "white",
         alignment: CanvasTextAlign = "center"
     ) {
-        this._ctx.font = `${fontSize}px Comic Sans`;
+        this._ctx.font = `${fontSize}px Minecraft`;
         this._ctx.fillStyle = color;
         this._ctx.textAlign = alignment;
         this._ctx.fillText(text, xCoordinate, yCoordinate);
