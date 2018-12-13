@@ -9,7 +9,6 @@ class LevelHelper{
     public _level1background: HTMLImageElement;
     public _level2background: HTMLImageElement;
     public _level3background: HTMLImageElement;
-    public _buildingHammer: HTMLImageElement;
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
@@ -19,14 +18,14 @@ class LevelHelper{
         this._level2background.src = "./assets/images/level2.png";
         this._level3background = new Image();
         this._level3background.src = "./assets/images/level3.png";
-        this._buildingHammer = new Image();
-        this._buildingHammer.src = "./assets/images/hammer.png";
         console.log(canvas);
     }
 
     public drawLevel1(){
         this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
-        this._canvas.writeImageToCanvas(this._buildingHammer, this._canvas.getWidth()/10, this._canvas.getHeight()/2, this._buildingHammer.width/7, this._buildingHammer.height/7);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth()/10, this._canvas.getHeight()/9)
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth()/10, this._canvas.getHeight()/9)
+        
     };
 
     public drawLevel2(){
