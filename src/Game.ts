@@ -28,7 +28,7 @@ class Game {
     //     this._Helpscreen.drawHelp();
     // };
 
-    public drawLevel=()=>{
+    public drawLevel = () => {
         this._levelHelper.drawLevel1()
     }
 };

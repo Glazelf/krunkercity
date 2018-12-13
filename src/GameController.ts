@@ -14,24 +14,24 @@ class GameController {
     };
 
     private onClick(event: any): void {
-        if(event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() + this._startScreen._level1background.width / 2) {
-            if(event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 - this._startScreen._level1background.height / 2) {
+        if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() + this._startScreen._level1background.width / 2) {
+            if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 - this._startScreen._level1background.height / 2) {
                 //ga naar level 1
                 console.log(event.x);
                 console.log(event.y);
                 console.log('Level 1 clicked');
             }
         }
-        if(event.x > this._canvas.getWidth() / 2.9  && event.x < this._startScreen._level1background.width / 2) {
-            if(event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 - this._startScreen._level1background.height / 2) {
+        if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._startScreen._level1background.width / 2) {
+            if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 - this._startScreen._level1background.height / 2) {
                 //ga naar level 2
                 console.log(event.x);
                 console.log(event.y);
                 console.log('Level 2 clicked');
             }
         }
-        if(event.x > this._canvas.getWidth() / 1.5 && event.x < this._startScreen._level1background.width / 2) {
-            if(event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 - this._startScreen._level1background.height / 2) {
+        if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._startScreen._level1background.width / 2) {
+            if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 - this._startScreen._level1background.height / 2) {
                 //ga naar level 3
                 console.log(event.x);
                 console.log(event.y);

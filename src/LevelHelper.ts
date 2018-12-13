@@ -1,4 +1,4 @@
-class LevelHelper{
+class LevelHelper {
     protected readonly _canvasElement: HTMLCanvasElement;
     protected readonly _ctx: CanvasRenderingContext2D;
     protected _canvas: Canvas;
@@ -21,22 +21,22 @@ class LevelHelper{
         console.log(canvas);
     }
 
-    public drawLevel1(){
+    public drawLevel1() {
         this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth()/10, this._canvas.getHeight()/9)
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth()/10, this._canvas.getHeight()/9)
-        
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 10, this._canvas.getHeight() / 9)
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 10, this._canvas.getHeight() / 9)
+
     };
 
-    public drawLevel2(){
+    public drawLevel2() {
         this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     };
 
-        public drawLevel3(){
+    public drawLevel3() {
         this._canvas.writeImageToCanvas(this._level3background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     };
 
-    public drawBuildSpots(){
-        
+    public drawBuildSpots() {
+
     };
 };

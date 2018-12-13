@@ -46,12 +46,12 @@ class Canvas {
     };
 
     //drawing hammers faster
-    public writeHammerToCanvas( 
+    public writeHammerToCanvas(
         element: HTMLImageElement = this._buildingHammer,
         xCoordinate: number,
         yCoordinate: number,
-        width: number = this._buildingHammer.width/7,
-        height: number = this._buildingHammer.height/7,
+        width: number = this._buildingHammer.width / 7,
+        height: number = this._buildingHammer.height / 7,
     ) {
         this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
     };
