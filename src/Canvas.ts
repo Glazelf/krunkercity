@@ -20,9 +20,9 @@ class Canvas {
 
     public writeTextToCanvas(
         text: string,
-        fontSize: number,
         xCoordinate: number,
         yCoordinate: number,
+        fontSize: number = 30,
         color: string = "black",
         alignment: CanvasTextAlign = "center"
     ) {

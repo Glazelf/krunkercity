@@ -12,7 +12,7 @@ class Canvas {
         this._ctx.clearRect(0, 0, this._canvasElement.width, this._canvasElement.height);
     }
     ;
-    writeTextToCanvas(text, fontSize, xCoordinate, yCoordinate, color = "black", alignment = "center") {
+    writeTextToCanvas(text, xCoordinate, yCoordinate, fontSize = 30, color = "black", alignment = "center") {
         this._ctx.font = `${fontSize}px Minecraft`;
         this._ctx.fillStyle = color;
         this._ctx.textAlign = alignment;
@@ -49,8 +49,9 @@ class ClickHelper {
 ;
 class Game {
     constructor() {
-        this.drawLevel = () => {
-            this._levelHelper.drawLevel1();
+        this.drawStart = () => {
+            console.log(this._canvas);
+            this._startscreen.draw();
         };
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
@@ -64,7 +65,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const KrunkerCity = new Game();
-    window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
+    window.setInterval(KrunkerCity.drawStart, 1000 / 60);
 }
 ;
 class GameItem {
@@ -139,9 +140,14 @@ class Startscreen {
         this.levelsUnlocked = 1;
         this.draw = () => {
             this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+            this._canvas.writeTextToCanvas("Level 1", this._canvas.getWidth() / 6, this._canvas.getHeight() / 3.6, 40);
             this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 40, this._canvas.getHeight() / 3.5, this._level1background.width / 2, this._level1background.height / 2);
+            this._canvas.writeTextToCanvas("Level 2", this._canvas.getWidth() / 2, this._canvas.getHeight() / 3.6, 40);
             this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
+            this._canvas.writeTextToCanvas("Level 3", this._canvas.getWidth() / 1.23, this._canvas.getHeight() / 3.6, 40);
             this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
+            this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
+            this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5);
         };
         this._canvas = canvas;
         this._backgroundstart = new Image();
@@ -152,6 +158,8 @@ class Startscreen {
         this._level2background.src = "./assets/images/level2bubble.png";
         this._level3background = new Image();
         this._level3background.src = "./assets/images/level3bubble.png";
+        this._helpButton = new Image();
+        this._helpButton.src = "./assets/images/questionmark.png";
     }
 }
 ;
