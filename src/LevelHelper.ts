@@ -21,6 +21,21 @@ class LevelHelper{
         console.log(canvas);
     }
 
+    public drawLevel1(){
+        this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth()/10, this._canvas.getHeight()/9)
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth()/10, this._canvas.getHeight()/9)
+        
+    };
+
+    public drawLevel2(){
+        this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+    };
+
+        public drawLevel3(){
+        this._canvas.writeImageToCanvas(this._level3background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+    };
+
     public drawBuildSpots(){
         
     };

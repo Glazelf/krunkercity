@@ -5,6 +5,7 @@ class Game {
     private _startscreen: Startscreen;
     private _Helpscreen: Helpscreen;
     private _gameController: GameController;
+    private _levelHelper: LevelHelper;
 
     constructor() {
         this._canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -14,6 +15,7 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._gameController.levelClickDetection();
+        this._levelHelper = new LevelHelper(this._canvas)
     };
 
     public drawStart=()=>{
@@ -25,6 +27,10 @@ class Game {
     //     console.log(this._canvas)
     //     this._Helpscreen.drawHelp();
     // };
+
+    // public drawLevel=()=>{
+    //     this._levelHelper.drawLevel1()
+    // }
 };
 
 window.addEventListener('load', init);
