@@ -11,8 +11,9 @@ class Game {
         this._canvas = new Canvas(this._canvasElement);
         this._startscreen = new Startscreen(this._canvas);
         this._Helpscreen = new Helpscreen(this._canvas);
-        this._gameController = new GameController;
+        this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
+        this._gameController.levelClickDetection();
     };
 
     public drawStart=()=>{
