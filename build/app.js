@@ -4,6 +4,8 @@ class Canvas {
         this._ctx = this._canvasElement.getContext('2d');
         this._canvasElement.width = window.innerWidth;
         this._canvasElement.height = window.innerHeight;
+        this._buildingHammer = new Image();
+        this._buildingHammer.src = "./assets/images/hammer.png";
     }
     ;
     clearScreen() {
@@ -18,6 +20,10 @@ class Canvas {
     }
     ;
     writeImageToCanvas(element, xCoordinate, yCoordinate, width, height) {
+        this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
+    }
+    ;
+    writeHammerToCanvas(element = this._buildingHammer, xCoordinate, yCoordinate, width = this._buildingHammer.width / 7, height = this._buildingHammer.height / 7) {
         this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
     }
     ;
@@ -43,14 +49,14 @@ class ClickHelper {
 ;
 class Game {
     constructor() {
-        this.drawStart = () => {
-            console.log(this._canvas);
-            this._startscreen.draw();
+        this.drawLevel = () => {
+            this._levelHelper.drawLevel1();
         };
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
         this._startscreen = new Startscreen(this._canvas);
         this._Helpscreen = new Helpscreen(this._canvas);
+        this._levelHelper = new LevelHelper(this._canvas);
     }
     ;
 }
@@ -58,7 +64,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const KrunkerCity = new Game();
-    window.setInterval(KrunkerCity.drawStart, 1000 / 60);
+    window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
 }
 ;
 class GameItem {
@@ -109,28 +115,21 @@ class LevelHelper {
         this._level3background.src = "./assets/images/level3.png";
         console.log(canvas);
     }
-    drawBuildSpots() {
-    }
-    ;
-}
-;
-class Level1 extends LevelHelper {
     drawLevel1() {
         this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 10, this._canvas.getHeight() / 9);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 10, this._canvas.getHeight() / 9);
     }
     ;
-}
-;
-class Level2 extends LevelHelper {
     drawLevel2() {
         this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     }
     ;
-}
-;
-class Level3 extends LevelHelper {
     drawLevel3() {
         this._canvas.writeImageToCanvas(this._level3background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+    }
+    ;
+    drawBuildSpots() {
     }
     ;
 }
@@ -142,7 +141,7 @@ class Startscreen {
             this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
             this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 40, this._canvas.getHeight() / 3.5, this._level1background.width / 2, this._level1background.height / 2);
             this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
-            this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
+            this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
         };
         this._canvas = canvas;
         this._backgroundstart = new Image();
@@ -153,7 +152,6 @@ class Startscreen {
         this._level2background.src = "./assets/images/level2bubble.png";
         this._level3background = new Image();
         this._level3background.src = "./assets/images/level3bubble.png";
-        console.log(canvas);
     }
 }
 ;
