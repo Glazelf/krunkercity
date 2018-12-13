@@ -30,5 +30,4 @@ window.addEventListener('load', init);
 function init(): void {
     const KrunkerCity = new Game();
     window.setInterval(KrunkerCity.drawStart, 1000 / 60);
-    //window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
 };

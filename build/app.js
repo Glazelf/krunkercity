@@ -10,8 +10,8 @@ class Canvas {
         this._ctx.clearRect(0, 0, this._canvasElement.width, this._canvasElement.height);
     }
     ;
-    writeTextToCanvas(text, fontSize, xCoordinate, yCoordinate, color = "white", alignment = "center") {
-        this._ctx.font = `${fontSize}px Comic Sans`;
+    writeTextToCanvas(text, fontSize, xCoordinate, yCoordinate, color = "black", alignment = "center") {
+        this._ctx.font = `${fontSize}px Minecraft`;
         this._ctx.fillStyle = color;
         this._ctx.textAlign = alignment;
         this._ctx.fillText(text, xCoordinate, yCoordinate);
@@ -106,8 +106,11 @@ class GameItem {
 class Helpscreen {
     constructor(canvas) {
         this._canvas = canvas;
+        this._backgroundhelp = new Image();
+        this._backgroundhelp.src = "./assets/images/greenenergy.jpg";
     }
     drawHelp() {
+        this._canvas.writeImageToCanvas(this._backgroundhelp, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     }
     ;
 }
@@ -116,7 +119,7 @@ class LevelHelper {
     constructor(canvas) {
         this._canvas = canvas;
         this._level1background = new Image();
-        this._level1background.src = "";
+        this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
         this._level2background.src = "./assets/images/level2.png";
         this._level3background = new Image();
@@ -130,12 +133,14 @@ class LevelHelper {
 ;
 class Level1 extends LevelHelper {
     drawLevel1() {
+        this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     }
     ;
 }
 ;
 class Level2 extends LevelHelper {
     drawLevel2() {
+        this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     }
     ;
 }
@@ -149,27 +154,23 @@ class Level3 extends LevelHelper {
 ;
 class Startscreen {
     constructor(canvas) {
+        this.levelsUnlocked = 1;
         this.draw = () => {
             this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
-            this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 15, this._canvas.getHeight() / 3, this._level1background.width / 4, this._level1background.height / 4);
-            this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 15 * 5, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4);
-            this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 15 * 9, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4);
+            this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 40, this._canvas.getHeight() / 3.5, this._level1background.width / 2, this._level1background.height / 2);
+            this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
+            this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
         };
         this._canvas = canvas;
         this._backgroundstart = new Image();
         this._backgroundstart.src = "./assets/images/greenenergy.jpg";
         this._level1background = new Image();
-        this._level1background.src = "";
-        this.xPosLevel1Background = this._canvas.getWidth() / 40;
-        this.yPosLevel1Background = this._canvas.getHeight() / 4;
+        this._level1background.src = "./assets/images/level1bubble.png";
         this._level2background = new Image();
-        this._level2background.src = "./assets/images/level2.png";
-        this.xPosLevel2Background = this._canvas.getWidth() / 40 * 5;
-        this.yPosLevel2Background = this._canvas.getHeight() / 4;
+        this._level2background.src = "./assets/images/level2bubble.png";
         this._level3background = new Image();
-        this._level3background.src = "./assets/images/level3.png";
-        this.xPosLevel3Background = this._canvas.getWidth() / 40 * 9;
-        this.yPosLevel3Background = this._canvas.getHeight() / 4;
+        this._level3background.src = "./assets/images/level3bubble.png";
+        console.log(canvas);
     }
 }
 ;
