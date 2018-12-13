@@ -13,11 +13,11 @@ class LevelHelper{
     constructor(canvas: Canvas) {
         this._canvas = canvas;
         this._level1background = new Image();
-        this._level1background.src = "./assets/images/level1bubble.png";
+        this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
-        this._level2background.src = "./assets/images/level2bubble.png";
+        this._level2background.src = "./assets/images/level2.png";
         this._level3background = new Image();
-        this._level3background.src = "./assets/images/level3bubble.png";
+        this._level3background.src = "./assets/images/level3.png";
         console.log(canvas);
     }
 

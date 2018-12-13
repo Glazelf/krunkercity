@@ -94,11 +94,11 @@ class LevelHelper {
     constructor(canvas) {
         this._canvas = canvas;
         this._level1background = new Image();
-        this._level1background.src = "./assets/images/level1bubble.png";
+        this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
-        this._level2background.src = "./assets/images/level2bubble.png";
+        this._level2background.src = "./assets/images/level2.png";
         this._level3background = new Image();
-        this._level3background.src = "./assets/images/level3bubble.png";
+        this._level3background.src = "./assets/images/level3.png";
         console.log(canvas);
     }
     drawBuildSpots() {
@@ -132,9 +132,9 @@ class Startscreen {
         this.levelsUnlocked = 1;
         this.draw = () => {
             this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
-            this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 15 * 1.2, this._canvas.getHeight() / 3, this._level1background.width / 4, this._level1background.height / 4);
-            this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 15 * 5 * 1.2, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4);
-            this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 15 * 9 * 1.2, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4);
+            this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 40, this._canvas.getHeight() / 3.5, this._level1background.width / 2, this._level1background.height / 2);
+            this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
+            this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
         };
         this._canvas = canvas;
         this._backgroundstart = new Image();
