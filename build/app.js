@@ -33,6 +33,33 @@ class Canvas {
         return this._canvasElement.height;
     }
     ;
+}
+;
+class Game {
+    constructor() {
+        this.drawStart = () => {
+            this._startscreen.draw();
+        };
+        this._canvasElement = document.getElementById('canvas');
+        this._canvas = new Canvas(this._canvasElement);
+        this._startscreen = new Startscreen(this._canvas);
+        this._Helpscreen = new Helpscreen(this._canvas);
+        this._gameController = new GameController;
+        this._gameController.clickEventHandler();
+    }
+    ;
+}
+;
+window.addEventListener('load', init);
+function init() {
+    const KrunkerCity = new Game();
+    window.setInterval(KrunkerCity.drawStart, 1000 / 60);
+}
+;
+class GameController {
+    constructor() {
+        this._startScreen = new Startscreen(this._canvasElement);
+    }
     clickEventHandler() {
         document.addEventListener('click', (event) => {
             this.onClick(event);
@@ -41,48 +68,16 @@ class Canvas {
     ;
     onClick(event) {
         let hasClicked = event;
-        let clickedX = event.x;
-        let clickedY = event.y;
+        this.clickedX = event.x;
+        this.clickedY = event.y;
         console.log(hasClicked);
     }
     ;
-}
-;
-class ClickHelper {
-    clickEventHandler() {
-        document.addEventListener('click', (event) => {
-            this.onClick(event);
-        });
-    }
-    ;
-    onClick(event) {
-        let clickedX = event.X;
-        let clickedY = event.X;
-        console.log(clickedX);
-        console.log(clickedY);
+    levelSelect() {
+        if (this.clickedX > this._startScreen.xPosLevel1Background && this.clickedX < this._startScreen._level1background.width) {
+        }
     }
 }
-;
-class Game {
-    constructor() {
-        this.drawHelp = () => {
-            this._Helpscreen.drawHelp();
-        };
-        this._canvasElement = document.getElementById('canvas');
-        this._canvas = new Canvas(this._canvasElement);
-        this._startscreen = new Startscreen(this._canvas);
-        this._canvas.clickEventHandler();
-        this._Helpscreen = new Helpscreen(this._canvas);
-    }
-    ;
-}
-;
-window.addEventListener('load', init);
-function init() {
-    const KrunkerCity = new Game();
-    window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
-}
-;
 class GameItem {
     constructor(canvas, imageSource, xCoor, yCoor, width, height) {
         this._canvas = new Canvas(canvas);
@@ -113,7 +108,6 @@ class Helpscreen {
         this._canvas = canvas;
     }
     drawHelp() {
-        this._canvas.writeImageToCanvas("./assets/images/greenenergy.jpg", 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     }
     ;
 }
@@ -157,7 +151,7 @@ class Startscreen {
     constructor(canvas) {
         this.draw = () => {
             this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
-            this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 15, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4);
+            this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 15, this._canvas.getHeight() / 3, this._level1background.width / 4, this._level1background.height / 4);
             this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 15 * 5, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4);
             this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 15 * 9, this._canvas.getHeight() / 3, this._level2background.width / 4, this._level2background.height / 4);
         };
@@ -166,11 +160,16 @@ class Startscreen {
         this._backgroundstart.src = "./assets/images/greenenergy.jpg";
         this._level1background = new Image();
         this._level1background.src = "";
+        this.xPosLevel1Background = this._canvas.getWidth() / 40;
+        this.yPosLevel1Background = this._canvas.getHeight() / 4;
         this._level2background = new Image();
         this._level2background.src = "./assets/images/level2.png";
+        this.xPosLevel2Background = this._canvas.getWidth() / 40 * 5;
+        this.yPosLevel2Background = this._canvas.getHeight() / 4;
         this._level3background = new Image();
         this._level3background.src = "./assets/images/level3.png";
-        console.log(canvas);
+        this.xPosLevel3Background = this._canvas.getWidth() / 40 * 9;
+        this.yPosLevel3Background = this._canvas.getHeight() / 4;
     }
 }
 ;
