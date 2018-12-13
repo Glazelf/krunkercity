@@ -43,8 +43,9 @@ class ClickHelper {
 ;
 class Game {
     constructor() {
-        this.drawHelp = () => {
-            this._Helpscreen.drawHelp();
+        this.drawStart = () => {
+            console.log(this._canvas);
+            this._startscreen.draw();
         };
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
@@ -57,7 +58,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const KrunkerCity = new Game();
-    window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
+    window.setInterval(KrunkerCity.drawStart, 1000 / 60);
 }
 ;
 class GameItem {
@@ -88,9 +89,11 @@ class GameItem {
 class Helpscreen {
     constructor(canvas) {
         this._canvas = canvas;
+        this._backgroundhelp = new Image();
+        this._backgroundhelp.src = "./assets/images/greenenergy.jpg";
     }
     drawHelp() {
-        this._canvas.writeImageToCanvas("./assets/images/greenenergy.jpg", 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+        this._canvas.writeImageToCanvas(this._backgroundhelp, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
     }
     ;
 }
