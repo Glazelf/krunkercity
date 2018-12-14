@@ -3,8 +3,8 @@ class GameItem {
     public _yPos: number;
     protected _height: number;
     protected _width: number;
-    protected _imgSource: HTMLImageElement
-    protected _canvas: Canvas
+    protected _imgSource: HTMLImageElement;
+    protected _canvas: Canvas;
 
     public constructor(
         canvas: HTMLCanvasElement,
@@ -20,25 +20,25 @@ class GameItem {
         this._yPos = yCoor;
         this._width = width;
         this._height = height;
-    }
+    };
 
     public draw() {
         this._canvas.writeImageToCanvas(this._imgSource, this._xPos, this._yPos, this._width, this._height);
-    }
+    };
 
     public getX(): number {
         return this._xPos;
-    }
+    };
 
     public getY(): number {
         return this._yPos;
-    }
+    };
 
     public getWidth(): number {
         return this._width;
-    }
+    };
 
     public getHeight(): number {
         return this._height;
-    }
-}
+    };
+};
