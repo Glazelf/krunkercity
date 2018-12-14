@@ -66,6 +66,7 @@ function init() {
 class GameController {
     constructor(canvas) {
         this._startScreen = new Startscreen(this._canvasElement);
+        this._helpScreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
     }
     clickEventHandler() {
@@ -101,6 +102,13 @@ class GameController {
                 console.log(event.x);
                 console.log(event.y);
                 console.log('HelpScreen clicked');
+            }
+        }
+        if (event.x > this._canvas.getWidth() / 7.5 && event.x < this._canvas.getWidth() / 7.5 + this._helpScreen._menuKnop.width) {
+            if (event.y > this._canvas.getHeight() / 1.3 && event.y < this._canvas.getHeight() / 1.3 + this._helpScreen._menuKnop.height) {
+                console.log(event.x);
+                console.log(event.y);
+                console.log('Return to StartScreen clicked');
             }
         }
         console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startScreen._level1background.width / 5);
