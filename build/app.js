@@ -44,14 +44,33 @@ class Canvas {
 class Game {
     constructor() {
         this.drawStart = () => {
-            this._startscreen.draw();
+            if (this._gameController.currentScreen == '') {
+                this._startscreen.draw();
+            }
+            ;
+            if (this._gameController.currentScreen == 'Level1') {
+                this._levelHelper.drawLevel1();
+            }
+            ;
+            if (this._gameController.currentScreen == 'Level2') {
+                this._levelHelper.drawLevel2();
+            }
+            ;
+            if (this._gameController.currentScreen == 'Level3') {
+                this._levelHelper.drawLevel3();
+            }
+            ;
+            if (this._gameController.currentScreen == 'Helpscreen') {
+                this._Helpscreen.drawHelp();
+            }
+            ;
         };
         this.drawHelp = () => {
             console.log(this._canvas);
             this._Helpscreen.drawHelp();
         };
         this.drawLevel = () => {
-            this._levelHelper.drawLevel3();
+            this._levelHelper.drawLevel1();
         };
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
@@ -67,11 +86,12 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const KrunkerCity = new Game();
-    window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
+    window.setInterval(KrunkerCity.drawStart, 1000 / 60);
 }
 ;
 class GameController {
     constructor(canvas) {
+        this.currentScreen = '';
         this._startScreen = new Startscreen(this._canvasElement);
         this._canvas = canvas;
         this._levelHelper = new LevelHelper(this._canvas);
@@ -83,31 +103,37 @@ class GameController {
     }
     ;
     onClick(event) {
-        if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startScreen._level1background.width / 2) {
-            if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Level 1 clicked');
-                this._canvas.clearScreen();
-                window.setInterval(() => this._levelHelper.drawLevel1(), 1000 / 30);
+        if (this.currentScreen == ``) {
+            if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startScreen._level1background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 1 clicked');
+                    this._canvas.clearScreen();
+                    this.currentScreen = 'Level1';
+                }
             }
         }
-        if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level1background.width / 2) {
-            if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Level 2 clicked');
-                this._canvas.clearScreen();
-                window.setInterval(() => this._levelHelper.drawLevel2(), 1000 / 30);
+        if (this.currentScreen == ``) {
+            if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level1background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 2 clicked');
+                    this._canvas.clearScreen();
+                    this.currentScreen = 'Level2';
+                }
             }
         }
-        if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level1background.width / 2) {
-            if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Level 3 clicked');
-                this._canvas.clearScreen();
-                window.setInterval(() => this._levelHelper.drawLevel3(), 1000 / 30);
+        if (this.currentScreen == ``) {
+            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level1background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 3 clicked');
+                    this._canvas.clearScreen();
+                    this.currentScreen = 'Level3';
+                }
             }
         }
         console.log(event.x, this._canvas.getWidth() / 40, this._canvas.getWidth() + this._startScreen._level1background.width / 2);
@@ -124,22 +150,29 @@ class GameItem {
         this._width = width;
         this._height = height;
     }
+    ;
     draw() {
         this._canvas.writeImageToCanvas(this._imgSource, this._xPos, this._yPos, this._width, this._height);
     }
+    ;
     getX() {
         return this._xPos;
     }
+    ;
     getY() {
         return this._yPos;
     }
+    ;
     getWidth() {
         return this._width;
     }
+    ;
     getHeight() {
         return this._height;
     }
+    ;
 }
+;
 class Helpscreen {
     constructor(canvas) {
         this._canvas = canvas;
