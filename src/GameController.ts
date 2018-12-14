@@ -2,9 +2,12 @@ class GameController {
     private readonly _startScreen: Startscreen;
     private readonly _canvas: Canvas;
     private readonly _canvasElement: Canvas;
+    private _levelHelper: LevelHelper;
+
     public constructor(canvas: Canvas) {
         this._startScreen = new Startscreen(this._canvasElement);
         this._canvas = canvas;
+        this._levelHelper = new LevelHelper(this._canvas)
     }
 
     public clickEventHandler(): void {
@@ -20,6 +23,8 @@ class GameController {
                 console.log(event.x);
                 console.log(event.y);
                 console.log('Level 1 clicked');
+                this._canvas.clearScreen();
+                window.setInterval(() => this._levelHelper.drawLevel1(), 1000 / 30);
             }
         }
         if(event.x > this._canvas.getWidth() / 2.9  && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level1background.width / 2) {
@@ -28,6 +33,8 @@ class GameController {
                 console.log(event.x);
                 console.log(event.y);
                 console.log('Level 2 clicked');
+                this._canvas.clearScreen();
+                window.setInterval(() => this._levelHelper.drawLevel2(), 1000 / 30);
             }
         }
         if(event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level1background.width / 2) {
@@ -36,6 +43,9 @@ class GameController {
                 console.log(event.x);
                 console.log(event.y);
                 console.log('Level 3 clicked');
+                this._canvas.clearScreen();
+                // this._levelHelper.drawLevel3();
+                window.setInterval(() => this._levelHelper.drawLevel3(), 1000 / 30);
             }
         }
 

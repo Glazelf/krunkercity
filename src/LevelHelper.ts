@@ -24,18 +24,29 @@ class LevelHelper {
         this._bolt = new Image();
         this._bolt.src = "./assets/images/bolt.png";
         this._pollution = new Image();
-        this._pollution.src = "";
+        this._pollution.src = "./assets/images/co2.png";
         this._coins = new Image();
         this._coins.src = "./assets/images/simmoney.png";
         console.log(canvas);
     }
 
-    public drawLevel1() {
+    public drawLevel1 = () => {
         //background
         this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
         //building spots
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 10, this._canvas.getHeight() / 9);
+        //trainstation
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
+        //leftroad
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
+        //largeforest
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 2.5, this._canvas.getHeight() / 3.5);
+        //bottomright from last one
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5),
+        //bottomright from last one
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
+        //mountainrange
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
 
         //currencies
         this.co2 = 30;
@@ -49,7 +60,14 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
         //buildingspots
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 10, this._canvas.getHeight() / 9);
+        //trainstation
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
+        //leftroad
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
+        //bottomrightcity
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
+        //park
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
 
         //currencies
         this.co2 = 40;
@@ -63,7 +81,12 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._level3background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
         //buildingspots
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 10, this._canvas.getHeight() / 9);
+        //park
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
+        //rightroad
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.2, this._canvas.getHeight() / 1.8);
+        //mountainrange
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
 
         //currencies
         this.co2 = 50;
@@ -72,16 +95,17 @@ class LevelHelper {
         this.drawCurrencies();
     };
 
-    public drawCurrencies(){
+    public drawCurrencies() {
         //energy
-        this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth()/500, this._canvas.getHeight()/10, this._bolt.width / 8, this._bolt.height / 8);
-        this._canvas.writeTextToCanvas(`${this.energy}`, this._canvas.getWidth()/14.5, this._canvas.getHeight()/6.1, 60);
+        this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth() / 500, this._canvas.getHeight() / 10, this._bolt.width / 8, this._bolt.height / 8);
+        this._canvas.writeTextToCanvas(`${this.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
 
         //co2
-        
+        this._canvas.writeImageToCanvas(this._pollution, this._canvas.getWidth() / 500, this._canvas.getHeight() / 60, this._pollution.width / 11, this._pollution.height / 11);
+        this._canvas.writeTextToCanvas(`${this.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60)
 
         //money
-        this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth()/500, this._canvas.getHeight()/5.5, this._coins.width/3, this._coins.height/3);
-        this._canvas.writeTextToCanvas(`${this.money}`, this._canvas.getWidth()/14.5, this._canvas.getHeight()/4, 60);
+        this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
+        this._canvas.writeTextToCanvas(`${this.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
     };
 };
