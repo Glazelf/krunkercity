@@ -96,8 +96,15 @@ class GameController {
                 console.log('Level 3 clicked');
             }
         }
-        console.log(event.x, this._canvas.getWidth() / 40, this._canvas.getWidth() + this._startScreen._level1background.width / 2);
-        console.log(event.y, this._canvas.getHeight() / 3.5, this._canvas.getHeight() / 3.5 - this._startScreen._level1background.height / 2);
+        if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._startScreen._helpButton.width / 5) {
+            if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._startScreen._helpButton.height / 5) {
+                console.log(event.x);
+                console.log(event.y);
+                console.log('HelpScreen clicked');
+            }
+        }
+        console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startScreen._level1background.width / 5);
+        console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startScreen._level1background.height / 5);
     }
     ;
 }
