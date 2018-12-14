@@ -91,7 +91,7 @@ function init() {
 ;
 class GameController {
     constructor(canvas) {
-        this.currentScreen = 'Startscreen';
+        this.currentScreen = 'StartScreen';
         this._startScreen = new Startscreen(this._canvasElement);
         this._helpScreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
@@ -110,6 +110,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 1 clicked');
+                    this.currentScreen = `Level1`;
                 }
             }
         }
@@ -119,6 +120,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 2 clicked');
+                    this.currentScreen = `Level2`;
                 }
             }
         }
@@ -128,6 +130,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 3 clicked');
+                    this.currentScreen = `Level3`;
                 }
             }
         }
@@ -137,6 +140,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
                 }
             }
         }

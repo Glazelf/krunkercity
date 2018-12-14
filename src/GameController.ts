@@ -4,7 +4,7 @@ class GameController {
     private readonly _canvas: Canvas;
     private readonly _canvasElement: Canvas;
     private _levelHelper: LevelHelper;
-    public currentScreen: string = 'Startscreen';
+    public currentScreen: string = 'StartScreen';
 
     public constructor(canvas: Canvas) {
         this._startScreen = new Startscreen(this._canvasElement);
@@ -32,6 +32,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 1 clicked');
+                    this.currentScreen = `Level1`;
                 }
             }
         }
@@ -44,6 +45,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 2 clicked');
+                    this.currentScreen = `Level2`;
                 }
             }
         }
@@ -56,6 +58,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 3 clicked');
+                    this.currentScreen = `Level3`;
                 }
             }
         }
@@ -68,6 +71,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
                 }
             }
         }
