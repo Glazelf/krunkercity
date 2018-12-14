@@ -3,7 +3,7 @@ class GameController {
     private readonly _canvas: Canvas;
     private readonly _canvasElement: Canvas;
     private _levelHelper: LevelHelper;
-    public currentScreen: string = '';
+    public currentScreen: string = 'Startscreen';
 
     public constructor(canvas: Canvas) {
         this._startScreen = new Startscreen(this._canvasElement);

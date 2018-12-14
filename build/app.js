@@ -44,7 +44,7 @@ class Canvas {
 class Game {
     constructor() {
         this.drawStart = () => {
-            if (this._gameController.currentScreen == '') {
+            if (this._gameController.currentScreen == 'Startscreen') {
                 this._startscreen.draw();
             }
             ;
@@ -91,7 +91,7 @@ function init() {
 ;
 class GameController {
     constructor(canvas) {
-        this.currentScreen = '';
+        this.currentScreen = 'Startscreen';
         this._startScreen = new Startscreen(this._canvasElement);
         this._canvas = canvas;
         this._levelHelper = new LevelHelper(this._canvas);

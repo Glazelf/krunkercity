@@ -19,7 +19,7 @@ class Game {
 
     public drawStart = () => {
         //console.log(this._canvas)
-        if (this._gameController.currentScreen == '') {
+        if (this._gameController.currentScreen == 'Startscreen') {
             this._startscreen.draw();
         };
         if (this._gameController.currentScreen == 'Level1') {
