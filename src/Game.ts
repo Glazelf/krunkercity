@@ -30,6 +30,7 @@ class Game {
     public drawLevel = () => {
         this._levelHelper.drawLevel1()
     }
+
 };
 
 window.addEventListener('load', init);
