@@ -19,7 +19,7 @@ class Game {
 
     public drawStart = () => {
         //console.log(this._canvas)
-        if (this._gameController.currentScreen == '') {
+        if (this._gameController.currentScreen == 'StartScreen') {
             this._startscreen.draw();
         };
         if (this._gameController.currentScreen == 'Level1') {
@@ -31,7 +31,7 @@ class Game {
         if (this._gameController.currentScreen == 'Level3') {
             this._levelHelper.drawLevel3();
         };
-        if (this._gameController.currentScreen == 'Helpscreen') {
+        if (this._gameController.currentScreen == 'HelpScreen') {
             this._Helpscreen.drawHelp();
         };
     };
