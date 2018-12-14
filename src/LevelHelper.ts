@@ -12,6 +12,7 @@ class LevelHelper {
     private _bolt: HTMLImageElement;
     private _pollution: HTMLImageElement;
     private _coins: HTMLImageElement;
+    private _levelHelper: LevelHelper;
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;

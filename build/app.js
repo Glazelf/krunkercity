@@ -51,6 +51,8 @@ class Game {
             this._Helpscreen.drawHelp();
         };
         this.drawLevel = () => {
+            this._levelHelper.drawLevel1();
+            this._levelHelper.drawLevel2();
             this._levelHelper.drawLevel3();
         };
         this._canvasElement = document.getElementById('canvas');
@@ -67,7 +69,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const KrunkerCity = new Game();
-    window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
+    window.setInterval(KrunkerCity.drawStart, 1000 / 60);
 }
 ;
 class GameController {
