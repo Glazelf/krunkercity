@@ -44,7 +44,7 @@ class Canvas {
 class Game {
     constructor() {
         this.drawStart = () => {
-            if (this._gameController.currentScreen == 'Startscreen') {
+            if (this._gameController.currentScreen == 'StartScreen') {
                 this._startscreen.draw();
             }
             ;
@@ -60,7 +60,7 @@ class Game {
                 this._levelHelper.drawLevel3();
             }
             ;
-            if (this._gameController.currentScreen == 'Helpscreen') {
+            if (this._gameController.currentScreen == 'HelpScreen') {
                 this._Helpscreen.drawHelp();
             }
             ;
@@ -93,6 +93,7 @@ class GameController {
     constructor(canvas) {
         this.currentScreen = 'Startscreen';
         this._startScreen = new Startscreen(this._canvasElement);
+        this._helpScreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
         this._levelHelper = new LevelHelper(this._canvas);
     }
@@ -103,41 +104,53 @@ class GameController {
     }
     ;
     onClick(event) {
-        if (this.currentScreen == ``) {
+        if (this.currentScreen == `StartScreen`) {
             if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startScreen._level1background.width / 2) {
                 if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 1 clicked');
-                    this._canvas.clearScreen();
-                    this.currentScreen = 'Level1';
                 }
             }
         }
-        if (this.currentScreen == ``) {
+        if (this.currentScreen == `StartScreen`) {
             if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level1background.width / 2) {
                 if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 2 clicked');
-                    this._canvas.clearScreen();
-                    this.currentScreen = 'Level2';
                 }
             }
         }
-        if (this.currentScreen == ``) {
+        if (this.currentScreen == `StartScreen`) {
             if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level1background.width / 2) {
                 if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 3 clicked');
-                    this._canvas.clearScreen();
-                    this.currentScreen = 'Level3';
                 }
             }
         }
-        console.log(event.x, this._canvas.getWidth() / 40, this._canvas.getWidth() + this._startScreen._level1background.width / 2);
-        console.log(event.y, this._canvas.getHeight() / 3.5, this._canvas.getHeight() / 3.5 - this._startScreen._level1background.height / 2);
+        if (this.currentScreen == `StartScreen`) {
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._startScreen._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._startScreen._helpButton.height / 5) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                }
+            }
+        }
+        if (this.currentScreen == `HelpScreen`) {
+            if (event.x > this._canvas.getWidth() / 7.5 && event.x < this._canvas.getWidth() / 7.5 + this._helpScreen._menuKnop.width) {
+                if (event.y > this._canvas.getHeight() / 1.3 && event.y < this._canvas.getHeight() / 1.3 + this._helpScreen._menuKnop.height) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Return to StartScreen clicked');
+                }
+            }
+        }
+        console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startScreen._level1background.width / 5);
+        console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startScreen._level1background.height / 5);
     }
     ;
 }
