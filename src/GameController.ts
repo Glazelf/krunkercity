@@ -24,95 +24,68 @@ class GameController {
          * ClickHandlers for StartScreen
          */
         //Button for Level 1 on StartScreen
-        if(event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startScreen._level1background.width / 2) {
-            if(event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
-                //ga naar level 1
-                //*debug*
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Level 1 clicked');
-            }
-        }
-        //Button for level 2 on StartScreen
-        if(event.x > this._canvas.getWidth() / 2.9  && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level1background.width / 2) {
-            if(event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
-                //ga naar level 2
-                //*debug*
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Level 2 clicked');
-            }
-        }
-        //Button for level 3 on StartScreen
-        if(event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level1background.width / 2) {
-            if(event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
-                //ga naar level 3
-                //*debug*
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Level 3 clicked');
-        if (this.currentScreen == ``) {
-            if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startScreen._level1background.width / 2) {
-                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+        if(this.currentScreen == `StartScreen`) {
+            if(event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startScreen._level1background.width / 2) {
+                if(event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
                     //ga naar level 1
+                    //*debug*
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 1 clicked');
-                    this._canvas.clearScreen();
-                    this.currentScreen = 'Level1'
                 }
             }
         }
-
-        if (this.currentScreen == ``) {
-            if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level1background.width / 2) {
-                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+        //Button for level 2 on StartScreen
+        if(this.currentScreen == `StartScreen`) {
+            if(event.x > this._canvas.getWidth() / 2.9  && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level1background.width / 2) {
+                if(event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
                     //ga naar level 2
+                    //*debug*
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 2 clicked');
-                    this._canvas.clearScreen();
-                    this.currentScreen = 'Level2';
                 }
             }
         }
-
-        if (this.currentScreen == ``) {
-            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level1background.width / 2) {
-                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+        //Button for level 3 on StartScreen
+        if(this.currentScreen == `StartScreen`) {
+            if(event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level1background.width / 2) {
+                if(event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
                     //ga naar level 3
+                    //*debug*
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 3 clicked');
-                    this._canvas.clearScreen();
-                    this.currentScreen = 'Level3'
                 }
             }
         }
         //Button for HelpScreen on StartScreen
-        if(event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._startScreen._helpButton.width / 5) {
-            if(event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._startScreen._helpButton.height / 5) {
-                //ga naar HelpScreen
-                //*debug*
-                console.log(event.x);
-                console.log(event.y);
-                console.log('HelpScreen clicked');
+        if(this.currentScreen == `StartScreen`) {
+            if(event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._startScreen._helpButton.width / 5) {
+                if(event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._startScreen._helpButton.height / 5) {
+                    //ga naar HelpScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                }
             }
         }
         /**
          * ClickHandlers for HelpScreen
          */
         //Button for returning to StartScreen from HelpScreen
-        if(event.x > this._canvas.getWidth() / 7.5 && event.x < this._canvas.getWidth() / 7.5 + this._helpScreen._menuKnop.width) {
-            if(event.y > this._canvas.getHeight() / 1.3 && event.y < this._canvas.getHeight() / 1.3 + this._helpScreen._menuKnop.height) {
-                //ga terug naar StartScreen
-                //*debug*
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Return to StartScreen clicked');
+        if(this.currentScreen == `HelpScreen`) {
+            if(event.x > this._canvas.getWidth() / 7.5 && event.x < this._canvas.getWidth() / 7.5 + this._helpScreen._menuKnop.width) {
+                if(event.y > this._canvas.getHeight() / 1.3 && event.y < this._canvas.getHeight() / 1.3 + this._helpScreen._menuKnop.height) {
+                    //ga terug naar StartScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Return to StartScreen clicked');
+                }
             }
         }
-
         
         //*debug*
         console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startScreen._level1background.width / 5);
