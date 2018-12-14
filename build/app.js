@@ -43,9 +43,8 @@ class Canvas {
 ;
 class Game {
     constructor() {
-        this.drawHelp = () => {
-            console.log(this._canvas);
-            this._Helpscreen.drawHelp();
+        this.drawStart = () => {
+            this._startscreen.draw();
         };
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
@@ -62,7 +61,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const KrunkerCity = new Game();
-    window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
+    window.setInterval(KrunkerCity.drawStart, 1000 / 60);
 }
 ;
 class GameController {
