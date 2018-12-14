@@ -13,11 +13,13 @@ class Canvas {
         this._buildingHammer.src = "./assets/images/hammer.png";
     };
 
+    //clearing the screen
     public clearScreen(): void {
         // clear the screen
         this._ctx.clearRect(0, 0, this._canvasElement.width, this._canvasElement.height);
     };
 
+    //drawing text
     public writeTextToCanvas(
         text: string,
         xCoordinate: number,
@@ -32,6 +34,7 @@ class Canvas {
         this._ctx.fillText(text, xCoordinate, yCoordinate);
     };
 
+    //drawing images
     public writeImageToCanvas(
         element: HTMLImageElement,
         xCoordinate: number,
@@ -42,24 +45,28 @@ class Canvas {
         this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
     };
 
-    public writeHammerToCanvas( 
+    //drawing hammers faster
+    public writeHammerToCanvas(
         element: HTMLImageElement = this._buildingHammer,
         xCoordinate: number,
         yCoordinate: number,
-        width: number = this._buildingHammer.width/7,
-        height: number = this._buildingHammer.height/7,
+        width: number = this._buildingHammer.width / 7,
+        height: number = this._buildingHammer.height / 7,
     ) {
         this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
     };
 
+    //rng
     public randomNumber(min: number, max: number): number {
         return Math.round(Math.random() * (max - min) + min);
     };
 
+    //canvas width const
     public getWidth(): number {
         return this._canvasElement.width
     };
 
+    //canvas height const
     public getHeight(): number {
         return this._canvasElement.height
     };
