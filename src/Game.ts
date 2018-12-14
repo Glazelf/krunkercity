@@ -17,24 +17,42 @@ class Game {
         this._levelHelper = new LevelHelper(this._canvas)
     };
 
-    public drawStart=()=>{
+    public drawStart = () => {
         //console.log(this._canvas)
-        this._startscreen.draw();
+        if (this._gameController.currentScreen == '') {
+            this._startscreen.draw();
+        };
+        if (this._gameController.currentScreen == 'Level1') {
+            this._levelHelper.drawLevel1();
+        };
+        if (this._gameController.currentScreen == 'Level2') {
+            this._levelHelper.drawLevel2();
+        };
+        if (this._gameController.currentScreen == 'Level3') {
+            this._levelHelper.drawLevel3();
+        };
+        if (this._gameController.currentScreen == 'Helpscreen') {
+            this._Helpscreen.drawHelp();
+        };
+    };
+    
+    public drawHelp = () => {
+        console.log(this._canvas)
+        this._Helpscreen.drawHelp();
     };
 
-    // public drawHelp=()=>{
-    //     console.log(this._canvas)
-    //     this._Helpscreen.drawHelp();
-    // };
-
-    // public drawLevel=()=>{
-    //     this._levelHelper.drawLevel1()
-    // }
+    public drawLevel = () => {
+        this._levelHelper.drawLevel1();
+        //this._levelHelper.drawLevel2();
+        //this._levelHelper.drawLevel3();
+    }
 };
 
 window.addEventListener('load', init);
 function init(): void {
     const KrunkerCity = new Game();
     window.setInterval(KrunkerCity.drawStart, 1000 / 60);
-    //window.setInterval(KrunkerCity.drawHelp, 1000 / 60)
+    // window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
+    // window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
 };
+

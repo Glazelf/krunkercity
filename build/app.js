@@ -44,7 +44,33 @@ class Canvas {
 class Game {
     constructor() {
         this.drawStart = () => {
-            this._startscreen.draw();
+            if (this._gameController.currentScreen == '') {
+                this._startscreen.draw();
+            }
+            ;
+            if (this._gameController.currentScreen == 'Level1') {
+                this._levelHelper.drawLevel1();
+            }
+            ;
+            if (this._gameController.currentScreen == 'Level2') {
+                this._levelHelper.drawLevel2();
+            }
+            ;
+            if (this._gameController.currentScreen == 'Level3') {
+                this._levelHelper.drawLevel3();
+            }
+            ;
+            if (this._gameController.currentScreen == 'Helpscreen') {
+                this._Helpscreen.drawHelp();
+            }
+            ;
+        };
+        this.drawHelp = () => {
+            console.log(this._canvas);
+            this._Helpscreen.drawHelp();
+        };
+        this.drawLevel = () => {
+            this._levelHelper.drawLevel1();
         };
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
@@ -65,9 +91,11 @@ function init() {
 ;
 class GameController {
     constructor(canvas) {
+        this.currentScreen = '';
         this._startScreen = new Startscreen(this._canvasElement);
         this._helpScreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
+        this._levelHelper = new LevelHelper(this._canvas);
     }
     clickEventHandler() {
         document.addEventListener('click', (event) => {
@@ -76,25 +104,37 @@ class GameController {
     }
     ;
     onClick(event) {
-        if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startScreen._level1background.width / 2) {
-            if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Level 1 clicked');
+        if (this.currentScreen == ``) {
+            if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startScreen._level1background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 1 clicked');
+                    this._canvas.clearScreen();
+                    this.currentScreen = 'Level1';
+                }
             }
         }
-        if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level1background.width / 2) {
-            if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Level 2 clicked');
+        if (this.currentScreen == ``) {
+            if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level1background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 2 clicked');
+                    this._canvas.clearScreen();
+                    this.currentScreen = 'Level2';
+                }
             }
         }
-        if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level1background.width / 2) {
-            if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
-                console.log(event.x);
-                console.log(event.y);
-                console.log('Level 3 clicked');
+        if (this.currentScreen == ``) {
+            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level1background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 3 clicked');
+                    this._canvas.clearScreen();
+                    this.currentScreen = 'Level3';
+                }
             }
         }
         if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._startScreen._helpButton.width / 5) {
@@ -125,22 +165,29 @@ class GameItem {
         this._width = width;
         this._height = height;
     }
+    ;
     draw() {
         this._canvas.writeImageToCanvas(this._imgSource, this._xPos, this._yPos, this._width, this._height);
     }
+    ;
     getX() {
         return this._xPos;
     }
+    ;
     getY() {
         return this._yPos;
     }
+    ;
     getWidth() {
         return this._width;
     }
+    ;
     getHeight() {
         return this._height;
     }
+    ;
 }
+;
 class Helpscreen {
     constructor(canvas) {
         this._canvas = canvas;
@@ -188,6 +235,22 @@ class Helpscreen {
 ;
 class LevelHelper {
     constructor(canvas) {
+        this.co2 = 50;
+        this.energy = 0;
+        this.money = 100;
+        this.drawLevel1 = () => {
+            this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
+            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
+            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 2.5, this._canvas.getHeight() / 3.5);
+            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5),
+                this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
+            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
+            this.co2 = 30;
+            this.energy = 20;
+            this.money = 90;
+            this.drawCurrencies();
+        };
         this._canvas = canvas;
         this._level1background = new Image();
         this._level1background.src = "./assets/images/level1.png";
@@ -195,23 +258,44 @@ class LevelHelper {
         this._level2background.src = "./assets/images/level2.png";
         this._level3background = new Image();
         this._level3background.src = "./assets/images/level3.png";
+        this._bolt = new Image();
+        this._bolt.src = "./assets/images/bolt.png";
+        this._pollution = new Image();
+        this._pollution.src = "./assets/images/co2.png";
+        this._coins = new Image();
+        this._coins.src = "./assets/images/simmoney.png";
         console.log(canvas);
     }
-    drawLevel1() {
-        this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 10, this._canvas.getHeight() / 9);
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 10, this._canvas.getHeight() / 9);
-    }
-    ;
     drawLevel2() {
         this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
+        this.co2 = 40;
+        this.energy = 10;
+        this.money = 80;
+        this.drawCurrencies();
     }
     ;
     drawLevel3() {
         this._canvas.writeImageToCanvas(this._level3background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.2, this._canvas.getHeight() / 1.8);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
+        this.co2 = 50;
+        this.energy = 0;
+        this.money = 70;
+        this.drawCurrencies();
     }
     ;
-    drawBuildSpots() {
+    drawCurrencies() {
+        this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth() / 500, this._canvas.getHeight() / 10, this._bolt.width / 8, this._bolt.height / 8);
+        this._canvas.writeTextToCanvas(`${this.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
+        this._canvas.writeImageToCanvas(this._pollution, this._canvas.getWidth() / 500, this._canvas.getHeight() / 60, this._pollution.width / 11, this._pollution.height / 11);
+        this._canvas.writeTextToCanvas(`${this.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60);
+        this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
+        this._canvas.writeTextToCanvas(`${this.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
     }
     ;
 }
