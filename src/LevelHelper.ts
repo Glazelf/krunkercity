@@ -55,6 +55,7 @@ class LevelHelper {
         this.energy = 20;
         this.money = 90;
         this.drawCurrencies();
+        
     };
 
     public drawLevel2() {
