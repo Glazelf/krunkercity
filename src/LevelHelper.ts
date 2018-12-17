@@ -2,9 +2,9 @@ class LevelHelper {
     private readonly _canvasElement: HTMLCanvasElement;
     private readonly _ctx: CanvasRenderingContext2D;
     private _canvas: Canvas;
-    private co2: number = 50;
-    private energy: number = 0;
-    private money: number = 100;
+    public co2: number = 50;
+    public energy: number = 0;
+    public money: number = 100;
     private production: number;
     private _level1background: HTMLImageElement;
     private _level2background: HTMLImageElement;
@@ -38,15 +38,15 @@ class LevelHelper {
         //trainstation
         this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
         //leftroad
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer2, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
         //largeforest
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 2.5, this._canvas.getHeight() / 3.5);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer3, this._canvas.getWidth() / 2.5, this._canvas.getHeight() / 3.5);
         //bottomright from last one
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5),
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer4, this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5),
         //bottomright from last one
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer5, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
         //mountainrange
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer6, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
 
         //currencies
         this.co2 = 30;
@@ -63,11 +63,12 @@ class LevelHelper {
         //trainstation
         this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
         //leftroad
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer2, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
         //bottomrightcity
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer3, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
         //park
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer4, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
+        //kanaal
 
         //currencies
         this.co2 = 40;
@@ -84,9 +85,10 @@ class LevelHelper {
         //park
         this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
         //rightroad
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.2, this._canvas.getHeight() / 1.8);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer2, this._canvas.getWidth() / 1.2, this._canvas.getHeight() / 1.8);
         //mountainrange
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer3, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
+        //kanaal
 
         //currencies
         this.co2 = 50;

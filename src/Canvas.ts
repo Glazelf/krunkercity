@@ -8,11 +8,6 @@ class Canvas {
     public _buildingHammer4: HTMLImageElement;
     public _buildingHammer5: HTMLImageElement;
     public _buildingHammer6: HTMLImageElement;
-    public _buildingHammer8: HTMLImageElement;
-    public _buildingHammer9: HTMLImageElement;
-    public _buildingHammer10: HTMLImageElement;
-    public _buildingHammer11: HTMLImageElement;
-
 
     constructor(canvasID: HTMLCanvasElement) {
         this._canvasElement = canvasID;
@@ -21,6 +16,16 @@ class Canvas {
         this._canvasElement.height = window.innerHeight;
         this._buildingHammer1 = new Image();
         this._buildingHammer1.src = "./assets/images/hammer.png";
+        this._buildingHammer2 = new Image();
+        this._buildingHammer2.src = "./assets/images/hammer.png";
+        this._buildingHammer3 = new Image();
+        this._buildingHammer3.src = "./assets/images/hammer.png";
+        this._buildingHammer4 = new Image();
+        this._buildingHammer4.src = "./assets/images/hammer.png";
+        this._buildingHammer5 = new Image();
+        this._buildingHammer5.src = "./assets/images/hammer.png";
+        this._buildingHammer6 = new Image();
+        this._buildingHammer6.src = "./assets/images/hammer.png";
     };
 
     //clearing the screen

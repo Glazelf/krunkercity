@@ -6,6 +6,16 @@ class Canvas {
         this._canvasElement.height = window.innerHeight;
         this._buildingHammer1 = new Image();
         this._buildingHammer1.src = "./assets/images/hammer.png";
+        this._buildingHammer2 = new Image();
+        this._buildingHammer2.src = "./assets/images/hammer.png";
+        this._buildingHammer3 = new Image();
+        this._buildingHammer3.src = "./assets/images/hammer.png";
+        this._buildingHammer4 = new Image();
+        this._buildingHammer4.src = "./assets/images/hammer.png";
+        this._buildingHammer5 = new Image();
+        this._buildingHammer5.src = "./assets/images/hammer.png";
+        this._buildingHammer6 = new Image();
+        this._buildingHammer6.src = "./assets/images/hammer.png";
     }
     ;
     clearScreen() {
@@ -149,12 +159,19 @@ class GameController {
         }
         ;
         if (this.currentScreen == `Level1`) {
-            if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width) {
-                if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer1.src = "./assets/images/isometric_kolencentrale.png";
+            if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
+                if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
+                    if (this._levelHelper.money > 50) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
+                        this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
+                        this._canvas._buildingHammer1.src = "./assets/images/isometric_kolencentrale.png";
+                        this._levelHelper.money = this._levelHelper.money - 50;
+                        console.log(this._levelHelper.money);
+                    }
+                    ;
                 }
                 ;
             }
@@ -264,11 +281,11 @@ class LevelHelper {
         this.drawLevel1 = () => {
             this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
             this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
-            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
-            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 2.5, this._canvas.getHeight() / 3.5);
-            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5),
-                this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
-            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
+            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer2, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
+            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer3, this._canvas.getWidth() / 2.5, this._canvas.getHeight() / 3.5);
+            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer4, this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5),
+                this._canvas.writeHammerToCanvas(this._canvas._buildingHammer5, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
+            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer6, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
             this.co2 = 30;
             this.energy = 20;
             this.money = 90;
@@ -292,9 +309,9 @@ class LevelHelper {
     drawLevel2() {
         this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
         this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer2, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer3, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer4, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
         this.co2 = 40;
         this.energy = 10;
         this.money = 80;
@@ -304,8 +321,8 @@ class LevelHelper {
     drawLevel3() {
         this._canvas.writeImageToCanvas(this._level3background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
         this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.2, this._canvas.getHeight() / 1.8);
-        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer2, this._canvas.getWidth() / 1.2, this._canvas.getHeight() / 1.8);
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer3, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
         this.co2 = 50;
         this.energy = 0;
         this.money = 70;
