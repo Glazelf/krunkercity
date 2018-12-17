@@ -188,45 +188,54 @@ class GameController {
         }
         ;
         if (this.currentScreen == `Level1`) {
-            if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
-                    this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
-                    this._canvas._buildingHammer1.src = "./assets/images/isometric_aardwarmte.png";
-                    console.log(this.money);
+            if (this.money > 60) {
+                if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
+                        this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
+                        this._canvas._buildingHammer1.src = "./assets/images/isometric_aardwarmte.png";
+                        this.money -= 60;
+                        console.log(this.money);
+                    }
+                    ;
                 }
                 ;
             }
-            ;
-            if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
-                    this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
-                    this._canvas._buildingHammer2.src = "./assets/images/isometric_aardwarmte.png";
-                    console.log(this.money);
+            if (this.money > 60) {
+                if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
+                        this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
+                        this._canvas._buildingHammer2.src = "./assets/images/isometric_aardwarmte.png";
+                        this.money -= 60;
+                        console.log(this.money);
+                    }
+                    ;
                 }
                 ;
             }
-            ;
-            if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer3.width = this._canvas._buildingHammer3.width;
-                    this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
-                    this._canvas._buildingHammer3.src = "./assets/images/isometric_kerncentrale.png";
-                    console.log(this.money);
+            if (this.money > 80) {
+                if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer3.width = this._canvas._buildingHammer3.width;
+                        this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
+                        this._canvas._buildingHammer3.src = "./assets/images/isometric_kerncentrale.png";
+                        this.money -= 80;
+                        console.log(this.money);
+                    }
+                    ;
                 }
                 ;
             }
-            ;
             this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5;
             if (event.x > this._canvas.getWidth() / 1.9 && event.x < this._canvas.getWidth() / 1.9 + this._canvas._buildingHammer4.width / 7) {
                 if (event.y > this._canvas.getHeight() / 2.5 && event.y < this._canvas.getHeight() / 2.5 + this._canvas._buildingHammer4.height / 7) {
