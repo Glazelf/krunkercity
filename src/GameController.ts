@@ -157,6 +157,18 @@ class GameController {
                     console.log(this._levelHelper.money)
                 };
             };
+
+            //Button for HelpScreen on Level1
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._startScreen._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._startScreen._helpButton.height / 5) {
+                    //ga naar HelpScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
+                };
+            };
         };
 
         /**
@@ -186,6 +198,18 @@ class GameController {
                     this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
                     this._canvas._buildingHammer2.src = "./assets/images/isometric_aardwarmte.png";
                     console.log(this._levelHelper.money);
+                };
+            };
+
+             //Button for HelpScreen on Level1
+             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._startScreen._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._startScreen._helpButton.height / 5) {
+                    //ga naar HelpScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
                 };
             };
         };
