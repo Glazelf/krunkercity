@@ -1,6 +1,7 @@
 class LevelHelper {
     private readonly _canvasElement: HTMLCanvasElement;
     private readonly _ctx: CanvasRenderingContext2D;
+    private readonly _gameController: GameController;
     private _canvas: Canvas;
     private co2: number = 50;
     private energy: number = 0;
@@ -15,6 +16,7 @@ class LevelHelper {
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
+        this._gameController =  new GameController(canvas);
         this._level1background = new Image();
         this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
