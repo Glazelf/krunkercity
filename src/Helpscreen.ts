@@ -88,7 +88,7 @@ class Helpscreen {
         this._canvas.writeImageToCanvas(this._kolenCentrale, this._canvas.getWidth() / 2.87, this._canvas.getHeight() / 1.4,
             this._kolenCentrale.width / 3.2, this._kolenCentrale.height / 3.2)
 
-        //Kolencentrale image
+        //menuKnop image
         this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 7.5, this._canvas.getHeight() / 1.3,
             this._menuKnop.width / 3.2, this._menuKnop.height / 3.2)
     };

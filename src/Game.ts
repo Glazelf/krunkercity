@@ -6,6 +6,7 @@ class Game {
     private _Helpscreen: Helpscreen;
     private _gameController: GameController;
     private _levelHelper: LevelHelper;
+    private Music = new Audio('./assets/mp3/pokemon.mp3');
 
     constructor() {
         this._canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -14,7 +15,8 @@ class Game {
         this._Helpscreen = new Helpscreen(this._canvas);
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
-        this._levelHelper = new LevelHelper(this._canvas)
+        this._levelHelper = new LevelHelper(this._canvas);
+        //this.music();
     };
 
     public drawStart = () => {
@@ -35,7 +37,7 @@ class Game {
             this._Helpscreen.drawHelp();
         };
     };
-    
+
     public drawHelp = () => {
         console.log(this._canvas)
         this._Helpscreen.drawHelp();
@@ -46,13 +48,18 @@ class Game {
         //this._levelHelper.drawLevel2();
         //this._levelHelper.drawLevel3();
     }
+
+    public music() {
+        this.Music.loop = true;
+        this.Music.play();
+    }
 };
 
 window.addEventListener('load', init);
 function init(): void {
     const KrunkerCity = new Game();
     window.setInterval(KrunkerCity.drawStart, 1000 / 60);
-    // window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
-    // window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
+    //window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
+    //window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
 };
 

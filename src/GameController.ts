@@ -196,15 +196,39 @@ class GameController {
                     console.log(this.money)
                 };
             };
+
+            //Button for HelpScreen on Level1
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
+                    //ga naar HelpScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
+                };
+            };
+
+            //Button for returning to StartScreen on level1
+            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
+                    //ga terug naar StartScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Return to StartScreen clicked');
+                    this.currentScreen = `StartScreen`;
+                };
+            };
         };
 
         /**
-         *Level 2 building spots
+         *ClickHandlers for Level2
          */
         if (this.currentScreen == `Level2`) {
             //Bouwplek trainstation
-            if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
+            if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer7.width / 7) {
+                if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer7.height / 7) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log("Level2Hammer clicked");
@@ -216,8 +240,8 @@ class GameController {
             };
 
             //Bouwplek leftroad
-            if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
+            if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer8.width / 7) {
+                if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer8.height / 7) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log("Level2Hammer clicked");
@@ -227,8 +251,102 @@ class GameController {
                     console.log(this.money);
                 };
             };
+
+            //Bouwplek kanaal
+            
+            //Button for HelpScreen on Level2
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
+                    //ga naar HelpScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
+                };
+            };
+
+            //Button for returning to StartScreen on level2
+            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
+                    //ga terug naar StartScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Return to StartScreen clicked');
+                    this.currentScreen = `StartScreen`;
+                };
+            };
         };
 
+        /**
+        *ClickHandlers for Level3
+        */
+        if (this.currentScreen == `Level3`) {
+            //Bouwplek park
+            if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer12.width / 7) {
+                if (event.y > this._canvas.getHeight() / 3.9 && event.y < this._canvas.getHeight() / 3.9 + this._canvas._buildingHammer12.height / 7) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log("Level3Hammer clicked");
+                    this._canvas._buildingHammer12.width = this._canvas._buildingHammer12.width;
+                    this._canvas._buildingHammer12.height = this._canvas._buildingHammer12.height;
+                    this._canvas._buildingHammer12.src = "./assets/images/isometric_kolencentrale.png";
+                    console.log(this.money);
+                };
+            };
+
+            //Bouwplek rightroad
+            if (event.x > this._canvas.getWidth() / 1.2 && event.x < this._canvas.getWidth() / 1.2 + this._canvas._buildingHammer13.width / 7) {
+                if (event.y > this._canvas.getHeight() / 1.8 && event.y < this._canvas.getHeight() / 1.8 + this._canvas._buildingHammer13.height / 7) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log("Level3Hammer clicked");
+                    this._canvas._buildingHammer13.width = this._canvas._buildingHammer13.width;
+                    this._canvas._buildingHammer13.height = this._canvas._buildingHammer13.height;
+                    this._canvas._buildingHammer13.src = "./assets/images/isometric_windmolens.png";
+                    console.log(this.money);
+                };
+            };
+
+            //Bouwplek mountainrange
+            if (event.x > this._canvas.getWidth() / 1.32 && event.x < this._canvas.getWidth() / 1.32 + this._canvas._buildingHammer14.width / 7) {
+                if (event.y > this._canvas.getHeight() / 6.5 && event.y < this._canvas.getHeight() / 6.5 + this._canvas._buildingHammer14.height / 7) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log("Level3Hammer clicked");
+                    this._canvas._buildingHammer14.width = this._canvas._buildingHammer14.width;
+                    this._canvas._buildingHammer14.height = this._canvas._buildingHammer14.height;
+                    this._canvas._buildingHammer14.src = "./assets/images/isometric_aardwarmte.png";
+                    console.log(this.money);
+                };
+            };
+
+            //Bouwplek kanaal
+            
+            //Button for HelpScreen on Level3
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
+                    //ga naar HelpScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
+                };
+            };
+            //Button for returning to StartScreen on level3
+            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
+                    //ga terug naar StartScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Return to StartScreen clicked');
+                    this.currentScreen = `StartScreen`;
+                };
+            };
+        };
 
         /**
          * ClickHandlers for HelpScreen
