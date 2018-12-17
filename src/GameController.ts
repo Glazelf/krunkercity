@@ -157,10 +157,34 @@ class GameController {
                     console.log(this._levelHelper.money)
                 };
             };
+
+            //Button for HelpScreen on Level1
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._levelHelper._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._helpButton.height / 5) {
+                    //ga naar HelpScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
+                };
+            };
+
+            //Button for returning to StartScreen on level1
+            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._levelHelper._menuKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._menuKnop.height / 5) {
+                    //ga terug naar StartScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Return to StartScreen clicked');
+                    this.currentScreen = `StartScreen`;
+                };
+            };
         };
 
         /**
-         *Level 2 building spots
+         *ClickHandlers for Level2
          */
         if (this.currentScreen == `Level2`) {
             //Bouwplek trainstation
@@ -216,11 +240,35 @@ class GameController {
             };
 
             //Bouwplek kanaal
+            
+            //Button for HelpScreen on Level2
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._levelHelper._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._helpButton.height / 5) {
+                    //ga naar HelpScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
+                };
+            };
+
+            //Button for returning to StartScreen on level2
+            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._levelHelper._menuKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._menuKnop.height / 5) {
+                    //ga terug naar StartScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Return to StartScreen clicked');
+                    this.currentScreen = `StartScreen`;
+                };
+            };
         };
 
-         /**
-         *Level 3 building spots
-         */
+        /**
+        *ClickHandlers for Level3
+        */
         if (this.currentScreen == `Level3`) {
             //Bouwplek park
             if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer12.width / 7) {
@@ -262,6 +310,29 @@ class GameController {
             };
 
             //Bouwplek kanaal
+            
+            //Button for HelpScreen on Level3
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._levelHelper._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._helpButton.height / 5) {
+                    //ga naar HelpScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('HelpScreen clicked');
+                    this.currentScreen = `HelpScreen`;
+                };
+            };
+            //Button for returning to StartScreen on level3
+            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._levelHelper._menuKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._menuKnop.height / 5) {
+                    //ga terug naar StartScreen
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Return to StartScreen clicked');
+                    this.currentScreen = `StartScreen`;
+                };
+            };
         };
 
         /**
