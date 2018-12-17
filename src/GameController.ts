@@ -190,7 +190,6 @@ class GameController {
             };
         };
 
-
         /**
          * ClickHandlers for HelpScreen
          */
