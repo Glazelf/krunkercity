@@ -3,9 +3,9 @@ class LevelHelper {
     private readonly _ctx: CanvasRenderingContext2D;
     private readonly _gameController: GameController;
     private _canvas: Canvas;
-    public co2: number = 50;
-    public energy: number = 0;
-    public money: number = 100;
+    private co2: number;
+    private energy: number;
+    private money: number;
     private production: number;
     private _level1background: HTMLImageElement;
     private _level2background: HTMLImageElement;
@@ -51,9 +51,7 @@ class LevelHelper {
         this._canvas.writeHammerToCanvas(this._canvas._buildingHammer6, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
 
         //currencies
-        this.co2 = 30;
-        this.energy = 20;
-        this.money = 90;
+        //30, 20, 90
         this.drawCurrencies();
         
     };
@@ -74,9 +72,7 @@ class LevelHelper {
         //kanaal
 
         //currencies
-        this.co2 = 40;
-        this.energy = 10;
-        this.money = 80;
+        //40, 10, 80
         this.drawCurrencies();
     };
 
@@ -94,23 +90,21 @@ class LevelHelper {
         //kanaal
 
         //currencies
-        this.co2 = 50;
-        this.energy = 0;
-        this.money = 70;
+        //50, 0, 70
         this.drawCurrencies();
     };
 
     public drawCurrencies() {
         //energy
         this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth() / 500, this._canvas.getHeight() / 10, this._bolt.width / 8, this._bolt.height / 8);
-        this._canvas.writeTextToCanvas(`${this.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
+        this._canvas.writeTextToCanvas(`${this._gameController.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
 
         //co2
         this._canvas.writeImageToCanvas(this._pollution, this._canvas.getWidth() / 500, this._canvas.getHeight() / 60, this._pollution.width / 11, this._pollution.height / 11);
-        this._canvas.writeTextToCanvas(`${this.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60)
+        this._canvas.writeTextToCanvas(`${this._gameController.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60)
 
         //money
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
-        this._canvas.writeTextToCanvas(`${this.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
+        this._canvas.writeTextToCanvas(`${this._gameController.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
     };
 };

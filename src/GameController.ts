@@ -3,15 +3,38 @@ class GameController {
     private readonly _helpScreen: Helpscreen;
     private readonly _canvas: Canvas;
     private readonly _canvasElement: Canvas;
-    private _levelHelper: LevelHelper;
+    private _gameItem: GameItem;
+    public co2: number = 0;
+    public energy: number = 0;
+    public money: number = 0;
     public currentScreen: string = 'StartScreen';
 
     public constructor(canvas: Canvas) {
         this._startScreen = new Startscreen(this._canvasElement);
         this._helpScreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
-        this._levelHelper = new LevelHelper(this._canvas);
     };
+
+    public assignCurrencies() {
+        if(this.currentScreen == `Level1`) {
+            this._gameItem = new GameItem(30, 20, 90);
+            this.co2 = this._gameItem.getCo2();
+            this.energy = this._gameItem.getEnergy();
+            this.money = this._gameItem.getMoney();
+        }
+        if(this.currentScreen == `Level2`) {
+            this._gameItem = new GameItem(20, 10, 90);
+            this.co2 = this._gameItem.getCo2();
+            this.energy = this._gameItem.getEnergy();
+            this.money = this._gameItem.getMoney();
+        }
+        if(this.currentScreen == `Level3`) {
+            this._gameItem = new GameItem(10, 0, 90);
+            this.co2 = this._gameItem.getCo2();
+            this.energy = this._gameItem.getEnergy();
+            this.money = this._gameItem.getMoney();
+        }
+    }
 
     public clickEventHandler(): void {
         document.addEventListener('click', (event: MouseEvent) => {
@@ -86,7 +109,7 @@ class GameController {
                     this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                     this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                     this._canvas._buildingHammer1.src = "./assets/images/isometric_aardwarmte.png";
-                    console.log(this._levelHelper.money);
+                    console.log(this.money);
                 };
             };
 
@@ -99,7 +122,7 @@ class GameController {
                     this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
                     this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
                     this._canvas._buildingHammer2.src = "./assets/images/isometric_aardwarmte.png";
-                    console.log(this._levelHelper.money);
+                    console.log(this.money);
                 };
             };
 
@@ -112,7 +135,7 @@ class GameController {
                     this._canvas._buildingHammer3.width = this._canvas._buildingHammer3.width;
                     this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
                     this._canvas._buildingHammer3.src = "./assets/images/isometric_kerncentrale.png";
-                    console.log(this._levelHelper.money);
+                    console.log(this.money);
                 };
             };
 
@@ -127,7 +150,7 @@ class GameController {
                     this._canvas._buildingHammer4.width = this._canvas._buildingHammer4.width;
                     this._canvas._buildingHammer4.height = this._canvas._buildingHammer4.height;
                     this._canvas._buildingHammer4.src = "./assets/images/isometric_kolencentrale.png";
-                    console.log(this._levelHelper.money);
+                    console.log(this.money);
                 };
             };
 
@@ -140,7 +163,7 @@ class GameController {
                     this._canvas._buildingHammer5.width = this._canvas._buildingHammer5.width;
                     this._canvas._buildingHammer5.height = this._canvas._buildingHammer5.height;
                     this._canvas._buildingHammer5.src = "./assets/images/isometric_windmolens.png";
-                    console.log(this._levelHelper.money);
+                    console.log(this.money);
                 };
             };
 
@@ -153,8 +176,8 @@ class GameController {
                     this._canvas._buildingHammer6.width = this._canvas._buildingHammer6.width;
                     this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
                     this._canvas._buildingHammer6.src = "./assets/images/isometric_zonnenpaneel.png";
-                    this._levelHelper.money = this._levelHelper.money - 50;
-                    console.log(this._levelHelper.money)
+                    this.money = this.money - 50;
+                    console.log(this.money)
                 };
             };
         };
@@ -172,7 +195,7 @@ class GameController {
                     this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                     this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                     this._canvas._buildingHammer1.src = "./assets/images/isometric_aardwarmte.png";
-                    console.log(this._levelHelper.money);
+                    console.log(this.money);
                 };
             };
 
@@ -185,7 +208,7 @@ class GameController {
                     this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
                     this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
                     this._canvas._buildingHammer2.src = "./assets/images/isometric_aardwarmte.png";
-                    console.log(this._levelHelper.money);
+                    console.log(this.money);
                 };
             };
         };
