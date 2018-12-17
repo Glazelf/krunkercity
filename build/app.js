@@ -90,7 +90,6 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
-        this.music();
     }
     ;
     music() {
