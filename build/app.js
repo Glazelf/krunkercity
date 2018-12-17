@@ -129,6 +129,10 @@ class GameController {
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        console.log(this.currentScreen);
+        console.log(this.co2);
+        console.log(this.energy);
+        console.log(this.money);
     }
     clickEventHandler() {
         document.addEventListener('click', (event) => {
@@ -144,6 +148,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
+                    this.assignCurrencies();
                 }
                 ;
             }
@@ -154,6 +159,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
+                    this.assignCurrencies();
                 }
                 ;
             }
@@ -164,6 +170,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 3 clicked');
                     this.currentScreen = `Level3`;
+                    this.assignCurrencies();
                 }
                 ;
             }
@@ -386,6 +393,9 @@ class LevelHelper {
         };
         this._canvas = canvas;
         this._gameController = new GameController(canvas);
+        this.co2 = this._gameController.co2;
+        this.energy = this._gameController.energy;
+        this.money = this._gameController.money;
         this._level1background = new Image();
         this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
@@ -398,7 +408,6 @@ class LevelHelper {
         this._pollution.src = "./assets/images/co2.png";
         this._coins = new Image();
         this._coins.src = "./assets/images/simmoney.png";
-        console.log(canvas);
     }
     drawLevel2() {
         this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
@@ -419,11 +428,11 @@ class LevelHelper {
     ;
     drawCurrencies() {
         this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth() / 500, this._canvas.getHeight() / 10, this._bolt.width / 8, this._bolt.height / 8);
-        this._canvas.writeTextToCanvas(`${this._gameController.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
+        this._canvas.writeTextToCanvas(`${this.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
         this._canvas.writeImageToCanvas(this._pollution, this._canvas.getWidth() / 500, this._canvas.getHeight() / 60, this._pollution.width / 11, this._pollution.height / 11);
-        this._canvas.writeTextToCanvas(`${this._gameController.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60);
+        this._canvas.writeTextToCanvas(`${this.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60);
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
-        this._canvas.writeTextToCanvas(`${this._gameController.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
+        this._canvas.writeTextToCanvas(`${this.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
     }
     ;
 }

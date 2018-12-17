@@ -34,6 +34,10 @@ class GameController {
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        console.log(this.currentScreen);
+        console.log(this.co2);
+        console.log(this.energy);
+        console.log(this.money);
     }
 
     public clickEventHandler(): void {
@@ -56,6 +60,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
+                    this.assignCurrencies();
                 };
             };
 
@@ -68,6 +73,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
+                    this.assignCurrencies();
                 };
             };
 
@@ -80,6 +86,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 3 clicked');
                     this.currentScreen = `Level3`;
+                    this.assignCurrencies();
                 };
             };
 
