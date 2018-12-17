@@ -184,7 +184,7 @@ class GameController {
         };
 
         /**
-         *Level 2 building spots
+         *ClickHandlers for Level2
          */
         if (this.currentScreen == `Level2`) {
             //Bouwplek trainstation
@@ -265,7 +265,7 @@ class GameController {
         };
 
         /**
-        *Level 3 building spots
+        *ClickHandlers for Level3
         */
         if (this.currentScreen == `Level3`) {
             //Bouwplek park
