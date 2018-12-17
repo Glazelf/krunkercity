@@ -6,6 +6,7 @@ class Game {
     private _Helpscreen: Helpscreen;
     private _gameController: GameController;
     private _levelHelper: LevelHelper;
+    private Music = new Audio('./assets/mp3/pokemon.mp3');
 
     constructor() {
         this._canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -14,7 +15,8 @@ class Game {
         this._Helpscreen = new Helpscreen(this._canvas);
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
-        this._levelHelper = new LevelHelper(this._canvas)
+        this._levelHelper = new LevelHelper(this._canvas);
+        this.music();
     };
 
     public drawStart = () => {
@@ -45,6 +47,11 @@ class Game {
         this._levelHelper.drawLevel1();
         //this._levelHelper.drawLevel2();
         //this._levelHelper.drawLevel3();
+    }
+
+    public music() {
+        this.Music.loop = true;
+        this.Music.play();
     }
 };
 

@@ -53,6 +53,7 @@ class Canvas {
 ;
 class Game {
     constructor() {
+        this.Music = new Audio('./assets/mp3/pokemon.mp3');
         this.drawStart = () => {
             if (this._gameController.currentScreen == 'StartScreen') {
                 this._startscreen.draw();
@@ -89,8 +90,13 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
+        this.music();
     }
     ;
+    music() {
+        this.Music.loop = true;
+        this.Music.play();
+    }
 }
 ;
 window.addEventListener('load', init);
