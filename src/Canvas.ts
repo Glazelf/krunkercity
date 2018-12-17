@@ -8,6 +8,15 @@ class Canvas {
     public _buildingHammer4: HTMLImageElement;
     public _buildingHammer5: HTMLImageElement;
     public _buildingHammer6: HTMLImageElement;
+    public _buildingHammer7: HTMLImageElement;
+    public _buildingHammer8: HTMLImageElement;
+    public _buildingHammer9: HTMLImageElement;
+    public _buildingHammer10: HTMLImageElement;
+    public _buildingHammer11: HTMLImageElement;
+    public _buildingHammer12: HTMLImageElement;
+    public _buildingHammer13: HTMLImageElement;
+    public _buildingHammer14: HTMLImageElement;
+    public _buildingHammer15: HTMLImageElement;
 
     constructor(canvasID: HTMLCanvasElement) {
         this._canvasElement = canvasID;
@@ -26,6 +35,24 @@ class Canvas {
         this._buildingHammer5.src = "./assets/images/hammer.png";
         this._buildingHammer6 = new Image();
         this._buildingHammer6.src = "./assets/images/hammer.png";
+        this._buildingHammer7 = new Image();
+        this._buildingHammer7.src = "./assets/images/hammer.png";
+        this._buildingHammer8 = new Image();
+        this._buildingHammer8.src = "./assets/images/hammer.png";
+        this._buildingHammer9 = new Image();
+        this._buildingHammer9.src = "./assets/images/hammer.png";
+        this._buildingHammer10 = new Image();
+        this._buildingHammer10.src = "./assets/images/hammer.png";
+        this._buildingHammer11 = new Image();
+        this._buildingHammer11.src = "./assets/images/hammer.png";
+        this._buildingHammer12 = new Image();
+        this._buildingHammer12.src = "./assets/images/hammer.png";
+        this._buildingHammer13 = new Image();
+        this._buildingHammer13.src = "./assets/images/hammer.png";
+        this._buildingHammer14 = new Image();
+        this._buildingHammer14.src = "./assets/images/hammer.png";
+        this._buildingHammer15 = new Image();
+        this._buildingHammer15.src = "./assets/images/hammer.png";
     };
 
     //clearing the screen
