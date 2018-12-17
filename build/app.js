@@ -86,7 +86,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const KrunkerCity = new Game();
-    window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
+    window.setInterval(KrunkerCity.drawStart, 1000 / 60);
 }
 ;
 class GameController {
@@ -150,6 +150,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Return to StartScreen clicked');
+                    this.currentScreen = `StartScreen`;
                 }
             }
         }

@@ -87,6 +87,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Return to StartScreen clicked');
+                    this.currentScreen = `StartScreen`;
                 }
             }
         }
