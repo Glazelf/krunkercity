@@ -35,7 +35,7 @@ class Game {
             this._Helpscreen.drawHelp();
         };
     };
-    
+
     public drawHelp = () => {
         console.log(this._canvas)
         this._Helpscreen.drawHelp();
