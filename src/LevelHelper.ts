@@ -90,6 +90,7 @@ class LevelHelper {
        
         //currencies
         //40, 10, 80
+        console.log(this.co2, this.energy, this.money);
         this.drawCurrencies();
     };
 
@@ -130,5 +131,8 @@ class LevelHelper {
         //money
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
         this._canvas.writeTextToCanvas(`${this.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
+
+        //*debug*
+        // console.log(`drawCurrencies is working`);
     };
 };

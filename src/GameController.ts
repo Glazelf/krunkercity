@@ -23,21 +23,19 @@ class GameController {
             this.money = this._gameItem.getMoney();
         }
         if(this.currentScreen == `Level2`) {
-            this._gameItem = new GameItem(20, 10, 90);
+            this._gameItem = new GameItem(20, 10, 80);
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
         if(this.currentScreen == `Level3`) {
-            this._gameItem = new GameItem(10, 0, 90);
+            this._gameItem = new GameItem(10, 0, 70);
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
         console.log(this.currentScreen);
-        console.log(this.co2);
-        console.log(this.energy);
-        console.log(this.money);
+        console.log(this.co2, this.energy, this.money);
     }
 
     public clickEventHandler(): void {

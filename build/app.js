@@ -145,21 +145,19 @@ class GameController {
             this.money = this._gameItem.getMoney();
         }
         if (this.currentScreen == `Level2`) {
-            this._gameItem = new GameItem(20, 10, 90);
+            this._gameItem = new GameItem(20, 10, 80);
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
         if (this.currentScreen == `Level3`) {
-            this._gameItem = new GameItem(10, 0, 90);
+            this._gameItem = new GameItem(10, 0, 70);
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
         console.log(this.currentScreen);
-        console.log(this.co2);
-        console.log(this.energy);
-        console.log(this.money);
+        console.log(this.co2, this.energy, this.money);
     }
     clickEventHandler() {
         document.addEventListener('click', (event) => {
@@ -560,6 +558,7 @@ class LevelHelper {
         this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
         this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
         this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50, this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5);
+        console.log(this.co2, this.energy, this.money);
         this.drawCurrencies();
     }
     ;
