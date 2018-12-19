@@ -91,7 +91,7 @@ class GameController {
         }; 
 
         /**
-         * ClickHandlers for LevelIntro1
+         * ClickHandlers for LevelIntro2
          */
         if (this.currentScreen == `LevelIntro2`) {
             //Button for Level 1 on StartScreen
@@ -101,7 +101,7 @@ class GameController {
                     //*debug*
                     console.log(event.x);
                     console.log(event.y);
-                    console.log('Level 1 clicked');
+                    console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
                 };
             };
