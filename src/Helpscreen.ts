@@ -42,7 +42,7 @@ class Helpscreen {
         this._kolenCentrale.src = "./assets/images/kolencentrale_uitleg.png";
         this._menuKnop = new Image();
         this._menuKnop.src = "./assets/images/menu_knop.png";
-    }
+    };
 
     public drawHelp() {
         //background image

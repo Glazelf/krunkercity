@@ -42,6 +42,7 @@ class Game {
         if (this._gameController.currentScreen == 'HelpScreen') {
             this._Helpscreen.drawHelp();
         };
+        this.Discord();
     };
 
     public drawHelp = () => {
@@ -53,12 +54,26 @@ class Game {
         this._levelHelper.drawLevel1();
         //this._levelHelper.drawLevel2();
         //this._levelHelper.drawLevel3();
-    }
+    };
 
     public music() {
         this.Music.loop = true;
         this.Music.play();
-    }
+    };
+
+    public Discord() {
+        const client = require('discord-rich-presence')('519795544558927872');
+
+        client.updatePresence({
+            state: 'KrunkerCity',
+            details: '🌎',
+            startTimestamp: Date.now(),
+            endTimestamp: Date.now() + 1337,
+            largeImageKey: 'greenenergy',
+            smallImageKey: 'globe',
+            instance: true,
+        });
+    };
 };
 
 window.addEventListener('load', init);

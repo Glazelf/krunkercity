@@ -101,6 +101,7 @@ class Game {
                 this._Helpscreen.drawHelp();
             }
             ;
+            this.Discord();
         };
         this.drawHelp = () => {
             console.log(this._canvas);
@@ -122,6 +123,20 @@ class Game {
         this.Music.loop = true;
         this.Music.play();
     }
+    ;
+    Discord() {
+        const client = require('discord-rich-presence')('519795544558927872');
+        client.updatePresence({
+            state: 'KrunkerCity',
+            details: '🌎',
+            startTimestamp: Date.now(),
+            endTimestamp: Date.now() + 1337,
+            largeImageKey: 'greenenergy',
+            smallImageKey: 'globe',
+            instance: true,
+        });
+    }
+    ;
 }
 ;
 window.addEventListener('load', init);
@@ -534,6 +549,7 @@ class Helpscreen {
         this._menuKnop = new Image();
         this._menuKnop.src = "./assets/images/menu_knop.png";
     }
+    ;
     drawHelp() {
         this._canvas.writeImageToCanvas(this._backgroundhelp, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
         this._canvas.writeImageToCanvas(this._munten, this._canvas.getWidth() / 32, this._canvas.getHeight() / 64, this._munten.width / 3.2, this._munten.height / 3.2);
