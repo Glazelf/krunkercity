@@ -91,23 +91,6 @@ class GameController {
         }; 
 
         /**
-         * ClickHandlers for LevelIntro1
-         */
-        if (this.currentScreen == `LevelIntro2`) {
-            //Button for Level 1 on StartScreen
-            if (event.x > this._canvas.getWidth() / 5 && event.x < this._canvas.getWidth() / 5 + this._levelHelper._levelIntro1.width / 1.5) {
-                if (event.y > this._canvas.getHeight() / 5 && event.y < this._canvas.getHeight() / 5 + this._levelHelper._levelIntro1.height / 1.5) {
-                    //ga naar level 1
-                    //*debug*
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log('Level 1 clicked');
-                    this.currentScreen = `Level2`;
-                };
-            };
-        }; 
-
-        /**
          * ClickHandlers for Level1
          */
         if (this.currentScreen == `Level1`) {
