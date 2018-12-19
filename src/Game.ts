@@ -24,8 +24,14 @@ class Game {
         if (this._gameController.currentScreen == 'StartScreen') {
             this._startscreen.draw();
         };
+        if (this._gameController.currentScreen == 'LevelIntro1') {
+            this._levelHelper.drawLevelIntro1();
+        };
         if (this._gameController.currentScreen == 'Level1') {
             this._levelHelper.drawLevel1();
+        };
+        if (this._gameController.currentScreen == 'LevelIntro2') {
+            this._levelHelper.drawLevelIntro2();
         };
         if (this._gameController.currentScreen == 'Level2') {
             this._levelHelper.drawLevel2();

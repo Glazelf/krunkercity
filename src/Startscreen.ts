@@ -16,7 +16,8 @@ class Startscreen {
     public yPosLevel2Background: number;
     public xPosLevel3Background: number;
     public yPosLevel3Background: number;
-    public _helpButton: HTMLImageElement;
+    public _levelIntro1: HTMLImageElement;
+    public _levelIntro2: HTMLImageElement;
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
@@ -28,8 +29,10 @@ class Startscreen {
         this._level2background.src = "./assets/images/level2bubble.png";
         this._level3background = new Image();
         this._level3background.src = "./assets/images/level3bubble.png";
-        this._helpButton = new Image();
-        this._helpButton.src = "./assets/images/questionmark.png";
+        this._levelIntro1 = new Image();
+        this._levelIntro1.src = "./assets/images/level1_uitleg.png";
+        this._levelIntro2 = new Image();
+        this._levelIntro2.src = "./assets/images/level2_uitleg.png";
         //console.log(canvas);
     }
 
@@ -52,6 +55,6 @@ class Startscreen {
 
         //helpbutton
         this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
-        this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5)
+        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
     };
 };
