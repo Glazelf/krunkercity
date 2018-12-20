@@ -1,44 +1,23 @@
 class GameItem {
-    public _xPos: number;
-    public _yPos: number;
-    protected _height: number;
-    protected _width: number;
-    protected _imgSource: HTMLImageElement;
-    protected _canvas: Canvas;
+    public co2: number;
+    public energy: number;
+    public money: number;
 
-    public constructor(
-        canvas: HTMLCanvasElement,
-        imageSource: HTMLImageElement,
-        xCoor: number,
-        yCoor: number,
-        width: number,
-        height: number
-    ) {
-        this._canvas = new Canvas(canvas);
-        this._imgSource = imageSource;
-        this._xPos = xCoor;
-        this._yPos = yCoor;
-        this._width = width;
-        this._height = height;
+    public constructor(co2: number, energy: number, money: number) {
+        this.co2 = co2;
+        this.energy = energy;
+        this.money = money;
     };
 
-    public draw() {
-        this._canvas.writeImageToCanvas(this._imgSource, this._xPos, this._yPos, this._width, this._height);
+    public getCo2(): number {
+        return this.co2;
     };
 
-    public getX(): number {
-        return this._xPos;
+    public getEnergy(): number {
+        return this.energy;
     };
 
-    public getY(): number {
-        return this._yPos;
-    };
-
-    public getWidth(): number {
-        return this._width;
-    };
-
-    public getHeight(): number {
-        return this._height;
+    public getMoney(): number {
+        return this.money;
     };
 };

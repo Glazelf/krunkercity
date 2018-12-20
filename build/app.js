@@ -34,6 +34,10 @@ class Canvas {
         this._buildingHammer14.src = "./assets/images/hammer.png";
         this._buildingHammer15 = new Image();
         this._buildingHammer15.src = "./assets/images/hammer.png";
+        this._helpButton = new Image();
+        this._helpButton.src = "./assets/images/questionmark.png";
+        this._menuKnop = new Image();
+        this._menuKnop.src = "./assets/images/menu_knop.png";
     }
     ;
     clearScreen() {
@@ -71,7 +75,6 @@ class Canvas {
 ;
 class Game {
     constructor() {
-        this.Music = new Audio('./assets/mp3/pokemon.mp3');
         this.drawStart = () => {
             if (this._gameController.currentScreen == 'StartScreen') {
                 this._startscreen.draw();
@@ -102,13 +105,13 @@ class Game {
             }
             ;
             if (this._gameController.currentScreen == 'HelpScreen') {
-                this._Helpscreen.drawHelp();
+                this._helpscreen.drawHelp();
             }
             ;
         };
         this.drawHelp = () => {
             console.log(this._canvas);
-            this._Helpscreen.drawHelp();
+            this._helpscreen.drawHelp();
         };
         this.drawLevel = () => {
             this._levelHelper.drawLevel1();
@@ -116,17 +119,13 @@ class Game {
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
         this._startscreen = new Startscreen(this._canvas);
-        this._Helpscreen = new Helpscreen(this._canvas);
+        this._helpscreen = new Helpscreen(this._canvas);
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
         this.music();
     }
     ;
-    music() {
-        this.Music.loop = true;
-        this.Music.play();
-    }
 }
 ;
 window.addEventListener('load', init);
@@ -137,13 +136,49 @@ function init() {
 ;
 class GameController {
     constructor(canvas) {
+        this.co2 = 0;
+        this.energy = 0;
+        this.money = 0;
         this.currentScreen = 'StartScreen';
-        this._startScreen = new Startscreen(this._canvasElement);
-        this._helpScreen = new Helpscreen(this._canvasElement);
+        this._startscreen = new Startscreen(this._canvasElement);
+        this._helpscreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
-        this._levelHelper = new LevelHelper(this._canvas);
+        this._aardwarmte = new Image();
+        this._aardwarmte.src = "./assets/images/isometric_aardwarmte.png";
+        this._kerncentrale = new Image();
+        this._kerncentrale.src = "./assets/images/isometric_kerncentrale.png";
+        this._kolencentrale = new Image();
+        this._kolencentrale.src = "./assets/images/isometric_kolencentrale.png";
+        this._stuwdam = new Image();
+        this._stuwdam.src = "./assets/images/isometric_stuwdam.png";
+        this._windmolens = new Image();
+        this._windmolens.src = "./assets/images/isometric_windmolens.png";
+        this._zonnepaneel = new Image;
+        this._zonnepaneel.src = "./assets/images/isometric_zonnenpaneel.png";
     }
     ;
+    assignCurrencies() {
+        if (this.currentScreen == `Level1`) {
+            this._gameItem = new GameItem(30, 20, 90);
+            this.co2 = this._gameItem.getCo2();
+            this.energy = this._gameItem.getEnergy();
+            this.money = this._gameItem.getMoney();
+        }
+        if (this.currentScreen == `Level2`) {
+            this._gameItem = new GameItem(20, 10, 80);
+            this.co2 = this._gameItem.getCo2();
+            this.energy = this._gameItem.getEnergy();
+            this.money = this._gameItem.getMoney();
+        }
+        if (this.currentScreen == `Level3`) {
+            this._gameItem = new GameItem(10, 0, 70);
+            this.co2 = this._gameItem.getCo2();
+            this.energy = this._gameItem.getEnergy();
+            this.money = this._gameItem.getMoney();
+        }
+        console.log(this.currentScreen);
+        console.log(this.co2, this.energy, this.money);
+    }
     clickEventHandler() {
         document.addEventListener('click', (event) => {
             this.onClick(event);
@@ -152,8 +187,8 @@ class GameController {
     ;
     onClick(event) {
         if (this.currentScreen == `StartScreen`) {
-            if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startScreen._level1background.width / 2) {
-                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level1background.height / 2) {
+            if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startscreen._level1background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level1background.height / 2) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 1 clicked');
@@ -162,8 +197,8 @@ class GameController {
                 ;
             }
             ;
-            if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startScreen._level2background.width / 2) {
-                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level2background.height / 2) {
+            if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startscreen._level2background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level2background.height / 2) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 2 clicked');
@@ -172,18 +207,19 @@ class GameController {
                 ;
             }
             ;
-            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startScreen._level3background.width / 2) {
-                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startScreen._level3background.height / 2) {
+            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startscreen._level3background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level3background.height / 2) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 3 clicked');
-                    this.currentScreen = `LevelIntro3`;
+                    this.currentScreen = `Level3`;
+                    this.assignCurrencies();
                 }
                 ;
             }
             ;
-            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._startScreen._helpButton.width / 5) {
-                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._startScreen._helpButton.height / 5) {
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('HelpScreen clicked');
@@ -201,6 +237,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
+                    this.assignCurrencies();
                 }
                 ;
             }
@@ -214,6 +251,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
+                    this.assignCurrencies();
                 }
                 ;
             }
@@ -234,45 +272,54 @@ class GameController {
         }
         ;
         if (this.currentScreen == `Level1`) {
-            if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
-                    this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
-                    this._canvas._buildingHammer1.src = "./assets/images/isometric_aardwarmte.png";
-                    console.log(this._levelHelper.money);
+            if (this.money > 60) {
+                if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
+                        this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
+                        this._canvas._buildingHammer1.src = this._aardwarmte.src;
+                        this.money -= 60;
+                        console.log(this.money);
+                    }
+                    ;
                 }
                 ;
             }
-            ;
-            if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
-                    this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
-                    this._canvas._buildingHammer2.src = "./assets/images/isometric_kolencentrale.png";
-                    console.log(this._levelHelper.money);
+            if (this.money > 60) {
+                if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
+                        this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
+                        this._canvas._buildingHammer2.src = this._aardwarmte.src;
+                        this.money -= 60;
+                        console.log(this.money);
+                    }
+                    ;
                 }
                 ;
             }
-            ;
-            if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer3.width = this._canvas._buildingHammer3.width;
-                    this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
-                    this._canvas._buildingHammer3.src = "./assets/images/isometric_kerncentrale.png";
-                    console.log(this._levelHelper.money);
+            if (this.money > 80) {
+                if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer3.width = this._canvas._buildingHammer3.width;
+                        this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
+                        this._canvas._buildingHammer3.src = this._kerncentrale.src;
+                        this.money -= 80;
+                        console.log(this.money);
+                    }
+                    ;
                 }
                 ;
             }
-            ;
             this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5;
             if (event.x > this._canvas.getWidth() / 1.9 && event.x < this._canvas.getWidth() / 1.9 + this._canvas._buildingHammer4.width / 7) {
                 if (event.y > this._canvas.getHeight() / 2.5 && event.y < this._canvas.getHeight() / 2.5 + this._canvas._buildingHammer4.height / 7) {
@@ -281,8 +328,8 @@ class GameController {
                     console.log("Level1Hammer clicked");
                     this._canvas._buildingHammer4.width = this._canvas._buildingHammer4.width;
                     this._canvas._buildingHammer4.height = this._canvas._buildingHammer4.height;
-                    this._canvas._buildingHammer4.src = "./assets/images/isometric_kolencentrale.png";
-                    console.log(this._levelHelper.money);
+                    this._canvas._buildingHammer4.src = this._kolencentrale.src;
+                    console.log(this.money);
                 }
                 ;
             }
@@ -294,8 +341,8 @@ class GameController {
                     console.log("Level1Hammer clicked");
                     this._canvas._buildingHammer5.width = this._canvas._buildingHammer5.width;
                     this._canvas._buildingHammer5.height = this._canvas._buildingHammer5.height;
-                    this._canvas._buildingHammer5.src = "./assets/images/isometric_windmolens.png";
-                    console.log(this._levelHelper.money);
+                    this._canvas._buildingHammer5.src = this._windmolens.src;
+                    console.log(this.money);
                 }
                 ;
             }
@@ -307,15 +354,15 @@ class GameController {
                     console.log("Level1Hammer clicked");
                     this._canvas._buildingHammer6.width = this._canvas._buildingHammer6.width;
                     this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
-                    this._canvas._buildingHammer6.src = "./assets/images/isometric_zonnenpaneel.png";
-                    this._levelHelper.money = this._levelHelper.money - 50;
-                    console.log(this._levelHelper.money);
+                    this._canvas._buildingHammer6.src = this._zonnepaneel.src;
+                    this.money = this.money - 50;
+                    console.log(this.money);
                 }
                 ;
             }
             ;
-            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._levelHelper._helpButton.width / 5) {
-                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._helpButton.height / 5) {
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('HelpScreen clicked');
@@ -324,8 +371,8 @@ class GameController {
                 ;
             }
             ;
-            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._levelHelper._menuKnop.width / 5) {
-                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._menuKnop.height / 5) {
+            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Return to StartScreen clicked');
@@ -342,10 +389,10 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer7.width = this._canvas._buildingHammer7.width;
-                    this._canvas._buildingHammer7.height = this._canvas._buildingHammer7.height;
-                    this._canvas._buildingHammer7.src = "./assets/images/isometric_aardwarmte.png";
-                    console.log(this._levelHelper.money);
+                    this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
+                    this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
+                    this._canvas._buildingHammer1.src = this._aardwarmte.src;
+                    console.log(this.money);
                 }
                 ;
             }
@@ -355,42 +402,16 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer8.width = this._canvas._buildingHammer8.width;
-                    this._canvas._buildingHammer8.height = this._canvas._buildingHammer8.height;
-                    this._canvas._buildingHammer8.src = "./assets/images/isometric_kolencentrale.png";
-                    console.log(this._levelHelper.money);
+                    this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
+                    this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
+                    this._canvas._buildingHammer2.src = this._aardwarmte.src;
+                    console.log(this.money);
                 }
                 ;
             }
             ;
-            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer9.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer9.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer9.width = this._canvas._buildingHammer9.width;
-                    this._canvas._buildingHammer9.height = this._canvas._buildingHammer9.height;
-                    this._canvas._buildingHammer9.src = "./assets/images/isometric_windmolens.png";
-                    console.log(this._levelHelper.money);
-                }
-                ;
-            }
-            ;
-            if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer10.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3.9 && event.y < this._canvas.getHeight() / 3.9 + this._canvas._buildingHammer10.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer10.width = this._canvas._buildingHammer10.width;
-                    this._canvas._buildingHammer10.height = this._canvas._buildingHammer10.height;
-                    this._canvas._buildingHammer10.src = "./assets/images/isometric_zonnenpaneel.png";
-                    console.log(this._levelHelper.money);
-                }
-                ;
-            }
-            ;
-            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._levelHelper._helpButton.width / 5) {
-                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._helpButton.height / 5) {
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('HelpScreen clicked');
@@ -399,8 +420,8 @@ class GameController {
                 ;
             }
             ;
-            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._levelHelper._menuKnop.width / 5) {
-                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._menuKnop.height / 5) {
+            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Return to StartScreen clicked');
@@ -419,8 +440,8 @@ class GameController {
                     console.log("Level3Hammer clicked");
                     this._canvas._buildingHammer12.width = this._canvas._buildingHammer12.width;
                     this._canvas._buildingHammer12.height = this._canvas._buildingHammer12.height;
-                    this._canvas._buildingHammer12.src = "./assets/images/isometric_kolencentrale.png";
-                    console.log(this._levelHelper.money);
+                    this._canvas._buildingHammer12.src = this._kolencentrale.src;
+                    console.log(this.money);
                 }
                 ;
             }
@@ -432,8 +453,8 @@ class GameController {
                     console.log("Level3Hammer clicked");
                     this._canvas._buildingHammer13.width = this._canvas._buildingHammer13.width;
                     this._canvas._buildingHammer13.height = this._canvas._buildingHammer13.height;
-                    this._canvas._buildingHammer13.src = "./assets/images/isometric_windmolens.png";
-                    console.log(this._levelHelper.money);
+                    this._canvas._buildingHammer13.src = this._windmolens.src;
+                    console.log(this.money);
                 }
                 ;
             }
@@ -445,14 +466,14 @@ class GameController {
                     console.log("Level3Hammer clicked");
                     this._canvas._buildingHammer14.width = this._canvas._buildingHammer14.width;
                     this._canvas._buildingHammer14.height = this._canvas._buildingHammer14.height;
-                    this._canvas._buildingHammer14.src = "./assets/images/isometric_aardwarmte.png";
-                    console.log(this._levelHelper.money);
+                    this._canvas._buildingHammer14.src = this._aardwarmte.src;
+                    console.log(this.money);
                 }
                 ;
             }
             ;
-            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._levelHelper._helpButton.width / 5) {
-                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._helpButton.height / 5) {
+            if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('HelpScreen clicked');
@@ -461,8 +482,8 @@ class GameController {
                 ;
             }
             ;
-            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._levelHelper._menuKnop.width / 5) {
-                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._levelHelper._menuKnop.height / 5) {
+            if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Return to StartScreen clicked');
@@ -474,8 +495,8 @@ class GameController {
         }
         ;
         if (this.currentScreen == `HelpScreen`) {
-            if (event.x > this._canvas.getWidth() / 7.5 && event.x < this._canvas.getWidth() / 7.5 + this._helpScreen._menuKnop.width) {
-                if (event.y > this._canvas.getHeight() / 1.3 && event.y < this._canvas.getHeight() / 1.3 + this._helpScreen._menuKnop.height) {
+            if (event.x > this._canvas.getWidth() / 7.5 && event.x < this._canvas.getWidth() / 7.5 + this._helpscreen._menuKnop.width) {
+                if (event.y > this._canvas.getHeight() / 1.3 && event.y < this._canvas.getHeight() / 1.3 + this._helpscreen._menuKnop.height) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Return to StartScreen clicked');
@@ -486,40 +507,29 @@ class GameController {
             ;
         }
         ;
-        console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startScreen._level1background.width / 5);
-        console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startScreen._level1background.height / 5);
+        console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);
+        console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startscreen._level1background.height / 5);
     }
     ;
 }
 ;
 class GameItem {
-    constructor(canvas, imageSource, xCoor, yCoor, width, height) {
-        this._canvas = new Canvas(canvas);
-        this._imgSource = imageSource;
-        this._xPos = xCoor;
-        this._yPos = yCoor;
-        this._width = width;
-        this._height = height;
+    constructor(co2, energy, money) {
+        this.co2 = co2;
+        this.energy = energy;
+        this.money = money;
     }
     ;
-    draw() {
-        this._canvas.writeImageToCanvas(this._imgSource, this._xPos, this._yPos, this._width, this._height);
+    getCo2() {
+        return this.co2;
     }
     ;
-    getX() {
-        return this._xPos;
+    getEnergy() {
+        return this.energy;
     }
     ;
-    getY() {
-        return this._yPos;
-    }
-    ;
-    getWidth() {
-        return this._width;
-    }
-    ;
-    getHeight() {
-        return this._height;
+    getMoney() {
+        return this.money;
     }
     ;
 }
@@ -552,6 +562,7 @@ class Helpscreen {
         this._menuKnop = new Image();
         this._menuKnop.src = "./assets/images/menu_knop.png";
     }
+    ;
     drawHelp() {
         this._canvas.writeImageToCanvas(this._backgroundhelp, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
         this._canvas.writeImageToCanvas(this._munten, this._canvas.getWidth() / 32, this._canvas.getHeight() / 64, this._munten.width / 3.2, this._munten.height / 3.2);
@@ -571,9 +582,6 @@ class Helpscreen {
 ;
 class LevelHelper {
     constructor(canvas) {
-        this.co2 = 50;
-        this.energy = 0;
-        this.money = 100;
         this.drawLevelIntro1 = () => {
             this.drawLevel1();
             this._canvas.writeImageToCanvas(this._levelIntro1, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5, this._levelIntro1.width / 1.5, this._levelIntro1.height / 1.5);
@@ -589,11 +597,8 @@ class LevelHelper {
             this._canvas.writeHammerToCanvas(this._canvas._buildingHammer5, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
             this._canvas.writeHammerToCanvas(this._canvas._buildingHammer6, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
             this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
-            this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5);
-            this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50, this._menuKnop.width / 5, this._menuKnop.height / 5);
-            this.co2 = 30;
-            this.energy = 20;
-            this.money = 90;
+            this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
+            this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50, this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5);
             this.drawCurrencies();
         };
         this.drawLevelIntro2 = () => {
@@ -609,11 +614,9 @@ class LevelHelper {
             this._canvas.writeHammerToCanvas(this._canvas._buildingHammer9, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
             this._canvas.writeHammerToCanvas(this._canvas._buildingHammer10, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
             this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
-            this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5);
-            this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50, this._menuKnop.width / 5, this._menuKnop.height / 5);
-            this.co2 = 40;
-            this.energy = 10;
-            this.money = 80;
+            this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
+            this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50, this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5);
+            console.log(this.co2, this.energy, this.money);
             this.drawCurrencies();
         };
         this.drawLevelIntro3 = () => {
@@ -628,14 +631,16 @@ class LevelHelper {
             this._canvas.writeHammerToCanvas(this._canvas._buildingHammer13, this._canvas.getWidth() / 1.2, this._canvas.getHeight() / 1.8);
             this._canvas.writeHammerToCanvas(this._canvas._buildingHammer14, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
             this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
-            this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5);
-            this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50, this._menuKnop.width / 5, this._menuKnop.height / 5);
-            this.co2 = 50;
-            this.energy = 0;
-            this.money = 70;
+            this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
+            this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50, this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5);
             this.drawCurrencies();
         };
         this._canvas = canvas;
+        this._gameController = new GameController(canvas);
+        this._startscreen = new Startscreen(canvas);
+        this.co2 = this._gameController.co2;
+        this.energy = this._gameController.energy;
+        this.money = this._gameController.money;
         this._level1background = new Image();
         this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
@@ -685,7 +690,7 @@ class Startscreen {
             this._canvas.writeTextToCanvas("Level 3", this._canvas.getWidth() / 1.23, this._canvas.getHeight() / 3.6, 40);
             this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
             this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
-            this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5);
+            this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
         };
         this._canvas = canvas;
         this._backgroundstart = new Image();
@@ -696,8 +701,10 @@ class Startscreen {
         this._level2background.src = "./assets/images/level2bubble.png";
         this._level3background = new Image();
         this._level3background.src = "./assets/images/level3bubble.png";
-        this._helpButton = new Image();
-        this._helpButton.src = "./assets/images/questionmark.png";
+        this._levelIntro1 = new Image();
+        this._levelIntro1.src = "./assets/images/level1_uitleg.png";
+        this._levelIntro2 = new Image();
+        this._levelIntro2.src = "./assets/images/level2_uitleg.png";
     }
 }
 ;
