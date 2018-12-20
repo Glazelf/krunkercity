@@ -130,7 +130,6 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
-                    
                 };
             };
         }; 
@@ -148,7 +147,6 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
-                    //this.assignCurrencies();
                 };
             };
         }; 
@@ -166,7 +164,6 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 3 clicked');
                     this.currentScreen = `Level3`;
-                    //this.assignCurrencies();
                 };
             };
         }; 
