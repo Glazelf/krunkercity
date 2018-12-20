@@ -93,6 +93,10 @@ class Game {
                 this._levelHelper.drawLevel2();
             }
             ;
+            if (this._gameController.currentScreen == 'LevelIntro3') {
+                this._levelHelper.drawLevelIntro3();
+            }
+            ;
             if (this._gameController.currentScreen == 'Level3') {
                 this._levelHelper.drawLevel3();
             }
@@ -116,6 +120,7 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
+        this.music();
     }
     ;
     music() {
@@ -172,7 +177,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 3 clicked');
-                    this.currentScreen = `Level3`;
+                    this.currentScreen = `LevelIntro3`;
                 }
                 ;
             }
@@ -190,8 +195,8 @@ class GameController {
         }
         ;
         if (this.currentScreen == `LevelIntro1`) {
-            if (event.x > this._canvas.getWidth() / 5 && event.x < this._canvas.getWidth() / 5 + this._levelHelper._levelIntro1.width / 1.5) {
-                if (event.y > this._canvas.getHeight() / 5 && event.y < this._canvas.getHeight() / 5 + this._levelHelper._levelIntro1.height / 1.5) {
+            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._levelHelper._nextKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._levelHelper._nextKnop.height / 5) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 1 clicked');
@@ -203,12 +208,25 @@ class GameController {
         }
         ;
         if (this.currentScreen == `LevelIntro2`) {
-            if (event.x > this._canvas.getWidth() / 5 && event.x < this._canvas.getWidth() / 5 + this._levelHelper._levelIntro1.width / 1.5) {
-                if (event.y > this._canvas.getHeight() / 5 && event.y < this._canvas.getHeight() / 5 + this._levelHelper._levelIntro1.height / 1.5) {
+            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._levelHelper._nextKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._levelHelper._nextKnop.height / 5) {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
+                }
+                ;
+            }
+            ;
+        }
+        ;
+        if (this.currentScreen == `LevelIntro3`) {
+            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._levelHelper._nextKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._levelHelper._nextKnop.height / 5) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 3 clicked');
+                    this.currentScreen = `Level3`;
                 }
                 ;
             }
@@ -556,10 +574,11 @@ class LevelHelper {
         this.co2 = 50;
         this.energy = 0;
         this.money = 100;
-        this._levelIntroPrevent = 0;
         this.drawLevelIntro1 = () => {
             this.drawLevel1();
             this._canvas.writeImageToCanvas(this._levelIntro1, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5, this._levelIntro1.width / 1.5, this._levelIntro1.height / 1.5);
+            this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
+            this._canvas.writeImageToCanvas(this._nextKnop, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._nextKnop.width / 5, this._nextKnop.height / 5);
         };
         this.drawLevel1 = () => {
             this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
@@ -578,19 +597,10 @@ class LevelHelper {
             this.drawCurrencies();
         };
         this.drawLevelIntro2 = () => {
-            this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
-            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer7, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
-            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer8, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
-            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer9, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
-            this._canvas.writeHammerToCanvas(this._canvas._buildingHammer10, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
-            this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
-            this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5);
-            this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50, this._menuKnop.width / 5, this._menuKnop.height / 5);
+            this.drawLevel2();
             this._canvas.writeImageToCanvas(this._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5, this._levelIntro2.width / 1.5, this._levelIntro2.height / 1.5);
-            this.co2 = 40;
-            this.energy = 10;
-            this.money = 80;
-            this.drawCurrencies();
+            this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
+            this._canvas.writeImageToCanvas(this._nextKnop, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._nextKnop.width / 5, this._nextKnop.height / 5);
         };
         this.drawLevel2 = () => {
             this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
@@ -605,6 +615,12 @@ class LevelHelper {
             this.energy = 10;
             this.money = 80;
             this.drawCurrencies();
+        };
+        this.drawLevelIntro3 = () => {
+            this.drawLevel3();
+            this._canvas.writeImageToCanvas(this._levelIntro3, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5, this._levelIntro3.width / 1.5, this._levelIntro3.height / 1.5);
+            this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
+            this._canvas.writeImageToCanvas(this._nextKnop, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._nextKnop.width / 5, this._nextKnop.height / 5);
         };
         this.drawLevel3 = () => {
             this._canvas.writeImageToCanvas(this._level3background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
@@ -636,10 +652,14 @@ class LevelHelper {
         this._helpButton.src = "./assets/images/questionmark.png";
         this._menuKnop = new Image();
         this._menuKnop.src = "./assets/images/menu_knop.png";
+        this._nextKnop = new Image();
+        this._nextKnop.src = "./assets/images/next_button.png";
         this._levelIntro1 = new Image();
         this._levelIntro1.src = "./assets/images/level1_uitleg.png";
         this._levelIntro2 = new Image();
         this._levelIntro2.src = "./assets/images/level2_uitleg.png";
+        this._levelIntro3 = new Image();
+        this._levelIntro3.src = "./assets/images/level3_uitleg.png";
         console.log(canvas);
     }
     drawCurrencies() {

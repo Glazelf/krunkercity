@@ -56,7 +56,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 3 clicked');
-                    this.currentScreen = `Level3`;
+                    this.currentScreen = `LevelIntro3`;
                 };
             };
 
@@ -78,8 +78,8 @@ class GameController {
          */
         if (this.currentScreen == `LevelIntro1`) {
             //Button for Level 1 on StartScreen
-            if (event.x > this._canvas.getWidth() / 5 && event.x < this._canvas.getWidth() / 5 + this._levelHelper._levelIntro1.width / 1.5) {
-                if (event.y > this._canvas.getHeight() / 5 && event.y < this._canvas.getHeight() / 5 + this._levelHelper._levelIntro1.height / 1.5) {
+            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._levelHelper._nextKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._levelHelper._nextKnop.height / 5) {
                     //ga naar level 1
                     //*debug*
                     console.log(event.x);
@@ -95,14 +95,31 @@ class GameController {
          */
         if (this.currentScreen == `LevelIntro2`) {
             //Button for Level 1 on StartScreen
-            if (event.x > this._canvas.getWidth() / 5 && event.x < this._canvas.getWidth() / 5 + this._levelHelper._levelIntro1.width / 1.5) {
-                if (event.y > this._canvas.getHeight() / 5 && event.y < this._canvas.getHeight() / 5 + this._levelHelper._levelIntro1.height / 1.5) {
-                    //ga naar level 1
+            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._levelHelper._nextKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._levelHelper._nextKnop.height / 5) {
+                    //ga naar level 2
                     //*debug*
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
+                };
+            };
+        }; 
+
+        /**
+         * ClickHandlers for LevelIntro3
+         */
+        if (this.currentScreen == `LevelIntro3`) {
+            //Button for Level 1 on StartScreen
+            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._levelHelper._nextKnop.width / 5) {
+                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._levelHelper._nextKnop.height / 5) {
+                    //ga naar level 3
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 3 clicked');
+                    this.currentScreen = `Level3`;
                 };
             };
         }; 
