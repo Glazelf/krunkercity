@@ -3,20 +3,21 @@ class Game {
     private readonly _ctx: CanvasRenderingContext2D;
     private _canvas: Canvas;
     private _startscreen: Startscreen;
-    private _Helpscreen: Helpscreen;
+    private _helpscreen: Helpscreen;
     private _gameController: GameController;
     private _levelHelper: LevelHelper;
     private Music = new Audio('./assets/mp3/pokemon.mp3');
+    private playPromise = this.Music.play();
 
     constructor() {
         this._canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
         this._startscreen = new Startscreen(this._canvas);
-        this._Helpscreen = new Helpscreen(this._canvas);
+        this._helpscreen = new Helpscreen(this._canvas);
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
-        //this.music();
+        this.music();
     };
 
     public drawStart = () => {
@@ -24,8 +25,14 @@ class Game {
         if (this._gameController.currentScreen == 'StartScreen') {
             this._startscreen.draw();
         };
+        if (this._gameController.currentScreen == 'LevelIntro1') {
+            this._levelHelper.drawLevelIntro1();
+        };
         if (this._gameController.currentScreen == 'Level1') {
             this._levelHelper.drawLevel1();
+        };
+        if (this._gameController.currentScreen == 'LevelIntro2') {
+            this._levelHelper.drawLevelIntro2();
         };
         if (this._gameController.currentScreen == 'Level2') {
             this._levelHelper.drawLevel2();
@@ -34,25 +41,27 @@ class Game {
             this._levelHelper.drawLevel3();
         };
         if (this._gameController.currentScreen == 'HelpScreen') {
-            this._Helpscreen.drawHelp();
+            this._helpscreen.drawHelp();
         };
     };
 
     public drawHelp = () => {
         console.log(this._canvas)
-        this._Helpscreen.drawHelp();
+        this._helpscreen.drawHelp();
     };
 
     public drawLevel = () => {
         this._levelHelper.drawLevel1();
         //this._levelHelper.drawLevel2();
         //this._levelHelper.drawLevel3();
-    }
+    };
 
     public music() {
+        if (this.playPromise !== null){
         this.Music.loop = true;
         this.Music.play();
-    }
+        }
+    };
 };
 
 window.addEventListener('load', init);

@@ -2,6 +2,7 @@ class LevelHelper {
     private readonly _canvasElement: HTMLCanvasElement;
     private readonly _ctx: CanvasRenderingContext2D;
     private readonly _gameController: GameController;
+    private readonly _startscreen: Startscreen;
     private _canvas: Canvas;
     private production: number;
     private _level1background: HTMLImageElement;
@@ -10,11 +11,15 @@ class LevelHelper {
     private _bolt: HTMLImageElement;
     private _pollution: HTMLImageElement;
     private _coins: HTMLImageElement;
-    private _levelHelper: LevelHelper;
+    public _helpButton: HTMLImageElement;
+    public _menuKnop: HTMLImageElement;
+    public _levelIntro1: HTMLImageElement;
+    public _levelIntro2: HTMLImageElement;
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
         this._gameController =  new GameController(canvas);
+        this._startscreen = new Startscreen(canvas);
         this._level1background = new Image();
         this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
@@ -29,6 +34,15 @@ class LevelHelper {
         this._coins.src = "./assets/images/simmoney.png";
         console.log(canvas);
     }
+
+    public drawLevelIntro1 = () => {
+        //draw level 1
+        this.drawLevel1();
+
+        //levelIntro image
+        this._canvas.writeImageToCanvas(this._levelIntro1, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
+        this._levelIntro1.width / 1.5, this._levelIntro1.height / 1.5);
+    };
 
     public drawLevel1 = () => {
         //background
@@ -60,7 +74,34 @@ class LevelHelper {
         
     };
 
-    public drawLevel2() {
+    public drawLevelIntro2 = () => {
+        //background
+        this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+
+        //buildingspots
+        //trainstation
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer7, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
+        //leftroad
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer8, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
+        //bottomrightcity
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer9, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 1.9);
+        //park
+        this._canvas.writeHammerToCanvas(this._canvas._buildingHammer10, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
+        //helpbutton
+        this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
+        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
+        //menuKnop image
+        this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
+        this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
+        //levelIntro image
+        this._canvas.writeImageToCanvas(this._startscreen._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
+        this._startscreen._levelIntro2.width / 1.5, this._startscreen._levelIntro2.height / 1.5)
+       
+        //currencies
+        this.drawCurrencies();
+    };
+
+    public drawLevel2 = () => {
         //background
         this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
@@ -81,13 +122,13 @@ class LevelHelper {
         //menuKnop image
         this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
         this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
-       
+
         //currencies
         //40, 10, 80
         this.drawCurrencies();
     };
 
-    public drawLevel3() {
+    public drawLevel3 = () => {
         //background
         this._canvas.writeImageToCanvas(this._level3background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 

@@ -1,5 +1,4 @@
 class Helpscreen {
-    private page: number
     private readonly _canvasElement: HTMLCanvasElement;
     private readonly _ctx: CanvasRenderingContext2D;
     private _canvas: Canvas;
@@ -42,7 +41,7 @@ class Helpscreen {
         this._kolenCentrale.src = "./assets/images/kolencentrale_uitleg.png";
         this._menuKnop = new Image();
         this._menuKnop.src = "./assets/images/menu_knop.png";
-    }
+    };
 
     public drawHelp() {
         //background image
