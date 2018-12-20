@@ -2,7 +2,7 @@ class LevelHelper {
     private readonly _canvasElement: HTMLCanvasElement;
     private readonly _ctx: CanvasRenderingContext2D;
     private readonly _gameController: GameController;
-    private readonly _startScreen: Startscreen;
+    private readonly _startscreen: Startscreen;
     private _canvas: Canvas;
     private co2: number;
     private energy: number;
@@ -18,12 +18,11 @@ class LevelHelper {
     public _menuKnop: HTMLImageElement;
     public _levelIntro1: HTMLImageElement;
     public _levelIntro2: HTMLImageElement;
-    public _levelIntroPrevent: number = 0;
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
         this._gameController =  new GameController(canvas);
-        this._startScreen = new Startscreen(canvas);
+        this._startscreen = new Startscreen(canvas);
         this.co2 = this._gameController.co2;
         this.energy = this._gameController.energy;
         this.money = this._gameController.money;
@@ -101,8 +100,8 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
         this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
         //levelIntro image
-        this._canvas.writeImageToCanvas(this._startScreen._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
-        this._startScreen._levelIntro2.width / 1.5, this._startScreen._levelIntro2.height / 1.5)
+        this._canvas.writeImageToCanvas(this._startscreen._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
+        this._startscreen._levelIntro2.width / 1.5, this._startscreen._levelIntro2.height / 1.5)
        
         //currencies
         this.co2 = 40;
