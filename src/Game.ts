@@ -6,8 +6,8 @@ class Game {
     private _helpscreen: Helpscreen;
     private _gameController: GameController;
     private _levelHelper: LevelHelper;
-    private Music = new Audio('./assets/mp3/pokemon.mp3');
-    private playPromise = this.Music.play();
+    // private Music = new Audio('./assets/mp3/pokemon.mp3');
+    // private playPromise = this.Music.play();
 
     constructor() {
         this._canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -37,6 +37,9 @@ class Game {
         if (this._gameController.currentScreen == 'Level2') {
             this._levelHelper.drawLevel2();
         };
+        if (this._gameController.currentScreen == 'LevelIntro3') {
+            this._levelHelper.drawLevelIntro3();
+        };
         if (this._gameController.currentScreen == 'Level3') {
             this._levelHelper.drawLevel3();
         };
@@ -56,12 +59,12 @@ class Game {
         //this._levelHelper.drawLevel3();
     };
 
-    public music() {
-        if (this.playPromise !== null){
-        this.Music.loop = true;
-        this.Music.play();
-        }
-    };
+    // public music() {
+    //     if (this.playPromise !== null){
+    //     this.Music.loop = true;
+    //     this.Music.play();
+    //     };
+    // };
 };
 
 window.addEventListener('load', init);

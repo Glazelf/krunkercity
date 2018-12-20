@@ -19,6 +19,7 @@ class Canvas {
     public _buildingHammer15: HTMLImageElement;
     public _helpButton: HTMLImageElement;
     public _menuKnop: HTMLImageElement;
+    public _nextButton: HTMLImageElement;
 
     constructor(canvasID: HTMLCanvasElement) {
         this._canvasElement = canvasID;
@@ -59,6 +60,8 @@ class Canvas {
         this._helpButton.src = "./assets/images/questionmark.png";
         this._menuKnop = new Image();
         this._menuKnop.src = "./assets/images/menu_knop.png";
+        this._nextButton = new Image();
+        this._nextButton.src = "./assets/images/next_button.png";
     };
 
     //clearing the screen
