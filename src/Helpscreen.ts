@@ -1,5 +1,4 @@
 class Helpscreen {
-    private page: number
     private readonly _canvasElement: HTMLCanvasElement;
     private readonly _ctx: CanvasRenderingContext2D;
     private _canvas: Canvas;

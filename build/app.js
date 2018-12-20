@@ -101,7 +101,6 @@ class Game {
                 this._Helpscreen.drawHelp();
             }
             ;
-            this.Discord();
         };
         this.drawHelp = () => {
             console.log(this._canvas);
@@ -122,19 +121,6 @@ class Game {
     music() {
         this.Music.loop = true;
         this.Music.play();
-    }
-    ;
-    Discord() {
-        const client = require('discord-rich-presence')('519795544558927872');
-        client.updatePresence({
-            state: 'KrunkerCity',
-            details: '🌎',
-            startTimestamp: Date.now(),
-            endTimestamp: Date.now() + 1337,
-            largeImageKey: 'greenenergy',
-            smallImageKey: 'globe',
-            instance: true,
-        });
     }
     ;
 }

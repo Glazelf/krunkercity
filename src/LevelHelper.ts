@@ -12,7 +12,6 @@ class LevelHelper {
     private _bolt: HTMLImageElement;
     private _pollution: HTMLImageElement;
     private _coins: HTMLImageElement;
-    private _levelHelper: LevelHelper;
     public _helpButton: HTMLImageElement;
     public _menuKnop: HTMLImageElement;
     public _levelIntro1: HTMLImageElement;
