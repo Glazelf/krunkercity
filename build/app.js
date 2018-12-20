@@ -102,13 +102,13 @@ class Game {
             }
             ;
             if (this._gameController.currentScreen == 'HelpScreen') {
-                this._Helpscreen.drawHelp();
+                this._helpscreen.drawHelp();
             }
             ;
         };
         this.drawHelp = () => {
             console.log(this._canvas);
-            this._Helpscreen.drawHelp();
+            this._helpscreen.drawHelp();
         };
         this.drawLevel = () => {
             this._levelHelper.drawLevel1();
@@ -116,7 +116,7 @@ class Game {
         this._canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
         this._startscreen = new Startscreen(this._canvas);
-        this._Helpscreen = new Helpscreen(this._canvas);
+        this._helpscreen = new Helpscreen(this._canvas);
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);

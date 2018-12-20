@@ -3,7 +3,7 @@ class Game {
     private readonly _ctx: CanvasRenderingContext2D;
     private _canvas: Canvas;
     private _startscreen: Startscreen;
-    private _Helpscreen: Helpscreen;
+    private _helpscreen: Helpscreen;
     private _gameController: GameController;
     private _levelHelper: LevelHelper;
     private Music = new Audio('./assets/mp3/pokemon.mp3');
@@ -12,7 +12,7 @@ class Game {
         this._canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new Canvas(this._canvasElement);
         this._startscreen = new Startscreen(this._canvas);
-        this._Helpscreen = new Helpscreen(this._canvas);
+        this._helpscreen = new Helpscreen(this._canvas);
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
@@ -40,13 +40,13 @@ class Game {
             this._levelHelper.drawLevel3();
         };
         if (this._gameController.currentScreen == 'HelpScreen') {
-            this._Helpscreen.drawHelp();
+            this._helpscreen.drawHelp();
         };
     };
 
     public drawHelp = () => {
         console.log(this._canvas)
-        this._Helpscreen.drawHelp();
+        this._helpscreen.drawHelp();
     };
 
     public drawLevel = () => {
