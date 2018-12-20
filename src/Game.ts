@@ -37,6 +37,9 @@ class Game {
         if (this._gameController.currentScreen == 'Level2') {
             this._levelHelper.drawLevel2();
         };
+        if (this._gameController.currentScreen == 'LevelIntro3') {
+            this._levelHelper.drawLevelIntro3();
+        };
         if (this._gameController.currentScreen == 'Level3') {
             this._levelHelper.drawLevel3();
         };
