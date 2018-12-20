@@ -39,7 +39,7 @@ class LevelHelper {
         this._coins = new Image();
         this._coins.src = "./assets/images/simmoney.png";
         console.log(canvas);
-    }
+    };
 
     public drawLevelIntro1 = () => {
         //draw level 1

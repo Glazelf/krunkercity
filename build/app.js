@@ -638,6 +638,7 @@ class LevelHelper {
         this._coins.src = "./assets/images/simmoney.png";
         console.log(canvas);
     }
+    ;
     drawCurrencies() {
         this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth() / 500, this._canvas.getHeight() / 10, this._bolt.width / 8, this._bolt.height / 8);
         this._canvas.writeTextToCanvas(`${this.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
