@@ -15,8 +15,10 @@ class LevelHelper {
     private _levelHelper: LevelHelper;
     public _helpButton: HTMLImageElement;
     public _menuKnop: HTMLImageElement;
+    public _nextKnop: HTMLImageElement;
     public _levelIntro1: HTMLImageElement;
     public _levelIntro2: HTMLImageElement;
+    public _levelIntro3: HTMLImageElement;
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
@@ -36,10 +38,14 @@ class LevelHelper {
         this._helpButton.src = "./assets/images/questionmark.png";
         this._menuKnop = new Image();
         this._menuKnop.src = "./assets/images/menu_knop.png";
+        this._nextKnop = new Image();
+        this._nextKnop.src = "./assets/images/next_button.png";
         this._levelIntro1 = new Image();
         this._levelIntro1.src = "./assets/images/level1_uitleg.png";
         this._levelIntro2 = new Image();
         this._levelIntro2.src = "./assets/images/level2_uitleg.png";
+        this._levelIntro3 = new Image();
+        this._levelIntro3.src = "./assets/images/level3_uitleg.png";
         console.log(canvas);
     }
 
@@ -49,7 +55,11 @@ class LevelHelper {
 
         //levelIntro image
         this._canvas.writeImageToCanvas(this._levelIntro1, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
-        this._levelIntro1.width / 1.5, this._levelIntro1.height / 1.5)
+            this._levelIntro1.width / 1.5, this._levelIntro1.height / 1.5)
+
+        //ga verder image
+        this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
+        this._canvas.writeImageToCanvas(this._nextKnop, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._nextKnop.width / 5, this._nextKnop.height / 5);
     };
 
     public drawLevel1 = () => {
@@ -74,8 +84,8 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5)
         //menuKnop image
         this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-        this._menuKnop.width / 5, this._menuKnop.height / 5)
-        
+            this._menuKnop.width / 5, this._menuKnop.height / 5)
+
         //currencies
         this.co2 = 30;
         this.energy = 20;
@@ -86,10 +96,14 @@ class LevelHelper {
     public drawLevelIntro2 = () => {
         //draw level2
         this.drawLevel2();
-        
+
         //levelIntro image
         this._canvas.writeImageToCanvas(this._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
-        this._levelIntro2.width / 1.5, this._levelIntro2.height / 1.5)
+            this._levelIntro2.width / 1.5, this._levelIntro2.height / 1.5)
+
+        //ga verder image
+        this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
+        this._canvas.writeImageToCanvas(this._nextKnop, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._nextKnop.width / 5, this._nextKnop.height / 5);
     };
 
     public drawLevel2 = () => {
@@ -112,13 +126,26 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5)
         //menuKnop image
         this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-        this._menuKnop.width / 5, this._menuKnop.height / 5)
+            this._menuKnop.width / 5, this._menuKnop.height / 5)
 
         //currencies
         this.co2 = 40;
         this.energy = 10;
         this.money = 80;
         this.drawCurrencies();
+    };
+
+    public drawLevelIntro3 = () => {
+        //draw level 3
+        this.drawLevel3();
+
+        //levelIntro image
+        this._canvas.writeImageToCanvas(this._levelIntro3, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
+            this._levelIntro3.width / 1.5, this._levelIntro3.height / 1.5);
+
+        //ga verder image
+        this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
+        this._canvas.writeImageToCanvas(this._nextKnop, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._nextKnop.width / 5, this._nextKnop.height / 5);
     };
 
     public drawLevel3 = () => {
@@ -139,7 +166,7 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5)
         //menuKnop image
         this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-        this._menuKnop.width / 5, this._menuKnop.height / 5)
+            this._menuKnop.width / 5, this._menuKnop.height / 5)
 
         //currencies
         this.co2 = 50;
