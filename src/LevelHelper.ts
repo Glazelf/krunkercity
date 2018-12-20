@@ -46,6 +46,7 @@ class LevelHelper {
     public drawLevelIntro1 = () => {
         //draw level1
         this.drawLevel1();
+
         //levelIntro image
         this._canvas.writeImageToCanvas(this._levelIntro1, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
         this._levelIntro1.width / 1.5, this._levelIntro1.height / 1.5)
@@ -85,6 +86,7 @@ class LevelHelper {
     public drawLevelIntro2 = () => {
         //draw level2
         this.drawLevel2();
+        
         //levelIntro image
         this._canvas.writeImageToCanvas(this._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
         this._levelIntro2.width / 1.5, this._levelIntro2.height / 1.5)
