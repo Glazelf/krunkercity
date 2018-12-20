@@ -300,9 +300,9 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
-                    this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
-                    this._canvas._buildingHammer1.src = this._aardwarmte.src;
+                    this._canvas._buildingHammer7.width = this._canvas._buildingHammer7.width;
+                    this._canvas._buildingHammer7.height = this._canvas._buildingHammer7.height;
+                    this._canvas._buildingHammer7.src = this._aardwarmte.src;
                     console.log(this.money);
                 };
             };
@@ -313,9 +313,35 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
-                    this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
-                    this._canvas._buildingHammer2.src = this._aardwarmte.src;
+                    this._canvas._buildingHammer8.width = this._canvas._buildingHammer8.width;
+                    this._canvas._buildingHammer8.height = this._canvas._buildingHammer8.height;
+                    this._canvas._buildingHammer8.src = this._aardwarmte.src;
+                    console.log(this.money);
+                };
+            };
+
+            //bouwplek bottomrightcity
+            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer8.width / 7) {
+                if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer8.height / 7) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log("Level2Hammer clicked");
+                    this._canvas._buildingHammer9.width = this._canvas._buildingHammer9.width;
+                    this._canvas._buildingHammer9.height = this._canvas._buildingHammer9.height;
+                    this._canvas._buildingHammer9.src = this._aardwarmte.src;
+                    console.log(this.money);
+                };
+            };
+
+            //bouwplek park
+            if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer8.width / 7) {
+                if (event.y > this._canvas.getHeight() / 3.9 && event.y < this._canvas.getHeight() / 3.9 + this._canvas._buildingHammer8.height / 7) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log("Level2Hammer clicked");
+                    this._canvas._buildingHammer10.width = this._canvas._buildingHammer10.width;
+                    this._canvas._buildingHammer10.height = this._canvas._buildingHammer10.height;
+                    this._canvas._buildingHammer10.src = this._aardwarmte.src;
                     console.log(this.money);
                 };
             };
