@@ -1,10 +1,12 @@
 class LevelHelper {
     private readonly _canvasElement: HTMLCanvasElement;
     private readonly _ctx: CanvasRenderingContext2D;
+    private readonly _gameController: GameController;
+    private readonly _startScreen: Startscreen;
     private _canvas: Canvas;
-    public co2: number = 50;
-    public energy: number = 0;
-    public money: number = 100;
+    private co2: number;
+    private energy: number;
+    private money: number;
     private production: number;
     private _level1background: HTMLImageElement;
     private _level2background: HTMLImageElement;
@@ -20,6 +22,11 @@ class LevelHelper {
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
+        this._gameController =  new GameController(canvas);
+        this._startScreen = new Startscreen(canvas);
+        this.co2 = this._gameController.co2;
+        this.energy = this._gameController.energy;
+        this.money = this._gameController.money;
         this._level1background = new Image();
         this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
@@ -32,14 +39,6 @@ class LevelHelper {
         this._pollution.src = "./assets/images/co2.png";
         this._coins = new Image();
         this._coins.src = "./assets/images/simmoney.png";
-        this._helpButton = new Image();
-        this._helpButton.src = "./assets/images/questionmark.png";
-        this._menuKnop = new Image();
-        this._menuKnop.src = "./assets/images/menu_knop.png";
-        this._levelIntro1 = new Image();
-        this._levelIntro1.src = "./assets/images/level1_uitleg.png";
-        this._levelIntro2 = new Image();
-        this._levelIntro2.src = "./assets/images/level2_uitleg.png";
         console.log(canvas);
     }
 
@@ -70,17 +69,16 @@ class LevelHelper {
         //mountainrange
         this._canvas.writeHammerToCanvas(this._canvas._buildingHammer6, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
         //helpbutton
-        this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
-        this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5);
+        this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
+        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
         //menuKnop image
-        this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-        this._menuKnop.width / 5, this._menuKnop.height / 5);
+        this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
+        this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
         
         //currencies
-        this.co2 = 30;
-        this.energy = 20;
-        this.money = 90;
+        //30, 20, 90
         this.drawCurrencies();
+        
     };
 
     public drawLevelIntro2 = () => {
@@ -98,13 +96,13 @@ class LevelHelper {
         this._canvas.writeHammerToCanvas(this._canvas._buildingHammer10, this._canvas.getWidth() / 2.44, this._canvas.getHeight() / 3.9);
         //helpbutton
         this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
-        this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5);
+        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
         //menuKnop image
-        this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-        this._menuKnop.width / 5, this._menuKnop.height / 5);
+        this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
+        this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
         //levelIntro image
-        this._canvas.writeImageToCanvas(this._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
-        this._levelIntro2.width / 1.5, this._levelIntro2.height / 1.5);
+        this._canvas.writeImageToCanvas(this._startScreen._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
+        this._startScreen._levelIntro2.width / 1.5, this._startScreen._levelIntro2.height / 1.5)
        
         //currencies
         this.co2 = 40;
@@ -130,15 +128,14 @@ class LevelHelper {
 
         //helpbutton
         this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
-        this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5)
+        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
         //menuKnop image
-        this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-        this._menuKnop.width / 5, this._menuKnop.height / 5)
+        this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
+        this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
 
         //currencies
-        this.co2 = 40;
-        this.energy = 10;
-        this.money = 80;
+        //40, 10, 80
+        console.log(this.co2, this.energy, this.money);
         this.drawCurrencies();
     };
 
@@ -157,15 +154,13 @@ class LevelHelper {
 
         //helpbutton
         this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
-        this._canvas.writeImageToCanvas(this._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._helpButton.width / 5, this._helpButton.height / 5)
+        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
         //menuKnop image
-        this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-        this._menuKnop.width / 5, this._menuKnop.height / 5)
+        this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
+        this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
 
         //currencies
-        this.co2 = 50;
-        this.energy = 0;
-        this.money = 70;
+        //50, 0, 70
         this.drawCurrencies();
     };
 
@@ -181,5 +176,8 @@ class LevelHelper {
         //money
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
         this._canvas.writeTextToCanvas(`${this.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
+
+        //*debug*
+        // console.log(`drawCurrencies is working`);
     };
 };
