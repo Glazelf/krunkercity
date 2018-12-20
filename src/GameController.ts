@@ -4,6 +4,7 @@ class GameController {
     private readonly _canvas: Canvas;
     private readonly _canvasElement: Canvas;
     private _gameItem: GameItem;
+    private _levelHelper: LevelHelper;
     public co2: number = 0;
     public energy: number = 0;
     public money: number = 0;
@@ -99,8 +100,7 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 3 clicked');
-                    this.currentScreen = `Level3`;
-                    this.assignCurrencies();
+                    this.currentScreen = `LevelIntro3`;
                 };
             };
 
@@ -122,15 +122,15 @@ class GameController {
          */
         if (this.currentScreen == `LevelIntro1`) {
             //Button for Level 1 on StartScreen
-            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._levelHelper._nextKnop.width / 5) {
-                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._levelHelper._nextKnop.height / 5) {
+            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._canvas._nextButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._canvas._nextButton.height / 5) {
                     //ga naar level 1
                     //*debug*
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
-                    this.assignCurrencies();
+                    
                 };
             };
         }; 
@@ -139,16 +139,16 @@ class GameController {
          * ClickHandlers for LevelIntro2
          */
         if (this.currentScreen == `LevelIntro2`) {
-            //Button for Level 1 on StartScreen
-            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._levelHelper._nextKnop.width / 5) {
-                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._levelHelper._nextKnop.height / 5) {
+            //Button for Level 2 on StartScreen
+            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._canvas._nextButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._canvas._nextButton.height / 5) {
                     //ga naar level 2
                     //*debug*
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
-                    this.assignCurrencies();
+                    //this.assignCurrencies();
                 };
             };
         }; 
@@ -157,15 +157,16 @@ class GameController {
          * ClickHandlers for LevelIntro3
          */
         if (this.currentScreen == `LevelIntro3`) {
-            //Button for Level 1 on StartScreen
-            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._levelHelper._nextKnop.width / 5) {
-                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._levelHelper._nextKnop.height / 5) {
+            //Button for Level 3 on StartScreen
+            if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._canvas._nextButton.width / 5) {
+                if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._canvas._nextButton.height / 5) {
                     //ga naar level 3
                     //*debug*
                     console.log(event.x);
                     console.log(event.y);
                     console.log('Level 3 clicked');
                     this.currentScreen = `Level3`;
+                    //this.assignCurrencies();
                 };
             };
         }; 

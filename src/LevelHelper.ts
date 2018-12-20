@@ -14,9 +14,6 @@ class LevelHelper {
     private _bolt: HTMLImageElement;
     private _pollution: HTMLImageElement;
     private _coins: HTMLImageElement;
-    public _helpButton: HTMLImageElement;
-    public _menuKnop: HTMLImageElement;
-    public _nextKnop: HTMLImageElement;
     public _levelIntro1: HTMLImageElement;
     public _levelIntro2: HTMLImageElement;
     public _levelIntro3: HTMLImageElement;
@@ -40,12 +37,6 @@ class LevelHelper {
         this._pollution.src = "./assets/images/co2.png";
         this._coins = new Image();
         this._coins.src = "./assets/images/simmoney.png";
-        this._helpButton = new Image();
-        this._helpButton.src = "./assets/images/questionmark.png";
-        this._menuKnop = new Image();
-        this._menuKnop.src = "./assets/images/menu_knop.png";
-        this._nextKnop = new Image();
-        this._nextKnop.src = "./assets/images/next_button.png";
         this._levelIntro1 = new Image();
         this._levelIntro1.src = "./assets/images/level1_uitleg.png";
         this._levelIntro2 = new Image();
@@ -65,7 +56,7 @@ class LevelHelper {
 
         //ga verder image
         this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
-        this._canvas.writeImageToCanvas(this._nextKnop, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._nextKnop.width / 5, this._nextKnop.height / 5);
+        this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
     };
 
     public drawLevel1 = () => {
@@ -108,7 +99,7 @@ class LevelHelper {
 
         //ga verder image
         this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
-        this._canvas.writeImageToCanvas(this._nextKnop, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._nextKnop.width / 5, this._nextKnop.height / 5);
+        this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
     };
 
     public drawLevel2 = () => {
@@ -149,7 +140,7 @@ class LevelHelper {
 
         //ga verder image
         this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
-        this._canvas.writeImageToCanvas(this._nextKnop, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._nextKnop.width / 5, this._nextKnop.height / 5);
+        this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
     };
 
     public drawLevel3 = () => {
