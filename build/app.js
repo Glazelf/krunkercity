@@ -532,9 +532,6 @@ class LevelHelper {
         };
         this._canvas = canvas;
         this._gameController = new GameController(canvas);
-        this.co2 = this._gameController.co2;
-        this.energy = this._gameController.energy;
-        this.money = this._gameController.money;
         this._level1background = new Image();
         this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
@@ -558,7 +555,6 @@ class LevelHelper {
         this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
         this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
         this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50, this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5);
-        console.log(this.co2, this.energy, this.money);
         this.drawCurrencies();
     }
     ;
@@ -575,11 +571,12 @@ class LevelHelper {
     ;
     drawCurrencies() {
         this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth() / 500, this._canvas.getHeight() / 10, this._bolt.width / 8, this._bolt.height / 8);
-        this._canvas.writeTextToCanvas(`${this.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
+        this._canvas.writeTextToCanvas(`${this._gameController.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
         this._canvas.writeImageToCanvas(this._pollution, this._canvas.getWidth() / 500, this._canvas.getHeight() / 60, this._pollution.width / 11, this._pollution.height / 11);
-        this._canvas.writeTextToCanvas(`${this.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60);
+        this._canvas.writeTextToCanvas(`${this._gameController.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60);
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
-        this._canvas.writeTextToCanvas(`${this.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
+        this._canvas.writeTextToCanvas(`${this._gameController.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
+        console.log(`drawCurrencies is working`);
     }
     ;
 }
