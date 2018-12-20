@@ -74,4 +74,3 @@ function init(): void {
     //window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
     //window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
 };
-

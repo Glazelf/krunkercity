@@ -44,7 +44,7 @@ class LevelHelper {
         this._levelIntro3 = new Image();
         this._levelIntro3.src = "./assets/images/level3_uitleg.png";
         console.log(canvas);
-    }
+    };
 
     public drawLevelIntro1 = () => {
         //draw level1
