@@ -17,7 +17,7 @@ class LevelHelper {
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
-        this._gameController =  new GameController(canvas);
+        //this._gameController =  new GameController(canvas);
         this._startscreen = new Startscreen(canvas);
         this._level1background = new Image();
         this._level1background.src = "./assets/images/level1.png";
@@ -38,7 +38,7 @@ class LevelHelper {
         this._levelIntro3 = new Image();
         this._levelIntro3.src = "./assets/images/level3_uitleg.png";
         console.log(canvas);
-    };
+    }
 
     public drawLevelIntro1 = (gameController: GameController) => {
         //draw level1
@@ -54,6 +54,7 @@ class LevelHelper {
     };
 
     public drawLevel1 = (gameController: GameController) => {
+        console.log(gameController)
         //background
         this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
@@ -76,11 +77,10 @@ class LevelHelper {
         //menuKnop image
         this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
         this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
-        
+
         //currencies
-        //30, 20, 90
         this.drawCurrencies(gameController);
-        
+
     };
 
     public drawLevelIntro2 = (gameController: GameController) => {
@@ -97,6 +97,7 @@ class LevelHelper {
     };
 
     public drawLevel2 = (gameController: GameController) => {
+        console.log(gameController)
         //background
         this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
@@ -119,11 +120,11 @@ class LevelHelper {
         this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
 
         //currencies
-        //40, 10, 80
         this.drawCurrencies(gameController);
     };
 
     public drawLevelIntro3 = (gameController: GameController) => {
+        console.log(gameController)
         //draw level 3
         this.drawLevel3(gameController);
 
@@ -157,7 +158,6 @@ class LevelHelper {
         this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
 
         //currencies
-        //50, 0, 70
         this.drawCurrencies(gameController);
     };
 

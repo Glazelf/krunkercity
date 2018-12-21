@@ -53,11 +53,11 @@ class Game {
         this._helpscreen.drawHelp();
     };
 
-    public drawLevel = () => {
-        //this._levelHelper.drawLevel1();
+    // public drawLevel = () => {
+        // this._levelHelper.drawLevel1();
         //this._levelHelper.drawLevel2();
         //this._levelHelper.drawLevel3();
-    };
+    // };
 
     // public music() {
     //     if (this.playPromise !== null){

@@ -1,7 +1,7 @@
 class GameItem {
-    public co2: number;
-    public energy: number;
-    public money: number;
+    private co2: number;
+    private energy: number;
+    private money: number;
 
     public constructor(co2: number, energy: number, money: number) {
         this.co2 = co2;
