@@ -7,17 +7,17 @@ class GameItem {
         this.co2 = co2;
         this.energy = energy;
         this.money = money;
-    }
+    };
 
     public getCo2(): number {
         return this.co2;
-    }
+    };
 
     public getEnergy(): number {
         return this.energy;
-    }
+    };
 
     public getMoney(): number {
         return this.money;
-    }
-}
+    };
+};
