@@ -4,9 +4,6 @@ class LevelHelper {
     private readonly _gameController: GameController;
     private readonly _startscreen: Startscreen;
     private _canvas: Canvas;
-    private co2: number;
-    private energy: number;
-    private money: number;
     private production: number;
     private _level1background: HTMLImageElement;
     private _level2background: HTMLImageElement;
@@ -22,9 +19,6 @@ class LevelHelper {
         this._canvas = canvas;
         this._gameController =  new GameController(canvas);
         this._startscreen = new Startscreen(canvas);
-        this.co2 = this._gameController.co2;
-        this.energy = this._gameController.energy;
-        this.money = this._gameController.money;
         this._level1background = new Image();
         this._level1background.src = "./assets/images/level1.png";
         this._level2background = new Image();
@@ -46,9 +40,9 @@ class LevelHelper {
         console.log(canvas);
     };
 
-    public drawLevelIntro1 = () => {
+    public drawLevelIntro1 = (gameController: GameController) => {
         //draw level1
-        this.drawLevel1();
+        this.drawLevel1(gameController);
 
         //levelIntro image
         this._canvas.writeImageToCanvas(this._levelIntro1, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
@@ -59,7 +53,7 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
     };
 
-    public drawLevel1 = () => {
+    public drawLevel1 = (gameController: GameController) => {
         //background
         this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
@@ -85,13 +79,13 @@ class LevelHelper {
         
         //currencies
         //30, 20, 90
-        this.drawCurrencies();
+        this.drawCurrencies(gameController);
         
     };
 
-    public drawLevelIntro2 = () => {
+    public drawLevelIntro2 = (gameController: GameController) => {
         //draw level2
-        this.drawLevel2();
+        this.drawLevel2(gameController);
 
         //levelIntro image
         this._canvas.writeImageToCanvas(this._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
@@ -102,7 +96,7 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
     };
 
-    public drawLevel2 = () => {
+    public drawLevel2 = (gameController: GameController) => {
         //background
         this._canvas.writeImageToCanvas(this._level2background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
@@ -126,13 +120,12 @@ class LevelHelper {
 
         //currencies
         //40, 10, 80
-        console.log(this.co2, this.energy, this.money);
-        this.drawCurrencies();
+        this.drawCurrencies(gameController);
     };
 
-    public drawLevelIntro3 = () => {
+    public drawLevelIntro3 = (gameController: GameController) => {
         //draw level 3
-        this.drawLevel3();
+        this.drawLevel3(gameController);
 
         //levelIntro image
         this._canvas.writeImageToCanvas(this._levelIntro3, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
@@ -143,7 +136,7 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
     };
 
-    public drawLevel3 = () => {
+    public drawLevel3 = (gameController: GameController) => {
         //background
         this._canvas.writeImageToCanvas(this._level3background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
@@ -165,23 +158,24 @@ class LevelHelper {
 
         //currencies
         //50, 0, 70
-        this.drawCurrencies();
+        this.drawCurrencies(gameController);
     };
 
-    public drawCurrencies() {
+    public drawCurrencies(gameController: GameController = null) {
+        gameController.assignCurrencies();
         //energy
         this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth() / 500, this._canvas.getHeight() / 10, this._bolt.width / 8, this._bolt.height / 8);
-        this._canvas.writeTextToCanvas(`${this.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
+        this._canvas.writeTextToCanvas(`${gameController.energy}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 6.1, 60);
 
         //co2
         this._canvas.writeImageToCanvas(this._pollution, this._canvas.getWidth() / 500, this._canvas.getHeight() / 60, this._pollution.width / 11, this._pollution.height / 11);
-        this._canvas.writeTextToCanvas(`${this.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60)
+        this._canvas.writeTextToCanvas(`${gameController.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60)
 
         //money
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
-        this._canvas.writeTextToCanvas(`${this.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
+        this._canvas.writeTextToCanvas(`${gameController.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
 
         //*debug*
-        // console.log(`drawCurrencies is working`);
+        console.log(`drawCurrencies is working`);
     };
 };

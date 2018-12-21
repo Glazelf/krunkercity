@@ -26,22 +26,22 @@ class Game {
             this._startscreen.draw();
         };
         if (this._gameController.currentScreen == 'LevelIntro1') {
-            this._levelHelper.drawLevelIntro1();
+            this._levelHelper.drawLevelIntro1(this._gameController);
         };
         if (this._gameController.currentScreen == 'Level1') {
-            this._levelHelper.drawLevel1();
+            this._levelHelper.drawLevel1(this._gameController);
         };
         if (this._gameController.currentScreen == 'LevelIntro2') {
-            this._levelHelper.drawLevelIntro2();
+            this._levelHelper.drawLevelIntro2(this._gameController);
         };
         if (this._gameController.currentScreen == 'Level2') {
-            this._levelHelper.drawLevel2();
+            this._levelHelper.drawLevel2(this._gameController);
         };
         if (this._gameController.currentScreen == 'LevelIntro3') {
-            this._levelHelper.drawLevelIntro3();
+            this._levelHelper.drawLevelIntro3(this._gameController);
         };
         if (this._gameController.currentScreen == 'Level3') {
-            this._levelHelper.drawLevel3();
+            this._levelHelper.drawLevel3(this._gameController);
         };
         if (this._gameController.currentScreen == 'HelpScreen') {
             this._helpscreen.drawHelp();
@@ -54,7 +54,7 @@ class Game {
     };
 
     public drawLevel = () => {
-        this._levelHelper.drawLevel1();
+        //this._levelHelper.drawLevel1();
         //this._levelHelper.drawLevel2();
         //this._levelHelper.drawLevel3();
     };

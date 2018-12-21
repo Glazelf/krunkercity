@@ -55,6 +55,7 @@ class GameController {
         }
         console.log(this.currentScreen);
         console.log(this.co2, this.energy, this.money);
+        //console.log(this._gameItem.getCo2, this._gameItem.getEnergy(), this._gameItem.getMoney());
     }
 
     public clickEventHandler(): void {
@@ -68,6 +69,7 @@ class GameController {
          * ClickHandlers for StartScreen
          */
         if (this.currentScreen == `StartScreen`) {
+
             //Button for Level 1 on StartScreen
             if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startscreen._level1background.width / 2) {
                 if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level1background.height / 2) {
@@ -130,10 +132,9 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
-                    
                 };
             };
-        }; 
+        };
 
         /**
          * ClickHandlers for LevelIntro2
@@ -148,7 +149,6 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
-                    //this.assignCurrencies();
                 };
             };
         }; 
@@ -166,7 +166,6 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 3 clicked');
                     this.currentScreen = `Level3`;
-                    //this.assignCurrencies();
                 };
             };
         }; 
@@ -174,8 +173,9 @@ class GameController {
         /**
          * ClickHandlers for Level1
          */
-        if (this.currentScreen == `Level1`) {
+        if (this.currentScreen == `Level1`) {   
             //Bouwplek trainstation
+            this.assignCurrencies();
             if(this.money > 60) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
