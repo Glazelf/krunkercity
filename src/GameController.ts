@@ -40,7 +40,7 @@ class GameController {
         this._windmolens.src = "./assets/images/isometric_windmolens.png";
         this._windmolens.width = this._windmolens.width * 1.2;
         this._windmolens.height = this._windmolens.height * 1.2;
-        this._zonnepaneel = new Image;
+        this._zonnepaneel = new Image();
         this._zonnepaneel.src = "./assets/images/isometric_zonnenpaneel.png";
         this._zonnepaneel.width = this._zonnepaneel.width * 1.2;
         this._zonnepaneel.height = this._zonnepaneel.height * 1.2;
