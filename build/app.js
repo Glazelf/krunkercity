@@ -124,7 +124,6 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
-        this.music();
     }
     ;
     music() {
@@ -154,16 +153,28 @@ class GameController {
         this._canvas = canvas;
         this._aardwarmte = new Image();
         this._aardwarmte.src = "./assets/images/isometric_aardwarmte.png";
+        this._aardwarmte.width = this._aardwarmte.width * 3;
+        this._aardwarmte.height = this._aardwarmte.height * 3;
         this._kerncentrale = new Image();
         this._kerncentrale.src = "./assets/images/isometric_kerncentrale.png";
+        this._kerncentrale.width = this._kerncentrale.width * 1.2;
+        this._kerncentrale.height = this._kerncentrale.height * 1.2;
         this._kolencentrale = new Image();
         this._kolencentrale.src = "./assets/images/isometric_kolencentrale.png";
+        this._kolencentrale.width = this._kolencentrale.width * 1.2;
+        this._kolencentrale.height = this._kolencentrale.height * 1.2;
         this._stuwdam = new Image();
         this._stuwdam.src = "./assets/images/isometric_stuwdam.png";
+        this._stuwdam.width = this._stuwdam.width * 1.2;
+        this._stuwdam.height = this._stuwdam.height * 1.2;
         this._windmolens = new Image();
         this._windmolens.src = "./assets/images/isometric_windmolens.png";
-        this._zonnepaneel = new Image;
+        this._windmolens.width = this._windmolens.width * 1.2;
+        this._windmolens.height = this._windmolens.height * 1.2;
+        this._zonnepaneel = new Image();
         this._zonnepaneel.src = "./assets/images/isometric_zonnenpaneel.png";
+        this._zonnepaneel.width = this._zonnepaneel.width * 1.2;
+        this._zonnepaneel.height = this._zonnepaneel.height * 1.2;
     }
     ;
     assignCurrencies() {
@@ -173,21 +184,25 @@ class GameController {
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        ;
         if (this.currentScreen == `Level2`) {
             this._gameItem = new GameItem(20, 10, 80);
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        ;
         if (this.currentScreen == `Level3`) {
             this._gameItem = new GameItem(10, 0, 70);
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        ;
         console.log(this.currentScreen);
-        console.log(this._gameItem.getCo2, this._gameItem.getEnergy, this._gameItem.getMoney);
+        console.log(this.co2, this.energy, this.money);
     }
+    ;
     clickEventHandler() {
         document.addEventListener('click', (event) => {
             this.onClick(event);
@@ -278,6 +293,7 @@ class GameController {
         }
         ;
         if (this.currentScreen == `Level1`) {
+            this.assignCurrencies();
             if (this.money > 60) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
@@ -332,8 +348,8 @@ class GameController {
                     console.log(event.x);
                     console.log(event.y);
                     console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer4.width = this._canvas._buildingHammer4.width;
-                    this._canvas._buildingHammer4.height = this._canvas._buildingHammer4.height;
+                    this._canvas._buildingHammer4.width = this._aardwarmte.width * 3;
+                    this._canvas._buildingHammer4.height = this._aardwarmte.height * 3;
                     this._canvas._buildingHammer4.src = this._kolencentrale.src;
                     console.log(this.money);
                 }
