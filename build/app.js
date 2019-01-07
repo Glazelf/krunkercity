@@ -77,6 +77,8 @@ class Canvas {
 ;
 class Game {
     constructor() {
+        this.Music = new Audio('./assets/mp3/pokemon.mp3');
+        this.playPromise = this.Music.play();
         this.drawStart = () => {
             if (this._gameController.currentScreen == 'StartScreen') {
                 this._startscreen.draw();
@@ -122,6 +124,15 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
+        this.music();
+    }
+    ;
+    music() {
+        if (this.playPromise !== null) {
+            this.Music.loop = true;
+            this.Music.play();
+        }
+        ;
     }
     ;
 }
@@ -175,7 +186,7 @@ class GameController {
             this.money = this._gameItem.getMoney();
         }
         console.log(this.currentScreen);
-        console.log(this.co2, this.energy, this.money);
+        console.log(this._gameItem.getCo2, this._gameItem.getEnergy, this._gameItem.getMoney);
     }
     clickEventHandler() {
         document.addEventListener('click', (event) => {
