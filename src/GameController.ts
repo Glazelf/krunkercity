@@ -53,8 +53,8 @@ class GameController {
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
-        console.log(this.currentScreen);
-        console.log(this.co2, this.energy, this.money);
+        // console.log(this.currentScreen);
+        // console.log(this.co2, this.energy, this.money);
         //console.log(this._gameItem.getCo2, this._gameItem.getEnergy(), this._gameItem.getMoney());
     }
 
