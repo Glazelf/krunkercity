@@ -48,19 +48,25 @@ class GameController {
 //===================================================================================================================================================================================
     public assignCurrencies() {
         if(this.currentScreen == `Level1`) {
-            this._gameItem = new GameItem(30, 20, 90);
+            if(this._gameItem == null) {
+                this._gameItem = new GameItem(30, 20, 90);
+            }
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         };
         if(this.currentScreen == `Level2`) {
-            this._gameItem = new GameItem(20, 10, 80);
+            if(this._gameItem == null) {
+                this._gameItem = new GameItem(20, 10, 80);
+            }
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         };
         if(this.currentScreen == `Level3`) {
+            if(this._gameItem == null) {
             this._gameItem = new GameItem(10, 0, 70);
+            }
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
