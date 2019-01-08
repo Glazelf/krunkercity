@@ -151,11 +151,11 @@ class LevelHelper {
         //kanaal
 
         //helpbutton
-        this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
+        this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
         this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
         //menuKnop image
         this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-        this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
+        this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5);
 
         //currencies
         this.drawCurrencies(gameController);

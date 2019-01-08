@@ -265,7 +265,6 @@ class GameController {
         }
         ;
         if (this.currentScreen == `Level1`) {
-            this.assignCurrencies();
             if (this.money > 60) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
@@ -275,7 +274,10 @@ class GameController {
                         this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                         this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
-                        this.money -= 60;
+                        this._gameItem.changeMoney(-60);
+                        this.money = this._gameItem.getMoney();
+                        this.assignCurrencies();
+                        console.log(this._gameItem.getMoney());
                         console.log(this.money);
                     }
                     ;
@@ -552,6 +554,9 @@ class GameItem {
         return this.money;
     }
     ;
+    changeMoney(amount) {
+        this.money += amount;
+    }
 }
 ;
 class Helpscreen {
