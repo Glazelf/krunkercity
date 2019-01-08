@@ -134,10 +134,11 @@ function init() {
 ;
 class GameController {
     constructor(canvas) {
-        this.co2 = 0;
-        this.energy = 0;
-        this.money = 0;
+        this.co2 = 1;
+        this.energy = 1;
+        this.money = 1;
         this.currentScreen = 'StartScreen';
+        this._levelsUnlocked = 1;
         this._startscreen = new Startscreen(this._canvasElement);
         this._helpscreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
@@ -169,7 +170,10 @@ class GameController {
     ;
     assignCurrencies() {
         if (this.currentScreen == `Level1`) {
-            this._gameItem = new GameItem(30, 20, 90);
+            if (this._gameItem == null) {
+                this._gameItem = new GameItem(30, 20, 90);
+            }
+            ;
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
@@ -207,6 +211,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `LevelIntro1`;
+                    this.assignCurrencies();
                 }
                 ;
             }
@@ -283,7 +288,6 @@ class GameController {
         }
         ;
         if (this.currentScreen == `Level1`) {
-            this.assignCurrencies();
             if (this.money > 60) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
@@ -369,6 +373,7 @@ class GameController {
                     this._canvas._buildingHammer6.src = this._zonnepaneel.src;
                     this.money = this.money - 50;
                     console.log(this.money);
+                    this.co2 = 0;
                 }
                 ;
             }
@@ -543,6 +548,24 @@ class GameController {
                 ;
             }
             ;
+        }
+        ;
+        if (this.co2 == 0 && this.currentScreen == `Level1`) {
+            this._levelsUnlocked = 1;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+        }
+        ;
+        if (this.co2 == 0 && this.currentScreen == `Level2`) {
+            this._levelsUnlocked = 2;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+        }
+        ;
+        if (this.co2 == 0 && this.currentScreen == `Level3`) {
+            this._levelsUnlocked = 3;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
         }
         ;
         console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);

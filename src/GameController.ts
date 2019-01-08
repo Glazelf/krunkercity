@@ -5,9 +5,9 @@ class GameController {
     private readonly _canvasElement: Canvas;
     private _gameItem: GameItem;
     private _levelHelper: LevelHelper;
-    public co2: number = 0;
-    public energy: number = 0;
-    public money: number = 0;
+    public co2: number = 1;
+    public energy: number = 1;
+    public money: number = 1;
     public currentScreen: string = 'StartScreen';
     public _aardwarmte: HTMLImageElement;
     public _kerncentrale: HTMLImageElement;
@@ -15,6 +15,7 @@ class GameController {
     public _stuwdam: HTMLImageElement;
     public _windmolens: HTMLImageElement;
     public _zonnepaneel: HTMLImageElement;
+    public _levelsUnlocked: number = 1;
 
     public constructor(canvas: Canvas) {
         this._startscreen = new Startscreen(this._canvasElement);
@@ -47,19 +48,21 @@ class GameController {
     };
 
     public assignCurrencies() {
-        if(this.currentScreen == `Level1`) {
-            this._gameItem = new GameItem(30, 20, 90);
+        if (this.currentScreen == `Level1`) {
+            if (this._gameItem == null) {
+                this._gameItem = new GameItem(30, 20, 90);
+            };
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         };
-        if(this.currentScreen == `Level2`) {
+        if (this.currentScreen == `Level2`) {
             this._gameItem = new GameItem(20, 10, 80);
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         };
-        if(this.currentScreen == `Level3`) {
+        if (this.currentScreen == `Level3`) {
             this._gameItem = new GameItem(10, 0, 70);
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
@@ -91,6 +94,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `LevelIntro1`;
+                    this.assignCurrencies()
                 };
             };
 
@@ -163,7 +167,7 @@ class GameController {
                     this.currentScreen = `Level2`;
                 };
             };
-        }; 
+        };
 
         /**
          * ClickHandlers for LevelIntro3
@@ -180,15 +184,14 @@ class GameController {
                     this.currentScreen = `Level3`;
                 };
             };
-        }; 
+        };
 
         /**
          * ClickHandlers for Level1
          */
-        if (this.currentScreen == `Level1`) {   
+        if (this.currentScreen == `Level1`) {
             //Bouwplek trainstation
-            this.assignCurrencies();
-            if(this.money > 60) {
+            if (this.money > 60) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
                         console.log(event.x);
@@ -204,7 +207,7 @@ class GameController {
             }
 
             //Bouwplek leftroad
-            if(this.money > 60) {
+            if (this.money > 60) {
                 if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
                     if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
                         console.log(event.x);
@@ -220,7 +223,7 @@ class GameController {
             }
 
             //Bouwplek large forest
-            if(this.money > 80) {
+            if (this.money > 80) {
                 if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
                         console.log(event.x);
@@ -246,7 +249,7 @@ class GameController {
                     this._canvas._buildingHammer4.width = this._aardwarmte.width * 3;
                     this._canvas._buildingHammer4.height = this._aardwarmte.height * 3;
                     this._canvas._buildingHammer4.src = this._kolencentrale.src;
-                    
+
                     console.log(this.money);
                 };
             };
@@ -275,6 +278,7 @@ class GameController {
                     this._canvas._buildingHammer6.src = this._zonnepaneel.src;
                     this.money = this.money - 50;
                     console.log(this.money)
+                    this.co2 = 0;
                 };
             };
 
@@ -428,7 +432,7 @@ class GameController {
             };
 
             //Bouwplek kanaal
-            
+
             //Button for HelpScreen on Level3
             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
                 if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
@@ -468,6 +472,27 @@ class GameController {
                     this.currentScreen = `StartScreen`;
                 };
             };
+        };
+
+        //winning level 1
+        if (this.co2 == 0 && this.currentScreen == `Level1`) {
+            this._levelsUnlocked = 1;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+        };
+
+        //winning level 2
+        if (this.co2 == 0 && this.currentScreen == `Level2`) {
+            this._levelsUnlocked = 2;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+        };
+
+        //winning level 3
+        if (this.co2 == 0 && this.currentScreen == `Level3`) {
+            this._levelsUnlocked = 3;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
         };
 
         //*debug*
