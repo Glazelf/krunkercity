@@ -25,4 +25,12 @@ class GameItem {
     public changeMoney(amount: number): void {
         this.money += amount;
     }
+
+    public changeEnergy(amount: number): void {
+        this.energy += amount;
+    }
+
+    public changeCo2(amount: number): void {
+        this.co2 += amount;
+    }
 };
