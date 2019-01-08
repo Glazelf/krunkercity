@@ -54,9 +54,9 @@ class Game {
     };
 
     // public drawLevel = () => {
-        // this._levelHelper.drawLevel1();
-        //this._levelHelper.drawLevel2();
-        //this._levelHelper.drawLevel3();
+    // this._levelHelper.drawLevel1();
+    //this._levelHelper.drawLevel2();
+    //this._levelHelper.drawLevel3();
     // };
 
     public music() {

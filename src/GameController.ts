@@ -15,7 +15,6 @@ class GameController {
     public _stuwdam: HTMLImageElement;
     public _windmolens: HTMLImageElement;
     public _zonnepaneel: HTMLImageElement;
-    public _levelsUnlocked: number = 1;
 
     public constructor(canvas: Canvas) {
         this._startscreen = new Startscreen(this._canvasElement);
@@ -90,7 +89,6 @@ class GameController {
         if (this.currentScreen == `StartScreen`) {
 
             //Button for Level 1 on StartScreen
-            if (this._levelsUnlocked > 0) {
                 if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startscreen._level1background.width / 2) {
                     if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level1background.height / 2) {
                         //ga naar level 1
@@ -100,12 +98,11 @@ class GameController {
                         console.log('Level 1 clicked');
                         this.currentScreen = `LevelIntro1`;
                         document.getElementById("wintext").innerHTML = ``;
-                    };
                 };
             };
 
             //Button for level 2 on StartScreen
-            if (this._levelsUnlocked > 1) {
+            if (this._startscreen._levelsUnlocked > 1) {
                 if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startscreen._level2background.width / 2) {
                     if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level2background.height / 2) {
                         //ga naar level 2
@@ -120,7 +117,7 @@ class GameController {
             };
 
             //Button for level 3 on StartScreen
-            if (this._levelsUnlocked > 2) {
+            if (this._startscreen._levelsUnlocked > 2) {
                 if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startscreen._level3background.width / 2) {
                     if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level3background.height / 2) {
                         //ga naar level 3
@@ -205,102 +202,112 @@ class GameController {
         if (this.currentScreen == `Level1`) {
             //Bouwplek trainstation
             //this.assignCurrencies();
-            if (this.money > 60) {
-                if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
-                    if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
+            if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
+                if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
+                    if(this.money >= 200) {
+                        console.log(event.x, event.y);
                         console.log("Level1Hammer clicked");
                         this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                         this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
-                        this._gameItem.changeMoney(-60);
-                        this.money = this._gameItem.getMoney();
-                        this._gameItem.changeEnergy(+2 )
-                        this.energy = this._gameItem.getEnergy();
-                        this.assignCurrencies();
-                        console.log(this._gameItem.getMoney());
-                        console.log(this._gameItem.getEnergy());
-                        console.log(this.money);
-                    };
-                };
+                        this._gameItem.changeMoney(-200);
+                        //console.log(this._gameItem.getMoney());
+                        //console.log(this.money);
+                    } else {
+                        alert(`Je hebt nog ${200 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                    }
+                }
             }
+            
 
             //Bouwplek leftroad
-            if (this.money > 60) {
-                if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
-                    if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
+            if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
+                if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
+                    if(this.money >= 200) {
+                        console.log(event.x, event.y);
                         console.log("Level1Hammer clicked");
                         this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
                         this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
                         this._canvas._buildingHammer2.src = this._aardwarmte.src;
-                        this.money -= 60;
-                        console.log(this.money);
-                    };
-                };
+                        this._gameItem.changeMoney(-200);
+                        //console.log(this.money);
+                    } else {
+                        alert(`Je hebt nog ${200 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                    }
+                }
             }
 
             //Bouwplek large forest
-            if (this.money > 80) {
-                if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
-                    if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
+            if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
+                    if(this.money >= 500) {
+                        console.log(event.x, event.y);
                         console.log("Level1Hammer clicked");
                         this._canvas._buildingHammer3.width = this._canvas._buildingHammer3.width;
                         this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
                         this._canvas._buildingHammer3.src = this._kerncentrale.src;
-                        this.money -= 80;
-                        console.log(this.money);
-                    };
-                };
+                        this._gameItem.changeMoney(-500);
+                        //console.log(this.money);
+                    } else {
+                        alert(`Je hebt nog ${500 - this.money} munten nodig om de kerncentrale te bouwen!`);
+                    }
+                }
             }
 
             this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5
             //bottomright from last one
             if (event.x > this._canvas.getWidth() / 1.9 && event.x < this._canvas.getWidth() / 1.9 + this._canvas._buildingHammer4.width / 7) {
                 if (event.y > this._canvas.getHeight() / 2.5 && event.y < this._canvas.getHeight() / 2.5 + this._canvas._buildingHammer4.height / 7) {
-
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer4.width = this._aardwarmte.width * 3;
-                    this._canvas._buildingHammer4.height = this._aardwarmte.height * 3;
-                    this._canvas._buildingHammer4.src = this._kolencentrale.src;
-
-                    console.log(this.money);
-                };
-            };
+                    if(this.money >= 50) {
+                        console.log(event.x, event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer4.width = this._canvas._buildingHammer4.width;
+                        this._canvas._buildingHammer4.height = this._canvas._buildingHammer4.height;
+                        this._canvas._buildingHammer4.src = this._kolencentrale.src;
+                        this._gameItem.changeMoney(-50);
+                        this._gameItem.generateCurrencies(3);
+                        //console.log(this.money);
+                    } else {
+                        alert(`je hebt nog ${50 - this.money} munten nodig om de kolencentrale te bouwen!`);
+                    }
+                }
+            }
 
             //bottomright from last one
             if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer5.width / 7) {
                 if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer5.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer5.width = this._canvas._buildingHammer5.width;
-                    this._canvas._buildingHammer5.height = this._canvas._buildingHammer5.height;
-                    this._canvas._buildingHammer5.src = this._windmolens.src;
-                    console.log(this.money);
-                };
-            };
+                    if(this.money >= 80) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer5.width = this._canvas._buildingHammer5.width;
+                        this._canvas._buildingHammer5.height = this._canvas._buildingHammer5.height;
+                        this._canvas._buildingHammer5.src = this._windmolens.src;
+                        this._gameItem.changeMoney(-80);
+                        //console.log(this.money);
+                    } else {
+                        alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
+                    }
+                }
+            }
 
             //mountainrange
             if (event.x > this._canvas.getWidth() / 1.32 && event.x < this._canvas.getWidth() / 1.32 + this._canvas._buildingHammer6.width / 7) {
                 if (event.y > this._canvas.getHeight() / 6.5 && event.y < this._canvas.getHeight() / 6.5 + this._canvas._buildingHammer6.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer6.width = this._canvas._buildingHammer6.width;
-                    this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
-                    this._canvas._buildingHammer6.src = this._zonnepaneel.src;
-                    this.money = this.money - 50;
-                    console.log(this.money)
-                    this.co2 = 0;
-                };
-            };
+                    if(this.money >= 90) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer6.width = this._canvas._buildingHammer6.width;
+                        this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
+                        this._canvas._buildingHammer6.src = this._zonnepaneel.src;
+                        this._gameItem.changeMoney(-90);
+                        //console.log(this.money);
+                    } else {
+                        alert(`Je hebt nog ${90 - this.money} munten nodig om de zonnepanelen te bouwen!`);
+                    }
+                }
+            }
 
             //Button for HelpScreen on Level1
             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
@@ -486,9 +493,9 @@ class GameController {
                 if (event.y > this._canvas.getHeight() / 1.3 && event.y < this._canvas.getHeight() / 1.3 + this._helpscreen._menuKnop.height) {
                     //ga terug naar StartScreen
                     //*debug*
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log('Return to StartScreen clicked');
+                    //console.log(event.x);
+                    //console.log(event.y);
+                    //console.log('Return to StartScreen clicked');
                     this.currentScreen = `StartScreen`;
                 };
             };
@@ -496,7 +503,7 @@ class GameController {
 
         //winning level 1
         if (this.co2 == 0 && this.currentScreen == `Level1`) {
-            this._levelsUnlocked = 1;
+            this._startscreen._levelsUnlocked = 2;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
@@ -504,7 +511,7 @@ class GameController {
 
         //winning level 2
         if (this.co2 == 0 && this.currentScreen == `Level2`) {
-            this._levelsUnlocked = 2;
+            this._startscreen._levelsUnlocked = 3;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
@@ -512,14 +519,13 @@ class GameController {
 
         //winning level 3
         if (this.co2 == 0 && this.currentScreen == `Level3`) {
-            this._levelsUnlocked = 3;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
         };
 
         //*debug*
-        console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);
-        console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startscreen._level1background.height / 5);
+        //console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);
+        //console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startscreen._level1background.height / 5);
     };
 };
