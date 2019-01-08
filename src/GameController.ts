@@ -547,7 +547,6 @@ class GameController {
     }
 
     public updateMoney() {
-        //this.intervalLoops++;
         console.log(`I am looping`);
         this._gameItem.changeMoney(this.income);
     }
