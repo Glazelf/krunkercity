@@ -4,7 +4,6 @@ class GameController {
     private readonly _canvas: Canvas;
     private readonly _canvasElement: Canvas;
     private _gameItem: GameItem;
-    private _levelHelper: LevelHelper;
     public co2: number = 1;
     public energy: number = 1;
     public money: number = 1;
@@ -205,17 +204,18 @@ class GameController {
             if (this._canvas._buildingHammer1.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
-                        if (this.money >= 200) {
+                        if (this.money >= 10) {
                             console.log(event.x, event.y);
                             console.log("Level1Hammer clicked");
                             this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                             this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                             this._canvas._buildingHammer1.src = this._aardwarmte.src;
-                            this._gameItem.changeMoney(-200);
+                            this._gameItem.changeMoney(-10);
                             //console.log(this._gameItem.getMoney());
                             //console.log(this.money);
+                            this.co2 = 0
                         } else {
-                            alert(`Je hebt nog ${200 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                            alert(`Je hebt nog ${10 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
                         };
                     };
                 };
@@ -526,12 +526,15 @@ class GameController {
             };
         };
 
-        //winning level 1
+       //winning level 1
         if (this.co2 == 0 && this.currentScreen == `Level1`) {
-            this._startscreen._levelsUnlocked = 2;
+            console.log(this._startscreen._levelsUnlocked)
+            
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+            this._startscreen._levelsUnlocked = 2;
             this.co2 = 1;
+           console.log(this._startscreen._levelsUnlocked)
         };
 
         //winning level 2

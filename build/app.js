@@ -47,7 +47,7 @@ class Canvas {
     }
     ;
     writeTextToCanvas(text, xCoordinate, yCoordinate, fontSize = 30, color = "black", alignment = "center") {
-        this._ctx.font = `${fontSize}px Minecraft`;
+        this._ctx.font = `${fontSize}px Helvetica`;
         this._ctx.fillStyle = color;
         this._ctx.textAlign = alignment;
         this._ctx.fillText(text, xCoordinate, yCoordinate);
@@ -302,16 +302,17 @@ class GameController {
             if (this._canvas._buildingHammer1.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
-                        if (this.money >= 200) {
+                        if (this.money >= 10) {
                             console.log(event.x, event.y);
                             console.log("Level1Hammer clicked");
                             this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                             this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                             this._canvas._buildingHammer1.src = this._aardwarmte.src;
-                            this._gameItem.changeMoney(-200);
+                            this._gameItem.changeMoney(-10);
+                            this.co2 = 0;
                         }
                         else {
-                            alert(`Je hebt nog ${200 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                            alert(`Je hebt nog ${10 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
                         }
                         ;
                     }
@@ -619,10 +620,12 @@ class GameController {
         }
         ;
         if (this.co2 == 0 && this.currentScreen == `Level1`) {
-            this._startscreen._levelsUnlocked = 2;
+            console.log(this._startscreen._levelsUnlocked);
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+            this._startscreen._levelsUnlocked = 2;
             this.co2 = 1;
+            console.log(this._startscreen._levelsUnlocked);
         }
         ;
         if (this.co2 == 0 && this.currentScreen == `Level2`) {
@@ -833,7 +836,7 @@ class Startscreen {
             this._canvas.writeTextToCanvas("Level 1", this._canvas.getWidth() / 6, this._canvas.getHeight() / 3.6, 40);
             this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 40, this._canvas.getHeight() / 3.5, this._level1background.width / 2, this._level1background.height / 2);
             this._canvas.writeTextToCanvas("Level 2", this._canvas.getWidth() / 2, this._canvas.getHeight() / 3.6, 40);
-            if (this._levelsUnlocked > 1) {
+            if (this._levelsUnlocked == 2 || this._levelsUnlocked == 3) {
                 this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
             }
             else {
@@ -841,7 +844,7 @@ class Startscreen {
             }
             ;
             this._canvas.writeTextToCanvas("Level 3", this._canvas.getWidth() / 1.23, this._canvas.getHeight() / 3.6, 40);
-            if (this._levelsUnlocked > 2) {
+            if (this._levelsUnlocked == 3) {
                 this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
             }
             else {

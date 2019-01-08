@@ -1,10 +1,6 @@
 class LevelHelper {
-    private readonly _canvasElement: HTMLCanvasElement;
-    private readonly _ctx: CanvasRenderingContext2D;
-    private readonly _gameController: GameController;
     private readonly _startscreen: Startscreen;
     private _canvas: Canvas;
-    private production: number;
     private _level1background: HTMLImageElement;
     private _level2background: HTMLImageElement;
     private _level3background: HTMLImageElement;
