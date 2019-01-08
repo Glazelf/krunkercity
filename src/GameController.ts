@@ -15,7 +15,7 @@ class GameController {
     public _stuwdam: HTMLImageElement;
     public _windmolens: HTMLImageElement;
     public _zonnepaneel: HTMLImageElement;
-    public _levelsUnlocked: number = 1;
+    public _levelsUnlocked: number = 2;
 
     public constructor(canvas: Canvas) {
         this._startscreen = new Startscreen(this._canvasElement);
@@ -493,7 +493,8 @@ class GameController {
 
         //winning level 1
         if (this.co2 == 0 && this.currentScreen == `Level1`) {
-            this._levelsUnlocked = 1;
+            this._levelsUnlocked = 2;
+            this._startscreen._levelsUnlocked = 2;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
@@ -501,7 +502,8 @@ class GameController {
 
         //winning level 2
         if (this.co2 == 0 && this.currentScreen == `Level2`) {
-            this._levelsUnlocked = 2;
+            this._levelsUnlocked = 3;
+            this._startscreen._levelsUnlocked = 3;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
@@ -509,7 +511,6 @@ class GameController {
 
         //winning level 3
         if (this.co2 == 0 && this.currentScreen == `Level3`) {
-            this._levelsUnlocked = 3;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
