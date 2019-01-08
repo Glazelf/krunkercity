@@ -205,6 +205,7 @@ class GameController {
                         this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
                         this._gameItem.changeMoney(-10);
+                        this.co2 = 0;
                         //console.log(this._gameItem.getMoney());
                         //console.log(this.money);
                     };
