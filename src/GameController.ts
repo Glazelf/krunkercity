@@ -287,7 +287,7 @@ class GameController {
                             alert(`Je hebt een kerncentrale gebouwd!`);
                             this.income += 12;
                             this.energyGain += 8;
-                            this.co2Spread += 5;
+                            this.co2Spread += 3.5;
                             //console.log(this.money);
                         } else {
                             alert(`Je hebt nog ${400 - this.money} munten nodig om de kerncentrale te bouwen!`);
@@ -310,7 +310,7 @@ class GameController {
                             alert(`Je hebt een kolencentrale gebouwd!`);
                             this.income += 6;
                             this.energyGain += 2;
-                            this.co2Spread += 3;
+                            this.co2Spread += 2;
                         } else {
                             alert(`je hebt nog ${50 - this.money} munten nodig om de kolencentrale te bouwen!`);
                         };

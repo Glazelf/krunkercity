@@ -6,8 +6,8 @@ class Game {
     private _gameController: GameController;
     private _levelHelper: LevelHelper;
     private _gameItem: GameItem;
-    // private Music = new Audio('./assets/mp3/pokemon.mp3');
-    // private playPromise = this.Music.play();
+    private Music = new Audio('./assets/mp3/pokemon.mp3');
+    private playPromise = this.Music.play();
 
     constructor() {
         this._canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
