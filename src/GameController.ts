@@ -216,8 +216,11 @@ class GameController {
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
                         this._gameItem.changeMoney(-60);
                         this.money = this._gameItem.getMoney();
+                        this._gameItem.changeEnergy(+2 )
+                        this.energy = this._gameItem.getEnergy();
                         this.assignCurrencies();
                         console.log(this._gameItem.getMoney());
+                        console.log(this._gameItem.getEnergy());
                         console.log(this.money);
                     };
                 };

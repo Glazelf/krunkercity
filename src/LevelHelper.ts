@@ -80,6 +80,7 @@ class LevelHelper {
 
         //currencies
         this.drawCurrencies(gameController);
+        
 
     };
 
