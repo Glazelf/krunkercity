@@ -124,6 +124,7 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
+        this.music();
     }
     ;
     music() {
@@ -304,6 +305,7 @@ class GameController {
                         this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
                         this.money -= 60;
+                        this.energy + 20;
                         console.log(this.money);
                     }
                     ;

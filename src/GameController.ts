@@ -198,6 +198,7 @@ class GameController {
                         this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
                         this.money -= 60;
+                        this.energy + 20;
                         console.log(this.money);
                     };
                 };
