@@ -8,6 +8,7 @@ class GameController {
     public co2: number = 1;
     public energy: number = 1;
     public money: number = 1;
+    private income: number = 0;
     public currentScreen: string = 'StartScreen';
     public _aardwarmte: HTMLImageElement;
     public _kerncentrale: HTMLImageElement;
@@ -44,6 +45,7 @@ class GameController {
         this._zonnepaneel.src = "./assets/images/isometric_zonnenpaneel.png";
         this._zonnepaneel.width = this._zonnepaneel.width * 1.2;
         this._zonnepaneel.height = this._zonnepaneel.height * 1.2;
+        this.timer();
     };
 
     public assignCurrencies() {
@@ -53,7 +55,7 @@ class GameController {
             };
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
-            this.money = this._gameItem.getMoney();
+            this.money += this._gameItem.getMoney();
         };
         if (this.currentScreen == `Level2`) {
             if (this._gameItem == null) {
@@ -211,6 +213,7 @@ class GameController {
                         this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
                         this._gameItem.changeMoney(-200);
+                        alert(`Je hebt een aardwarmtecentrale gebouwd!`);
                         //console.log(this._gameItem.getMoney());
                         //console.log(this.money);
                     } else {
@@ -230,6 +233,7 @@ class GameController {
                         this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
                         this._canvas._buildingHammer2.src = this._aardwarmte.src;
                         this._gameItem.changeMoney(-200);
+                        alert(`Je hebt een aardwarmtecentrale gebouwd!`);
                         //console.log(this.money);
                     } else {
                         alert(`Je hebt nog ${200 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
@@ -247,6 +251,7 @@ class GameController {
                         this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
                         this._canvas._buildingHammer3.src = this._kerncentrale.src;
                         this._gameItem.changeMoney(-500);
+                        alert(`Je hebt een kerncentrale gebouwd!`);
                         //console.log(this.money);
                     } else {
                         alert(`Je hebt nog ${500 - this.money} munten nodig om de kerncentrale te bouwen!`);
@@ -265,7 +270,8 @@ class GameController {
                         this._canvas._buildingHammer4.height = this._canvas._buildingHammer4.height;
                         this._canvas._buildingHammer4.src = this._kolencentrale.src;
                         this._gameItem.changeMoney(-50);
-                        this._gameItem.generateCurrencies(3);
+                        alert(`Je hebt een kolencentrale gebouwd!`);
+                        this.increaseIncome(3);
                         //console.log(this.money);
                     } else {
                         alert(`je hebt nog ${50 - this.money} munten nodig om de kolencentrale te bouwen!`);
@@ -284,6 +290,7 @@ class GameController {
                         this._canvas._buildingHammer5.height = this._canvas._buildingHammer5.height;
                         this._canvas._buildingHammer5.src = this._windmolens.src;
                         this._gameItem.changeMoney(-80);
+                        alert(`Je hebt een windmolen gebouwd!`);
                         //console.log(this.money);
                     } else {
                         alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
@@ -302,6 +309,7 @@ class GameController {
                         this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
                         this._canvas._buildingHammer6.src = this._zonnepaneel.src;
                         this._gameItem.changeMoney(-90);
+                        alert(`Je hebt een zonnepaneel gebouwd!`);
                         //console.log(this.money);
                     } else {
                         alert(`Je hebt nog ${90 - this.money} munten nodig om de zonnepanelen te bouwen!`);
@@ -528,4 +536,19 @@ class GameController {
         //console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);
         //console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startscreen._level1background.height / 5);
     };
-};
+
+    public increaseIncome(amount: number) {
+        this.income += amount;
+    }
+
+    public timer() {
+        setInterval(this.updateMoney, 5000);
+        console.log(`tick`);
+    }
+
+    public updateMoney() {
+        //this.intervalLoops++;
+        console.log(`I am looping`);
+        this._gameItem.changeMoney(this.income);
+    }
+}
