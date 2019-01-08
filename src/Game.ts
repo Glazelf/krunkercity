@@ -6,6 +6,7 @@ class Game {
     private _helpscreen: Helpscreen;
     private _gameController: GameController;
     private _levelHelper: LevelHelper;
+    private _gameItem: GameItem;
     // private Music = new Audio('./assets/mp3/pokemon.mp3');
     // private playPromise = this.Music.play();
 

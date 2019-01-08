@@ -89,15 +89,15 @@ class GameController {
         if (this.currentScreen == `StartScreen`) {
 
             //Button for Level 1 on StartScreen
-                if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startscreen._level1background.width / 2) {
-                    if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level1background.height / 2) {
-                        //ga naar level 1
-                        //*debug*
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log('Level 1 clicked');
-                        this.currentScreen = `LevelIntro1`;
-                        document.getElementById("wintext").innerHTML = ``;
+            if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startscreen._level1background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level1background.height / 2) {
+                    //ga naar level 1
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 1 clicked');
+                    this.currentScreen = `LevelIntro1`;
+                    document.getElementById("wintext").innerHTML = ``;
                 };
             };
 
@@ -202,112 +202,123 @@ class GameController {
         if (this.currentScreen == `Level1`) {
             //Bouwplek trainstation
             //this.assignCurrencies();
-            if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
-                    if(this.money >= 200) {
-                        console.log(event.x, event.y);
-                        console.log("Level1Hammer clicked");
-                        this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
-                        this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
-                        this._canvas._buildingHammer1.src = this._aardwarmte.src;
-                        this._gameItem.changeMoney(-200);
-                        //console.log(this._gameItem.getMoney());
-                        //console.log(this.money);
-                    } else {
-                        alert(`Je hebt nog ${200 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
-                    }
-                }
-            }
-            
+            if (this._canvas._buildingHammer1.src !== this._aardwarmte.src) {
+                if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
+                        if (this.money >= 200) {
+                            console.log(event.x, event.y);
+                            console.log("Level1Hammer clicked");
+                            this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
+                            this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
+                            this._canvas._buildingHammer1.src = this._aardwarmte.src;
+                            this._gameItem.changeMoney(-200);
+                            //console.log(this._gameItem.getMoney());
+                            //console.log(this.money);
+                        } else {
+                            alert(`Je hebt nog ${200 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                        };
+                    };
+                };
+            };
+
 
             //Bouwplek leftroad
-            if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
-                    if(this.money >= 200) {
-                        console.log(event.x, event.y);
-                        console.log("Level1Hammer clicked");
-                        this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
-                        this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
-                        this._canvas._buildingHammer2.src = this._aardwarmte.src;
-                        this._gameItem.changeMoney(-200);
-                        //console.log(this.money);
-                    } else {
-                        alert(`Je hebt nog ${200 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
-                    }
-                }
-            }
+            if (this._canvas._buildingHammer2.src !== this._aardwarmte.src) {
+                if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
+                        if (this.money >= 10) {
+                            console.log(event.x, event.y);
+                            console.log("Level1Hammer clicked");
+                            this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
+                            this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
+                            this._canvas._buildingHammer2.src = this._aardwarmte.src;
+                            this._gameItem.changeMoney(-10);
+                            //console.log(this.money);
+                            this._gameItem.buildings++
+                        } else {
+                            alert(`Je hebt nog ${10 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                        };
+                    };
+                };
+            };
 
             //Bouwplek large forest
-            if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
-                    if(this.money >= 500) {
-                        console.log(event.x, event.y);
-                        console.log("Level1Hammer clicked");
-                        this._canvas._buildingHammer3.width = this._canvas._buildingHammer3.width;
-                        this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
-                        this._canvas._buildingHammer3.src = this._kerncentrale.src;
-                        this._gameItem.changeMoney(-500);
-                        //console.log(this.money);
-                    } else {
-                        alert(`Je hebt nog ${500 - this.money} munten nodig om de kerncentrale te bouwen!`);
-                    }
-                }
-            }
-
-            this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5
-            //bottomright from last one
-            if (event.x > this._canvas.getWidth() / 1.9 && event.x < this._canvas.getWidth() / 1.9 + this._canvas._buildingHammer4.width / 7) {
-                if (event.y > this._canvas.getHeight() / 2.5 && event.y < this._canvas.getHeight() / 2.5 + this._canvas._buildingHammer4.height / 7) {
-                    if(this.money >= 50) {
-                        console.log(event.x, event.y);
-                        console.log("Level1Hammer clicked");
-                        this._canvas._buildingHammer4.width = this._canvas._buildingHammer4.width;
-                        this._canvas._buildingHammer4.height = this._canvas._buildingHammer4.height;
-                        this._canvas._buildingHammer4.src = this._kolencentrale.src;
-                        this._gameItem.changeMoney(-50);
-                        this._gameItem.generateCurrencies(3);
-                        //console.log(this.money);
-                    } else {
-                        alert(`je hebt nog ${50 - this.money} munten nodig om de kolencentrale te bouwen!`);
-                    }
-                }
-            }
+            if (this._canvas._buildingHammer3.src !== this._kerncentrale.src) {
+                if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
+                        if (this.money >= 500) {
+                            console.log(event.x, event.y);
+                            console.log("Level1Hammer clicked");
+                            this._canvas._buildingHammer3.width = this._canvas._buildingHammer3.width;
+                            this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
+                            this._canvas._buildingHammer3.src = this._kerncentrale.src;
+                            this._gameItem.changeMoney(-500);
+                            //console.log(this.money);
+                        } else {
+                            alert(`Je hebt nog ${500 - this.money} munten nodig om de kerncentrale te bouwen!`);
+                        };
+                    };
+                };
+            };
 
             //bottomright from last one
-            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer5.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer5.height / 7) {
-                    if(this.money >= 80) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log("Level1Hammer clicked");
-                        this._canvas._buildingHammer5.width = this._canvas._buildingHammer5.width;
-                        this._canvas._buildingHammer5.height = this._canvas._buildingHammer5.height;
-                        this._canvas._buildingHammer5.src = this._windmolens.src;
-                        this._gameItem.changeMoney(-80);
-                        //console.log(this.money);
-                    } else {
-                        alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
-                    }
-                }
-            }
+            if (this._canvas._buildingHammer4.src !== this._aardwarmte.src) {
+                if (event.x > this._canvas.getWidth() / 1.9 && event.x < this._canvas.getWidth() / 1.9 + this._canvas._buildingHammer4.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 2.5 && event.y < this._canvas.getHeight() / 2.5 + this._canvas._buildingHammer4.height / 7) {
+                        if (this.money >= 50) {
+                            console.log(event.x, event.y);
+                            console.log("Level1Hammer clicked");
+                            this._canvas._buildingHammer4.width = this._canvas._buildingHammer4.width;
+                            this._canvas._buildingHammer4.height = this._canvas._buildingHammer4.height;
+                            this._canvas._buildingHammer4.src = this._kolencentrale.src;
+                            this._gameItem.changeMoney(-50);
+                            //console.log(this.money);
+                        } else {
+                            alert(`je hebt nog ${50 - this.money} munten nodig om de kolencentrale te bouwen!`);
+                        };
+                    };
+                };
+            };
+
+            //bottomright from last one
+            if (this._canvas._buildingHammer5.src !== this._windmolens.src) {
+                if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer5.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer5.height / 7) {
+                        if (this.money >= 80) {
+                            console.log(event.x);
+                            console.log(event.y);
+                            console.log("Level1Hammer clicked");
+                            this._canvas._buildingHammer5.width = this._canvas._buildingHammer5.width;
+                            this._canvas._buildingHammer5.height = this._canvas._buildingHammer5.height;
+                            this._canvas._buildingHammer5.src = this._windmolens.src;
+                            this._gameItem.changeMoney(-80);
+                            //console.log(this.money);
+                        } else {
+                            alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
+                        };
+                    };
+                };
+            };
 
             //mountainrange
-            if (event.x > this._canvas.getWidth() / 1.32 && event.x < this._canvas.getWidth() / 1.32 + this._canvas._buildingHammer6.width / 7) {
-                if (event.y > this._canvas.getHeight() / 6.5 && event.y < this._canvas.getHeight() / 6.5 + this._canvas._buildingHammer6.height / 7) {
-                    if(this.money >= 90) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log("Level1Hammer clicked");
-                        this._canvas._buildingHammer6.width = this._canvas._buildingHammer6.width;
-                        this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
-                        this._canvas._buildingHammer6.src = this._zonnepaneel.src;
-                        this._gameItem.changeMoney(-90);
-                        //console.log(this.money);
-                    } else {
-                        alert(`Je hebt nog ${90 - this.money} munten nodig om de zonnepanelen te bouwen!`);
-                    }
-                }
-            }
+            if (this._canvas._buildingHammer6.src !== this._zonnepaneel.src) {
+                if (event.x > this._canvas.getWidth() / 1.32 && event.x < this._canvas.getWidth() / 1.32 + this._canvas._buildingHammer6.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 6.5 && event.y < this._canvas.getHeight() / 6.5 + this._canvas._buildingHammer6.height / 7) {
+                        if (this.money >= 90) {
+                            console.log(event.x);
+                            console.log(event.y);
+                            console.log("Level1Hammer clicked");
+                            this._canvas._buildingHammer6.width = this._canvas._buildingHammer6.width;
+                            this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
+                            this._canvas._buildingHammer6.src = this._zonnepaneel.src;
+                            this._gameItem.changeMoney(-90);
+                            //console.log(this.money);
+                        } else {
+                            alert(`Je hebt nog ${90 - this.money} munten nodig om de zonnepanelen te bouwen!`);
+                        };
+                    };
+                };
+            };
 
             //Button for HelpScreen on Level1
             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
@@ -339,54 +350,62 @@ class GameController {
          */
         if (this.currentScreen == `Level2`) {
             //Bouwplek trainstation
-            if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer7.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer7.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer7.width = this._canvas._buildingHammer7.width;
-                    this._canvas._buildingHammer7.height = this._canvas._buildingHammer7.height;
-                    this._canvas._buildingHammer7.src = this._aardwarmte.src;
-                    console.log(this.money);
+            if (this._canvas._buildingHammer7.src !== this._aardwarmte.src) {
+                if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer7.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer7.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level2Hammer clicked");
+                        this._canvas._buildingHammer7.width = this._canvas._buildingHammer7.width;
+                        this._canvas._buildingHammer7.height = this._canvas._buildingHammer7.height;
+                        this._canvas._buildingHammer7.src = this._aardwarmte.src;
+                        console.log(this.money);
+                    };
                 };
             };
 
             //Bouwplek leftroad
-            if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer8.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer8.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer8.width = this._canvas._buildingHammer8.width;
-                    this._canvas._buildingHammer8.height = this._canvas._buildingHammer8.height;
-                    this._canvas._buildingHammer8.src = this._aardwarmte.src;
-                    console.log(this.money);
+            if (this._canvas._buildingHammer8.src !== this._aardwarmte.src) {
+                if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer8.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer8.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level2Hammer clicked");
+                        this._canvas._buildingHammer8.width = this._canvas._buildingHammer8.width;
+                        this._canvas._buildingHammer8.height = this._canvas._buildingHammer8.height;
+                        this._canvas._buildingHammer8.src = this._aardwarmte.src;
+                        console.log(this.money);
+                    };
                 };
             };
 
             //bouwplek bottomrightcity
-            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer8.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer8.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer9.width = this._canvas._buildingHammer9.width;
-                    this._canvas._buildingHammer9.height = this._canvas._buildingHammer9.height;
-                    this._canvas._buildingHammer9.src = this._aardwarmte.src;
-                    console.log(this.money);
+            if (this._canvas._buildingHammer9.src !== this._aardwarmte.src) {
+                if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer8.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer8.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level2Hammer clicked");
+                        this._canvas._buildingHammer9.width = this._canvas._buildingHammer9.width;
+                        this._canvas._buildingHammer9.height = this._canvas._buildingHammer9.height;
+                        this._canvas._buildingHammer9.src = this._aardwarmte.src;
+                        console.log(this.money);
+                    };
                 };
             };
 
             //bouwplek park
-            if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer8.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3.9 && event.y < this._canvas.getHeight() / 3.9 + this._canvas._buildingHammer8.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level2Hammer clicked");
-                    this._canvas._buildingHammer10.width = this._canvas._buildingHammer10.width;
-                    this._canvas._buildingHammer10.height = this._canvas._buildingHammer10.height;
-                    this._canvas._buildingHammer10.src = this._aardwarmte.src;
-                    console.log(this.money);
+            if (this._canvas._buildingHammer10.src !== this._aardwarmte.src) {
+                if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer10.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3.9 && event.y < this._canvas.getHeight() / 3.9 + this._canvas._buildingHammer10.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level2Hammer clicked");
+                        this._canvas._buildingHammer10.width = this._canvas._buildingHammer10.width;
+                        this._canvas._buildingHammer10.height = this._canvas._buildingHammer10.height;
+                        this._canvas._buildingHammer10.src = this._aardwarmte.src;
+                        console.log(this.money);
+                    };
                 };
             };
 
@@ -420,41 +439,47 @@ class GameController {
         */
         if (this.currentScreen == `Level3`) {
             //Bouwplek park
-            if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer12.width / 7) {
-                if (event.y > this._canvas.getHeight() / 3.9 && event.y < this._canvas.getHeight() / 3.9 + this._canvas._buildingHammer12.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level3Hammer clicked");
-                    this._canvas._buildingHammer12.width = this._canvas._buildingHammer12.width;
-                    this._canvas._buildingHammer12.height = this._canvas._buildingHammer12.height;
-                    this._canvas._buildingHammer12.src = this._kolencentrale.src;
-                    console.log(this.money);
+            if (this._canvas._buildingHammer12.src !== this._kolencentrale.src) {
+                if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer12.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3.9 && event.y < this._canvas.getHeight() / 3.9 + this._canvas._buildingHammer12.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level3Hammer clicked");
+                        this._canvas._buildingHammer12.width = this._canvas._buildingHammer12.width;
+                        this._canvas._buildingHammer12.height = this._canvas._buildingHammer12.height;
+                        this._canvas._buildingHammer12.src = this._kolencentrale.src;
+                        console.log(this.money);
+                    };
                 };
             };
 
             //Bouwplek rightroad
-            if (event.x > this._canvas.getWidth() / 1.2 && event.x < this._canvas.getWidth() / 1.2 + this._canvas._buildingHammer13.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.8 && event.y < this._canvas.getHeight() / 1.8 + this._canvas._buildingHammer13.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level3Hammer clicked");
-                    this._canvas._buildingHammer13.width = this._canvas._buildingHammer13.width;
-                    this._canvas._buildingHammer13.height = this._canvas._buildingHammer13.height;
-                    this._canvas._buildingHammer13.src = this._windmolens.src;
-                    console.log(this.money);
+            if (this._canvas._buildingHammer13.src !== this._windmolens.src) {
+                if (event.x > this._canvas.getWidth() / 1.2 && event.x < this._canvas.getWidth() / 1.2 + this._canvas._buildingHammer13.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 1.8 && event.y < this._canvas.getHeight() / 1.8 + this._canvas._buildingHammer13.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level3Hammer clicked");
+                        this._canvas._buildingHammer13.width = this._canvas._buildingHammer13.width;
+                        this._canvas._buildingHammer13.height = this._canvas._buildingHammer13.height;
+                        this._canvas._buildingHammer13.src = this._windmolens.src;
+                        console.log(this.money);
+                    };
                 };
             };
 
             //Bouwplek mountainrange
-            if (event.x > this._canvas.getWidth() / 1.32 && event.x < this._canvas.getWidth() / 1.32 + this._canvas._buildingHammer14.width / 7) {
-                if (event.y > this._canvas.getHeight() / 6.5 && event.y < this._canvas.getHeight() / 6.5 + this._canvas._buildingHammer14.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level3Hammer clicked");
-                    this._canvas._buildingHammer14.width = this._canvas._buildingHammer14.width;
-                    this._canvas._buildingHammer14.height = this._canvas._buildingHammer14.height;
-                    this._canvas._buildingHammer14.src = this._aardwarmte.src;
-                    console.log(this.money);
+            if (this._canvas._buildingHammer14.src !== this._aardwarmte.src) {
+                if (event.x > this._canvas.getWidth() / 1.32 && event.x < this._canvas.getWidth() / 1.32 + this._canvas._buildingHammer14.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 6.5 && event.y < this._canvas.getHeight() / 6.5 + this._canvas._buildingHammer14.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level3Hammer clicked");
+                        this._canvas._buildingHammer14.width = this._canvas._buildingHammer14.width;
+                        this._canvas._buildingHammer14.height = this._canvas._buildingHammer14.height;
+                        this._canvas._buildingHammer14.src = this._aardwarmte.src;
+                        console.log(this.money);
+                    };
                 };
             };
 

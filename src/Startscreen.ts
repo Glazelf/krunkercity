@@ -4,7 +4,6 @@ class Startscreen {
     private _game: Game;
     private _canvas: Canvas;
     private _levelHelper: LevelHelper;
-    public _levelsUnlocked: number = 1;
     private userName: string;
     public _backgroundstart: HTMLImageElement;
     public _level1background: HTMLImageElement;
@@ -20,6 +19,7 @@ class Startscreen {
     public yPosLevel3Background: number;
     public _levelIntro1: HTMLImageElement;
     public _levelIntro2: HTMLImageElement;
+    public _levelsUnlocked: number = 1;
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;

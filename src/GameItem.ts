@@ -1,8 +1,10 @@
 class GameItem {
+    private _gameController: GameController;
     private co2: number = 1;
     private energy: number = 1;
     private money: number = 1;
-    private counter: number;
+    private counter: number = 0;
+    public buildings: number = 0
 
     public constructor(co2: number, energy: number, money: number) {
         this.co2 = co2;
@@ -25,18 +27,18 @@ class GameItem {
 
     public changeMoney(amount: number): void {
         this.money += amount;
-    }
+    };
 
-    public generateCurrencies(amountPerInterval: number) {
+    public generateCurrencies() {
         this.timer();
-        let trigger = Math.round(this.counter / 240);
-        if(trigger = 1) {
-            this.changeMoney(amountPerInterval);
-            this.counter -= 240;
-        }
-    }
+        if (this.counter=240){
+            this.counter = 0
+            this.buildings++
+        };
+        this._gameController.money + this.buildings * 0.2;
+    };
 
     public timer(): void {
         this.counter++;
-    }
+    };
 };
