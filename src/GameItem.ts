@@ -1,7 +1,7 @@
 class GameItem {
-    private co2: number;
-    private energy: number;
-    private money: number;
+    private co2: number = 1;
+    private energy: number = 1;
+    private money: number = 1;
 
     public constructor(co2: number, energy: number, money: number) {
         this.co2 = co2;
@@ -23,5 +23,5 @@ class GameItem {
 
     public changeMoney(amount: number): void {
         this.money += amount;
-    }
+    };
 };
