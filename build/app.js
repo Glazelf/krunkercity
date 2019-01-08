@@ -180,21 +180,22 @@ class GameController {
         }
         ;
         if (this.currentScreen == `Level2`) {
-            this._gameItem = new GameItem(20, 10, 80);
+            if (this._gameItem == null) {
+                this._gameItem = new GameItem(20, 10, 80);
+            }
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
         ;
         if (this.currentScreen == `Level3`) {
-            this._gameItem = new GameItem(10, 0, 70);
+            if (this._gameItem == null) {
+                this._gameItem = new GameItem(10, 0, 70);
+            }
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
-        ;
-        console.log(this.currentScreen);
-        console.log(this.co2, this.energy, this.money);
     }
     ;
     clickEventHandler() {
@@ -297,7 +298,10 @@ class GameController {
                         this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                         this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
-                        this.money -= 60;
+                        this._gameItem.changeMoney(-60);
+                        this.money = this._gameItem.getMoney();
+                        this.assignCurrencies();
+                        console.log(this._gameItem.getMoney());
                         console.log(this.money);
                     }
                     ;
@@ -593,6 +597,9 @@ class GameItem {
         return this.money;
     }
     ;
+    changeMoney(amount) {
+        this.money += amount;
+    }
 }
 ;
 class Helpscreen {
@@ -650,7 +657,6 @@ class LevelHelper {
             this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
         };
         this.drawLevel1 = (gameController) => {
-            console.log(gameController);
             this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
             this._canvas.writeHammerToCanvas(this._canvas._buildingHammer1, this._canvas.getWidth() / 6.5, this._canvas.getHeight() / 3);
             this._canvas.writeHammerToCanvas(this._canvas._buildingHammer2, this._canvas.getWidth() / 9, this._canvas.getHeight() / 1.75);
@@ -728,7 +734,7 @@ class LevelHelper {
         this._canvas.writeTextToCanvas(`${gameController.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60);
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
         this._canvas.writeTextToCanvas(`${gameController.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
-        console.log(`drawCurrencies is working`);
+        console.log(gameController.money);
     }
     ;
 }

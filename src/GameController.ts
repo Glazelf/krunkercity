@@ -46,7 +46,7 @@ class GameController {
         this._zonnepaneel.width = this._zonnepaneel.width * 1.2;
         this._zonnepaneel.height = this._zonnepaneel.height * 1.2;
     };
-
+//===================================================================================================================================================================================
     public assignCurrencies() {
         if (this.currentScreen == `Level1`) {
             if (this._gameItem == null) {
@@ -56,20 +56,24 @@ class GameController {
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         };
-        if (this.currentScreen == `Level2`) {
-            this._gameItem = new GameItem(20, 10, 80);
+        if(this.currentScreen == `Level2`) {
+            if(this._gameItem == null) {
+                this._gameItem = new GameItem(20, 10, 80);
+            }
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         };
-        if (this.currentScreen == `Level3`) {
+        if(this.currentScreen == `Level3`) {
+            if(this._gameItem == null) {
             this._gameItem = new GameItem(10, 0, 70);
+            }
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
-        };
-        console.log(this.currentScreen);
-        console.log(this.co2, this.energy, this.money);
+        }
+        // console.log(this.currentScreen);
+        // console.log(this.co2, this.energy, this.money);
         //console.log(this._gameItem.getCo2, this._gameItem.getEnergy(), this._gameItem.getMoney());
     };
 
@@ -191,7 +195,8 @@ class GameController {
          */
         if (this.currentScreen == `Level1`) {
             //Bouwplek trainstation
-            if (this.money > 60) {
+            //this.assignCurrencies();
+            if(this.money > 60) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
                         console.log(event.x);
@@ -200,7 +205,10 @@ class GameController {
                         this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                         this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
-                        this.money -= 60;
+                        this._gameItem.changeMoney(-60);
+                        this.money = this._gameItem.getMoney();
+                        this.assignCurrencies();
+                        console.log(this._gameItem.getMoney());
                         console.log(this.money);
                     };
                 };
