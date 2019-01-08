@@ -20,4 +20,8 @@ class GameItem {
     public getMoney(): number {
         return this.money;
     };
+
+    public changeMoney(amount: number): void {
+        this.money += amount;
+    }
 };
