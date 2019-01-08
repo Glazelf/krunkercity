@@ -596,6 +596,13 @@ class GameController {
             this.co2 = 1;
         };
 
+        //losing level 1
+        if(this.co2 >= 100 && this.currentScreen == `Level1` ){
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Verloren!</span>`;
+            this.co2 = 1;
+        };
+
         //*debug*
         //console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);
         //console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startscreen._level1background.height / 5);
