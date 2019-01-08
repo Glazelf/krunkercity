@@ -182,97 +182,98 @@ class GameController {
         if (this.currentScreen == `Level1`) {   
             //Bouwplek trainstation
             //this.assignCurrencies();
-            if(this.money > 60) {
+            if(this.money > 10) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
+                        console.log(event.x, event.y);
                         console.log("Level1Hammer clicked");
                         this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                         this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                         this._canvas._buildingHammer1.src = this._aardwarmte.src;
-                        this._gameItem.changeMoney(-60);
-                        this.money = this._gameItem.getMoney();
-                        this.assignCurrencies();
-                        console.log(this._gameItem.getMoney());
-                        console.log(this.money);
+                        this._gameItem.changeMoney(-10);
+                        //console.log(this._gameItem.getMoney());
+                        //console.log(this.money);
                     };
                 };
             }
 
             //Bouwplek leftroad
-            if(this.money > 60) {
+            if(this.money > 10) {
                 if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
                     if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
+                        console.log(event.x, event.y);
                         console.log("Level1Hammer clicked");
                         this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
                         this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
                         this._canvas._buildingHammer2.src = this._aardwarmte.src;
-                        this.money -= 60;
-                        console.log(this.money);
+                        this._gameItem.changeMoney(-10);
+                        //console.log(this.money);
                     };
                 };
             }
 
             //Bouwplek large forest
-            if(this.money > 80) {
+            if(this.money > 6) {
                 if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
+                        console.log(event.x, event.y);
                         console.log("Level1Hammer clicked");
                         this._canvas._buildingHammer3.width = this._canvas._buildingHammer3.width;
                         this._canvas._buildingHammer3.height = this._canvas._buildingHammer3.height;
                         this._canvas._buildingHammer3.src = this._kerncentrale.src;
-                        this.money -= 80;
-                        console.log(this.money);
+                        this._gameItem.changeMoney(-6);
+                        //console.log(this.money);
                     };
                 };
             }
 
             this._canvas.getWidth() / 1.9, this._canvas.getHeight() / 2.5
             //bottomright from last one
-            if (event.x > this._canvas.getWidth() / 1.9 && event.x < this._canvas.getWidth() / 1.9 + this._canvas._buildingHammer4.width / 7) {
-                if (event.y > this._canvas.getHeight() / 2.5 && event.y < this._canvas.getHeight() / 2.5 + this._canvas._buildingHammer4.height / 7) {
-
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer4.width = this._canvas._buildingHammer4.width;
-                    this._canvas._buildingHammer4.height = this._canvas._buildingHammer4.height;
-                    this._canvas._buildingHammer4.src = this._kolencentrale.src;
-                    console.log(this.money);
+            if(this.money > 5) {
+                if (event.x > this._canvas.getWidth() / 1.9 && event.x < this._canvas.getWidth() / 1.9 + this._canvas._buildingHammer4.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 2.5 && event.y < this._canvas.getHeight() / 2.5 + this._canvas._buildingHammer4.height / 7) {
+                        console.log(event.x, event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer4.width = this._canvas._buildingHammer4.width;
+                        this._canvas._buildingHammer4.height = this._canvas._buildingHammer4.height;
+                        this._canvas._buildingHammer4.src = this._kolencentrale.src;
+                        this._gameItem.changeMoney(-5);
+                        //console.log(this.money);
+                    };
                 };
-            };
+            }
 
             //bottomright from last one
-            if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer5.width / 7) {
-                if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer5.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer5.width = this._canvas._buildingHammer5.width;
-                    this._canvas._buildingHammer5.height = this._canvas._buildingHammer5.height;
-                    this._canvas._buildingHammer5.src = this._windmolens.src;
-                    console.log(this.money);
+            if(this.money > 3) {
+                if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer5.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer5.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer5.width = this._canvas._buildingHammer5.width;
+                        this._canvas._buildingHammer5.height = this._canvas._buildingHammer5.height;
+                        this._canvas._buildingHammer5.src = this._windmolens.src;
+                        this._gameItem.changeMoney(-3);
+                        //console.log(this.money);
+                    };
                 };
-            };
+            }
 
             //mountainrange
-            if (event.x > this._canvas.getWidth() / 1.32 && event.x < this._canvas.getWidth() / 1.32 + this._canvas._buildingHammer6.width / 7) {
-                if (event.y > this._canvas.getHeight() / 6.5 && event.y < this._canvas.getHeight() / 6.5 + this._canvas._buildingHammer6.height / 7) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log("Level1Hammer clicked");
-                    this._canvas._buildingHammer6.width = this._canvas._buildingHammer6.width;
-                    this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
-                    this._canvas._buildingHammer6.src = this._zonnepaneel.src;
-                    this.money = this.money - 50;
-                    console.log(this.money)
+            if(this.money > 4) {
+                if (event.x > this._canvas.getWidth() / 1.32 && event.x < this._canvas.getWidth() / 1.32 + this._canvas._buildingHammer6.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 6.5 && event.y < this._canvas.getHeight() / 6.5 + this._canvas._buildingHammer6.height / 7) {
+                        console.log(event.x);
+                        console.log(event.y);
+                        console.log("Level1Hammer clicked");
+                        this._canvas._buildingHammer6.width = this._canvas._buildingHammer6.width;
+                        this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
+                        this._canvas._buildingHammer6.src = this._zonnepaneel.src;
+                        this._gameItem.changeMoney(-4);
+                        console.log(this.money)
+                    };
                 };
-            };
+            }
 
             //Button for HelpScreen on Level1
             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
