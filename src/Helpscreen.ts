@@ -1,6 +1,4 @@
 class Helpscreen {
-    private readonly _canvasElement: HTMLCanvasElement;
-    private readonly _ctx: CanvasRenderingContext2D;
     private _canvas: Canvas;
     public _backgroundhelp: HTMLImageElement;
     public _munten: HTMLImageElement;
