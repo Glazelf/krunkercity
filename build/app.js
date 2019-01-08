@@ -134,25 +134,38 @@ function init() {
 ;
 class GameController {
     constructor(canvas) {
-        this.co2 = 0;
-        this.energy = 0;
-        this.money = 0;
+        this.co2 = 1;
+        this.energy = 1;
+        this.money = 1;
         this.currentScreen = 'StartScreen';
+        this._levelsUnlocked = 1;
         this._startscreen = new Startscreen(this._canvasElement);
         this._helpscreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
         this._aardwarmte = new Image();
         this._aardwarmte.src = "./assets/images/isometric_aardwarmte.png";
+        this._aardwarmte.width = this._aardwarmte.width * 3;
+        this._aardwarmte.height = this._aardwarmte.height * 3;
         this._kerncentrale = new Image();
         this._kerncentrale.src = "./assets/images/isometric_kerncentrale.png";
+        this._kerncentrale.width = this._kerncentrale.width * 1.2;
+        this._kerncentrale.height = this._kerncentrale.height * 1.2;
         this._kolencentrale = new Image();
         this._kolencentrale.src = "./assets/images/isometric_kolencentrale.png";
+        this._kolencentrale.width = this._kolencentrale.width * 1.2;
+        this._kolencentrale.height = this._kolencentrale.height * 1.2;
         this._stuwdam = new Image();
         this._stuwdam.src = "./assets/images/isometric_stuwdam.png";
+        this._stuwdam.width = this._stuwdam.width * 1.2;
+        this._stuwdam.height = this._stuwdam.height * 1.2;
         this._windmolens = new Image();
         this._windmolens.src = "./assets/images/isometric_windmolens.png";
-        this._zonnepaneel = new Image;
+        this._windmolens.width = this._windmolens.width * 1.2;
+        this._windmolens.height = this._windmolens.height * 1.2;
+        this._zonnepaneel = new Image();
         this._zonnepaneel.src = "./assets/images/isometric_zonnenpaneel.png";
+        this._zonnepaneel.width = this._zonnepaneel.width * 1.2;
+        this._zonnepaneel.height = this._zonnepaneel.height * 1.2;
     }
     ;
     assignCurrencies() {
@@ -160,10 +173,12 @@ class GameController {
             if (this._gameItem == null) {
                 this._gameItem = new GameItem(30, 20, 90);
             }
+            ;
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        ;
         if (this.currentScreen == `Level2`) {
             if (this._gameItem == null) {
                 this._gameItem = new GameItem(20, 10, 80);
@@ -172,6 +187,7 @@ class GameController {
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        ;
         if (this.currentScreen == `Level3`) {
             if (this._gameItem == null) {
                 this._gameItem = new GameItem(10, 0, 70);
@@ -181,6 +197,7 @@ class GameController {
             this.money = this._gameItem.getMoney();
         }
     }
+    ;
     clickEventHandler() {
         document.addEventListener('click', (event) => {
             this.onClick(event);
@@ -195,6 +212,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `LevelIntro1`;
+                    this.assignCurrencies();
                 }
                 ;
             }
@@ -353,7 +371,6 @@ class GameController {
                         this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
                         this._canvas._buildingHammer6.src = this._zonnepaneel.src;
                         this._gameItem.changeMoney(-4);
-                        console.log(this.money);
                     }
                     ;
                 }
@@ -529,6 +546,24 @@ class GameController {
                 ;
             }
             ;
+        }
+        ;
+        if (this.co2 == 0 && this.currentScreen == `Level1`) {
+            this._levelsUnlocked = 1;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+        }
+        ;
+        if (this.co2 == 0 && this.currentScreen == `Level2`) {
+            this._levelsUnlocked = 2;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+        }
+        ;
+        if (this.co2 == 0 && this.currentScreen == `Level3`) {
+            this._levelsUnlocked = 3;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
         }
         ;
         console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);

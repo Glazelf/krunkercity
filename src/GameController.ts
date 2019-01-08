@@ -5,9 +5,9 @@ class GameController {
     private readonly _canvasElement: Canvas;
     private _gameItem: GameItem;
     private _levelHelper: LevelHelper;
-    public co2: number = 0;
-    public energy: number = 0;
-    public money: number = 0;
+    public co2: number = 1;
+    public energy: number = 1;
+    public money: number = 1;
     public currentScreen: string = 'StartScreen';
     public _aardwarmte: HTMLImageElement;
     public _kerncentrale: HTMLImageElement;
@@ -15,6 +15,7 @@ class GameController {
     public _stuwdam: HTMLImageElement;
     public _windmolens: HTMLImageElement;
     public _zonnepaneel: HTMLImageElement;
+    public _levelsUnlocked: number = 1;
 
     public constructor(canvas: Canvas) {
         this._startscreen = new Startscreen(this._canvasElement);
@@ -22,27 +23,39 @@ class GameController {
         this._canvas = canvas;
         this._aardwarmte = new Image();
         this._aardwarmte.src = "./assets/images/isometric_aardwarmte.png";
+        this._aardwarmte.width = this._aardwarmte.width * 3;
+        this._aardwarmte.height = this._aardwarmte.height * 3;
         this._kerncentrale = new Image();
         this._kerncentrale.src = "./assets/images/isometric_kerncentrale.png";
+        this._kerncentrale.width = this._kerncentrale.width * 1.2;
+        this._kerncentrale.height = this._kerncentrale.height * 1.2;
         this._kolencentrale = new Image();
         this._kolencentrale.src = "./assets/images/isometric_kolencentrale.png";
+        this._kolencentrale.width = this._kolencentrale.width * 1.2;
+        this._kolencentrale.height = this._kolencentrale.height * 1.2;
         this._stuwdam = new Image();
         this._stuwdam.src = "./assets/images/isometric_stuwdam.png";
+        this._stuwdam.width = this._stuwdam.width * 1.2;
+        this._stuwdam.height = this._stuwdam.height * 1.2;
         this._windmolens = new Image();
         this._windmolens.src = "./assets/images/isometric_windmolens.png";
-        this._zonnepaneel = new Image;
+        this._windmolens.width = this._windmolens.width * 1.2;
+        this._windmolens.height = this._windmolens.height * 1.2;
+        this._zonnepaneel = new Image();
         this._zonnepaneel.src = "./assets/images/isometric_zonnenpaneel.png";
+        this._zonnepaneel.width = this._zonnepaneel.width * 1.2;
+        this._zonnepaneel.height = this._zonnepaneel.height * 1.2;
     };
 //===================================================================================================================================================================================
     public assignCurrencies() {
-        if(this.currentScreen == `Level1`) {
-            if(this._gameItem == null) {
+        if (this.currentScreen == `Level1`) {
+            if (this._gameItem == null) {
                 this._gameItem = new GameItem(30, 20, 90);
-            }
+            };
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
-        }
+        };
         if(this.currentScreen == `Level2`) {
             if(this._gameItem == null) {
                 this._gameItem = new GameItem(20, 10, 80);
@@ -50,7 +63,7 @@ class GameController {
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
-        }
+        };
         if(this.currentScreen == `Level3`) {
             if(this._gameItem == null) {
             this._gameItem = new GameItem(10, 0, 70);
@@ -62,7 +75,7 @@ class GameController {
         // console.log(this.currentScreen);
         // console.log(this.co2, this.energy, this.money);
         //console.log(this._gameItem.getCo2, this._gameItem.getEnergy(), this._gameItem.getMoney());
-    }
+    };
 
     public clickEventHandler(): void {
         document.addEventListener('click', (event: MouseEvent) => {
@@ -85,6 +98,7 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `LevelIntro1`;
+                    this.assignCurrencies()
                 };
             };
 
@@ -157,7 +171,7 @@ class GameController {
                     this.currentScreen = `Level2`;
                 };
             };
-        }; 
+        };
 
         /**
          * ClickHandlers for LevelIntro3
@@ -174,12 +188,12 @@ class GameController {
                     this.currentScreen = `Level3`;
                 };
             };
-        }; 
+        };
 
         /**
          * ClickHandlers for Level1
          */
-        if (this.currentScreen == `Level1`) {   
+        if (this.currentScreen == `Level1`) {
             //Bouwplek trainstation
             //this.assignCurrencies();
             if(this.money > 10) {
@@ -270,7 +284,7 @@ class GameController {
                         this._canvas._buildingHammer6.height = this._canvas._buildingHammer6.height;
                         this._canvas._buildingHammer6.src = this._zonnepaneel.src;
                         this._gameItem.changeMoney(-4);
-                        console.log(this.money)
+                        //console.log(this.money);
                     };
                 };
             }
@@ -425,7 +439,7 @@ class GameController {
             };
 
             //Bouwplek kanaal
-            
+
             //Button for HelpScreen on Level3
             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
                 if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
@@ -465,6 +479,27 @@ class GameController {
                     this.currentScreen = `StartScreen`;
                 };
             };
+        };
+
+        //winning level 1
+        if (this.co2 == 0 && this.currentScreen == `Level1`) {
+            this._levelsUnlocked = 1;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+        };
+
+        //winning level 2
+        if (this.co2 == 0 && this.currentScreen == `Level2`) {
+            this._levelsUnlocked = 2;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+        };
+
+        //winning level 3
+        if (this.co2 == 0 && this.currentScreen == `Level3`) {
+            this._levelsUnlocked = 3;
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
         };
 
         //*debug*
