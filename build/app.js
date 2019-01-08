@@ -138,7 +138,6 @@ class GameController {
         this.energy = 1;
         this.money = 1;
         this.currentScreen = 'StartScreen';
-        this._levelsUnlocked = 2;
         this._startscreen = new Startscreen(this._canvasElement);
         this._helpscreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
@@ -208,21 +207,18 @@ class GameController {
     ;
     onClick(event) {
         if (this.currentScreen == `StartScreen`) {
-            if (this._levelsUnlocked > 0) {
-                if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startscreen._level1background.width / 2) {
-                    if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level1background.height / 2) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log('Level 1 clicked');
-                        this.currentScreen = `LevelIntro1`;
-                        document.getElementById("wintext").innerHTML = ``;
-                    }
-                    ;
+            if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startscreen._level1background.width / 2) {
+                if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level1background.height / 2) {
+                    console.log(event.x);
+                    console.log(event.y);
+                    console.log('Level 1 clicked');
+                    this.currentScreen = `LevelIntro1`;
+                    document.getElementById("wintext").innerHTML = ``;
                 }
                 ;
             }
             ;
-            if (this._levelsUnlocked > 1) {
+            if (this._startscreen._levelsUnlocked > 1) {
                 if (event.x > this._canvas.getWidth() / 2.9 && event.x < this._canvas.getWidth() / 2.9 + this._startscreen._level2background.width / 2) {
                     if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level2background.height / 2) {
                         console.log(event.x);
@@ -236,7 +232,7 @@ class GameController {
                 ;
             }
             ;
-            if (this._levelsUnlocked > 2) {
+            if (this._startscreen._levelsUnlocked > 2) {
                 if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startscreen._level3background.width / 2) {
                     if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level3background.height / 2) {
                         console.log(event.x);
@@ -559,9 +555,6 @@ class GameController {
         if (this.currentScreen == `HelpScreen`) {
             if (event.x > this._canvas.getWidth() / 7.5 && event.x < this._canvas.getWidth() / 7.5 + this._helpscreen._menuKnop.width) {
                 if (event.y > this._canvas.getHeight() / 1.3 && event.y < this._canvas.getHeight() / 1.3 + this._helpscreen._menuKnop.height) {
-                    console.log(event.x);
-                    console.log(event.y);
-                    console.log('Return to StartScreen clicked');
                     this.currentScreen = `StartScreen`;
                 }
                 ;
@@ -570,7 +563,6 @@ class GameController {
         }
         ;
         if (this.co2 == 0 && this.currentScreen == `Level1`) {
-            this._levelsUnlocked = 2;
             this._startscreen._levelsUnlocked = 2;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
@@ -578,7 +570,6 @@ class GameController {
         }
         ;
         if (this.co2 == 0 && this.currentScreen == `Level2`) {
-            this._levelsUnlocked = 3;
             this._startscreen._levelsUnlocked = 3;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
@@ -591,8 +582,6 @@ class GameController {
             this.co2 = 1;
         }
         ;
-        console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);
-        console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startscreen._level1background.height / 5);
     }
     ;
 }
@@ -760,6 +749,7 @@ class LevelHelper {
         this._levelIntro3.src = "./assets/images/level3_uitleg.png";
         console.log(canvas);
     }
+    ;
     drawCurrencies(gameController = null) {
         gameController.assignCurrencies();
         this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth() / 500, this._canvas.getHeight() / 10, this._bolt.width / 8, this._bolt.height / 8);
@@ -775,7 +765,7 @@ class LevelHelper {
 ;
 class Startscreen {
     constructor(canvas) {
-        this._levelsUnlocked = 2;
+        this._levelsUnlocked = 1;
         this.draw = () => {
             this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
             this._canvas.writeTextToCanvas("Level 1", this._canvas.getWidth() / 6, this._canvas.getHeight() / 3.6, 40);

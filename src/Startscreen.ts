@@ -4,7 +4,7 @@ class Startscreen {
     private _game: Game;
     private _canvas: Canvas;
     private _levelHelper: LevelHelper;
-    public _levelsUnlocked: number = 2;
+    public _levelsUnlocked: number = 1;
     private userName: string;
     public _backgroundstart: HTMLImageElement;
     public _level1background: HTMLImageElement;
@@ -53,7 +53,7 @@ class Startscreen {
 
         //level2
         this._canvas.writeTextToCanvas("Level 2", this._canvas.getWidth() / 2, this._canvas.getHeight() / 3.6, 40);
-        if (this._levelsUnlocked > 1){
+        if (this._levelsUnlocked > 1) {
             this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
         } else {
             this._canvas.writeImageToCanvas(this._level2locked, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
@@ -61,7 +61,7 @@ class Startscreen {
 
         //level3
         this._canvas.writeTextToCanvas("Level 3", this._canvas.getWidth() / 1.23, this._canvas.getHeight() / 3.6, 40);
-        if(this._levelsUnlocked > 2){
+        if (this._levelsUnlocked > 2) {
             this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
         } else {
             this._canvas.writeImageToCanvas(this._level3locked, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
