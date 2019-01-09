@@ -215,7 +215,7 @@ class GameController {
         this.co2Spread += amount;
     }
     timer() {
-        setInterval(() => this.updateCurrencies(), 3000);
+        setInterval(() => this.updateCurrencies(), 1500);
         console.log(`tick`);
     }
     updateCurrencies() {
