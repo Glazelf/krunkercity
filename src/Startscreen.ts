@@ -14,7 +14,7 @@ class Startscreen {
     public yPosLevel3Background: number;
     public _levelIntro1: HTMLImageElement;
     public _levelIntro2: HTMLImageElement;
-    public _levelsUnlocked: number = 1;
+    public _levelsUnlocked: number = 3;
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
@@ -51,7 +51,7 @@ class Startscreen {
 
         //level2
         this._canvas.writeTextToCanvas("Level 2", this._canvas.getWidth() / 2, this._canvas.getHeight() / 3.6, 40);
-        if (this._levelsUnlocked == 2 || this._levelsUnlocked == 3) {
+        if (this._levelsUnlocked == 2|| this._levelsUnlocked == 3 ) {
             this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
         } else {
             this._canvas.writeImageToCanvas(this._level2locked, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);

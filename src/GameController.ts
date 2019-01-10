@@ -17,6 +17,8 @@ class GameController {
     public _stuwdam: HTMLImageElement;
     public _windmolens: HTMLImageElement;
     public _zonnepaneel: HTMLImageElement;
+    public _playtimeSeconds: number = 0;
+    public _playtimeMinutes: number = 0;
 
     public constructor(canvas: Canvas) {
         this._startscreen = new Startscreen(this._canvasElement);
@@ -47,7 +49,8 @@ class GameController {
         this._zonnepaneel.width = this._zonnepaneel.width * 1.2;
         this._zonnepaneel.height = this._zonnepaneel.height * 1.2;
         this.timer();
-    }
+        this.playtime();
+    };
 
     public assignCurrencies() {
         if (this.currentScreen == `Level1`) {
@@ -73,7 +76,7 @@ class GameController {
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
-        }
+        };
         // console.log(this.currentScreen);
         // console.log(this.co2, this.energy, this.money);
         // console.log(this._gameItem.getCo2, this._gameItem.getEnergy(), this._gameItem.getMoney());
@@ -81,27 +84,36 @@ class GameController {
 
     public increaseIncome(amount: number) {
         this.income += amount;
-    }
+    };
 
     public increaseEnergyGain(amount: number) {
         this.energyGain += amount;
-    }
+    };
 
     public increaseCo2Spread(amount: number) {
         this.co2Spread += amount;
-    }
+    };
 
     public timer() {
         setInterval(() => this.updateCurrencies(), 1500);
         console.log(`tick`);
-    }
+    };
+
+    public playtime() {
+            this._playtimeSeconds++;
+            if (Math.round(this._playtimeSeconds / 60) == 60) {
+                this._playtimeSeconds = 0;
+                this._playtimeMinutes++;
+            };
+            console.log(`${Math.round(this._playtimeMinutes / 60)} & ${Math.round(this._playtimeSeconds / 60)}`);
+    };
 
     public updateCurrencies() {
         console.log(`I am looping`);
         this._gameItem.changeMoney(this.income);
         this._gameItem.changeEnergy(this.energyGain);
         this._gameItem.changeCo2(this.co2Spread);
-    }
+    };
 
     public clickEventHandler(): void {
         document.addEventListener('click', (event: MouseEvent) => {
@@ -126,8 +138,9 @@ class GameController {
                     this.currentScreen = `LevelIntro1`;
                     document.getElementById("wintext").innerHTML = ``;
                     document.getElementById("title").innerHTML = ``;
-                }
-            }
+                    document.getElementById("playtime").innerHTML = ``;
+                };
+            };
 
             //Button for level 2 on StartScreen
             if (this._startscreen._levelsUnlocked > 1) {
@@ -189,9 +202,11 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
-                }
-            }
-        }
+                    this._playtimeSeconds = 0;
+                    this._playtimeMinutes = 0;
+                };
+            };
+        };
 
         /**
          * ClickHandlers for LevelIntro2
@@ -206,9 +221,11 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
-                }
-            }
-        }
+                    this._playtimeSeconds = 0;
+                    this._playtimeMinutes = 0;
+                };
+            };
+        };
 
         /**
          * ClickHandlers for LevelIntro3
@@ -223,16 +240,17 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 3 clicked');
                     this.currentScreen = `Level3`;
-                }
-            }
-        }
+                    this._playtimeSeconds = 0;
+                    this._playtimeMinutes = 0;
+                };
+            };
+        };
 
         /**
          * ClickHandlers for Level1
          */
         if (this.currentScreen == `Level1`) {
             //Bouwplek trainstation
-            //this.assignCurrencies();
             if (this._canvas._buildingHammer1.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
@@ -246,7 +264,7 @@ class GameController {
                             alert(`Je hebt een aardwarmtecentrale gebouwd!`);
                             this.income += 8;
                             this.energyGain += 3;
-                            this.co2Spread -= 0.5;
+                            this.co2Spread -= 1.5;
                         } else {
                             alert(`Je hebt nog ${150 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
                         }
@@ -254,6 +272,15 @@ class GameController {
                 }
             }
 
+            //Info knop trainstation
+            if (event.x > this._canvas.getWidth() / 6.35 && event.x < this._canvas.getWidth() / 6.35 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 2.45 && event.y < this._canvas.getHeight() / 2.45 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats aardwarmtecentrale: kost 150 munten, inkomsten 8 munten en 3 energie, verlaagt c02 met 1.5% `);
+                };
+            };
 
             //Bouwplek leftroad
             if (this._canvas._buildingHammer2.src !== this._aardwarmte.src) {
@@ -268,7 +295,7 @@ class GameController {
                             this._gameItem.changeMoney(-150);
                             this.income += 8;
                             this.energyGain += 3;
-                            this.co2Spread -= 0.5;
+                            this.co2Spread -= 1.5;
                             alert(`Je hebt een aardwarmtecentrale gebouwd!`);
                         } else {
                             alert(`Je hebt nog ${150 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
@@ -277,10 +304,20 @@ class GameController {
                 }
             }
 
+            //Info knop leftroad
+            if (event.x > this._canvas.getWidth() / 8.75 && event.x < this._canvas.getWidth() / 8.75 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 1.55 && event.y < this._canvas.getHeight() / 1.55 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats aardwarmtecentrale: kost 150 munten, inkomsten 8 munten en 3 energie, verlaagt c02 met 1.5% `);
+                };
+            };
+
             //Bouwplek large forest
             if (this._canvas._buildingHammer3.src !== this._kerncentrale.src) {
                 if (event.x > this._canvas.getWidth() / 2.5 && event.x < this._canvas.getWidth() / 2.5 + this._canvas._buildingHammer3.width / 7) {
-                    if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._canvas._buildingHammer3.height / 7) {
+                    if (event.y > this._canvas.getHeight() / 4 && event.y < this._canvas.getHeight() / 4 + this._canvas._buildingHammer3.height / 7) {
                         if (this.money >= 400) {
                             console.log(event.x, event.y);
                             console.log("Level1Hammer clicked");
@@ -300,10 +337,20 @@ class GameController {
                 }
             }
 
+            //Info knop large forest
+            if (event.x > this._canvas.getWidth() / 2.48 && event.x < this._canvas.getWidth() / 2.48 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 3.1 && event.y < this._canvas.getHeight() / 3.1 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats kerncentrale: kost 400 munten, inkomsten 12 munten en 8 energie, verhoogt c02 met 3.5% `);
+                };
+            };
+
             //bottomright from last one
             if (this._canvas._buildingHammer4.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 1.9 && event.x < this._canvas.getWidth() / 1.9 + this._canvas._buildingHammer4.width / 7) {
-                    if (event.y > this._canvas.getHeight() / 2.5 && event.y < this._canvas.getHeight() / 2.5 + this._canvas._buildingHammer4.height / 7) {
+                    if (event.y > this._canvas.getHeight() / 2.75 && event.y < this._canvas.getHeight() / 2.75 + this._canvas._buildingHammer4.height / 7) {
                         if (this.money >= 50) {
                             console.log(event.x, event.y);
                             console.log("Level1Hammer clicked");
@@ -322,10 +369,20 @@ class GameController {
                 }
             }
 
-            //bottomright from last one
+            //Info knop bottomright from last one
+            if (event.x > this._canvas.getWidth() / 1.885 && event.x < this._canvas.getWidth() / 1.885 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 2.3 && event.y < this._canvas.getHeight() / 2.3 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats kolentrale: kost 50 munten, inkomsten 6 munten en 2 energie, verhoogt c02 met 2% `);
+                };
+            };
+
+            //bottomright
             if (this._canvas._buildingHammer5.src !== this._windmolens.src) {
                 if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer5.width / 7) {
-                    if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer5.height / 7) {
+                    if (event.y > this._canvas.getHeight() / 2 && event.y < this._canvas.getHeight() / 2 + this._canvas._buildingHammer5.height / 7) {
                         if (this.money >= 80) {
                             console.log(event.x);
                             console.log(event.y);
@@ -337,13 +394,24 @@ class GameController {
                             alert(`Je hebt een windmolen gebouwd!`);
                             this.income += 4;
                             this.energyGain += 1;
-                            this.co2Spread -= 1.5;
+                            this.co2Spread -= 1;
                         } else {
                             alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
                         }
                     }
                 }
             }
+
+            //Info knop bottomright
+            if (event.x > this._canvas.getWidth() / 1.49 && event.x < this._canvas.getWidth() / 1.49 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats windmolen: kost 80 munten, inkomsten 4 munten en 1 energie, verlaagt c02 met 1% `);
+                };
+            };
+
 
             //mountainrange
             if (this._canvas._buildingHammer6.src !== this._zonnepaneel.src) {
@@ -367,6 +435,17 @@ class GameController {
                     }
                 }
             }
+
+            //Info knop mountainrange
+            if (event.x > this._canvas.getWidth() / 1.313 && event.x < this._canvas.getWidth() / 1.313 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 4.4 && event.y < this._canvas.getHeight() / 4.4 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats zonnepaneel: kost 90 munten, inkomsten 4 munten en 2 energie, verlaagt c02 met 1.5% `);
+                };
+            };
+
 
             //Button for HelpScreen on Level1
             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
@@ -401,61 +480,133 @@ class GameController {
             if (this._canvas._buildingHammer7.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer7.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer7.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log("Level2Hammer clicked");
-                        this._canvas._buildingHammer7.width = this._canvas._buildingHammer7.width;
-                        this._canvas._buildingHammer7.height = this._canvas._buildingHammer7.height;
-                        this._canvas._buildingHammer7.src = this._aardwarmte.src;
-                        console.log(this.money);
-                    }
-                }
-            }
+                        if (this.money >= 50) {
+                            console.log(event.x);
+                            console.log(event.y);
+                            console.log("Level2Hammer clicked");
+                            this._canvas._buildingHammer7.width = this._canvas._buildingHammer7.width;
+                            this._canvas._buildingHammer7.height = this._canvas._buildingHammer7.height;
+                            this._canvas._buildingHammer7.src = this._kolencentrale.src;
+                            this._gameItem.changeMoney(-50);
+                            alert(`Je hebt een kolencentrale gebouwd!`);
+                            this.income += 6;
+                            this.energyGain += 2;
+                            this.co2Spread += 2;
+                        } else {
+                            alert(`je hebt nog ${50 - this.money} munten nodig om de kolencentrale te bouwen!`);
+                        };
+                    };
+                };
+            };
+
+            //Info knop trainstation
+            if (event.x > this._canvas.getWidth() / 6.35 && event.x < this._canvas.getWidth() / 6.35 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 2.45 && event.y < this._canvas.getHeight() / 2.45 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats kolencentrale: kost 50 munten, inkomsten 6 munten en 2 energie, verhoogt c02 met 2% `);
+                };
+            };
 
             //Bouwplek leftroad
             if (this._canvas._buildingHammer8.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer8.width / 7) {
                     if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer8.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log("Level2Hammer clicked");
-                        this._canvas._buildingHammer8.width = this._canvas._buildingHammer8.width;
-                        this._canvas._buildingHammer8.height = this._canvas._buildingHammer8.height;
-                        this._canvas._buildingHammer8.src = this._aardwarmte.src;
-                        console.log(this.money);
-                    }
-                }
-            }
+                        if (this.money >= 150) {
+                            console.log(event.x);
+                            console.log(event.y);
+                            console.log("Level2Hammer clicked");
+                            this._canvas._buildingHammer8.width = this._canvas._buildingHammer8.width;
+                            this._canvas._buildingHammer8.height = this._canvas._buildingHammer8.height;
+                            this._canvas._buildingHammer8.src = this._aardwarmte.src;
+                            this._gameItem.changeMoney(-150);
+                            this.income += 8;
+                            this.energyGain += 3;
+                            this.co2Spread -= 1.5;
+                            alert(`Je hebt een aardwarmtecentrale gebouwd!`);
+                        } else {
+                            alert(`Je hebt nog ${150 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                        };
+                    };
+                };
+            };
 
-            //bouwplek bottomrightcity
+            //Info knop leftroad
+            if (event.x > this._canvas.getWidth() / 8.75 && event.x < this._canvas.getWidth() / 8.75 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 1.55 && event.y < this._canvas.getHeight() / 1.55 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats aardwarmtecentrale: kost 150 munten, inkomsten 8 munten en 3 energie, verlaagt c02 met 1.5% `);
+                };
+            };
+
+            //bouwplek bottomright
             if (this._canvas._buildingHammer9.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._canvas._buildingHammer8.width / 7) {
-                    if (event.y > this._canvas.getHeight() / 1.9 && event.y < this._canvas.getHeight() / 1.9 + this._canvas._buildingHammer8.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log("Level2Hammer clicked");
-                        this._canvas._buildingHammer9.width = this._canvas._buildingHammer9.width;
-                        this._canvas._buildingHammer9.height = this._canvas._buildingHammer9.height;
-                        this._canvas._buildingHammer9.src = this._aardwarmte.src;
-                        console.log(this.money);
-                    }
-                }
-            }
+                    if (event.y > this._canvas.getHeight() / 2 && event.y < this._canvas.getHeight() / 2 + this._canvas._buildingHammer8.height / 7) {
+                        if (this.money >= 90) {
+                            console.log(event.x);
+                            console.log(event.y);
+                            console.log("Level2Hammer clicked");
+                            this._canvas._buildingHammer9.width = this._canvas._buildingHammer9.width;
+                            this._canvas._buildingHammer9.height = this._canvas._buildingHammer9.height;
+                            this._canvas._buildingHammer9.src = this._zonnepaneel.src;
+                            this._gameItem.changeMoney(-90);
+                            alert(`Je hebt een zonnepaneel gebouwd!`);
+                            this.income += 4;
+                            this.energyGain += 2;
+                            this.co2Spread -= 1.5;
+                        } else {
+                            alert(`Je hebt nog ${90 - this.money} munten nodig om de zonnepanelen te bouwen!`);
+                        };
+                    };
+                };
+            };
+
+            //Info knop bottomright
+            if (event.x > this._canvas.getWidth() / 1.49 && event.x < this._canvas.getWidth() / 1.49 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats zonnepaneel: kost 90 munten, inkomsten 4 munten en 2 energie, verlaagt c02 met 1.5% `);
+                };
+            };
 
             //bouwplek park
             if (this._canvas._buildingHammer10.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer10.width / 7) {
-                    if (event.y > this._canvas.getHeight() / 3.9 && event.y < this._canvas.getHeight() / 3.9 + this._canvas._buildingHammer10.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log("Level2Hammer clicked");
-                        this._canvas._buildingHammer10.width = this._canvas._buildingHammer10.width;
-                        this._canvas._buildingHammer10.height = this._canvas._buildingHammer10.height;
-                        this._canvas._buildingHammer10.src = this._aardwarmte.src;
-                        console.log(this.money);
-                    }
-                }
-            }
+                    if (event.y > this._canvas.getHeight() / 4.2 && event.y < this._canvas.getHeight() / 4.2 + this._canvas._buildingHammer10.height / 7) {
+                        if (this.money >= 80) {
+                            console.log(event.x);
+                            console.log(event.y);
+                            console.log("Level2Hammer clicked");
+                            this._canvas._buildingHammer10.width = this._canvas._buildingHammer10.width;
+                            this._canvas._buildingHammer10.height = this._canvas._buildingHammer10.height;
+                            this._canvas._buildingHammer10.src = this._windmolens.src;
+                            this._gameItem.changeMoney(-80);
+                            alert(`Je hebt een windmolen gebouwd!`);
+                            this.income += 4;
+                            this.energyGain += 1;
+                            this.co2Spread -= 1;
+                        } else {
+                            alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
+                        };
+                    };
+                };
+            };
+
+            //Info knop park
+            if (event.x > this._canvas.getWidth() / 2.42 && event.x < this._canvas.getWidth() / 2.42 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 3.2 && event.y < this._canvas.getHeight() / 3.2 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats windmolen: kost 80 munten, inkomsten 4 munten en 1 energie, verlaagt c02 met 1% `);
+                };
+            };
 
             //Button for HelpScreen on Level2
             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
@@ -489,47 +640,101 @@ class GameController {
             //Bouwplek park
             if (this._canvas._buildingHammer12.src !== this._kolencentrale.src) {
                 if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer12.width / 7) {
-                    if (event.y > this._canvas.getHeight() / 3.9 && event.y < this._canvas.getHeight() / 3.9 + this._canvas._buildingHammer12.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log("Level3Hammer clicked");
-                        this._canvas._buildingHammer12.width = this._canvas._buildingHammer12.width;
-                        this._canvas._buildingHammer12.height = this._canvas._buildingHammer12.height;
-                        this._canvas._buildingHammer12.src = this._kolencentrale.src;
-                        console.log(this.money);
-                    }
-                }
-            }
+                    if (event.y > this._canvas.getHeight() / 4.2 && event.y < this._canvas.getHeight() / 4.2 + this._canvas._buildingHammer12.height / 7) {
+                        if (this.money >= 50) {
+                            console.log(event.x);
+                            console.log(event.y);
+                            console.log("Level3Hammer clicked");
+                            this._canvas._buildingHammer12.width = this._canvas._buildingHammer12.width;
+                            this._canvas._buildingHammer12.height = this._canvas._buildingHammer12.height;
+                            this._canvas._buildingHammer12.src = this._kolencentrale.src;
+                            this._gameItem.changeMoney(-50);
+                            alert(`Je hebt een kolencentrale gebouwd!`);
+                            this.income += 6;
+                            this.energyGain += 2;
+                            this.co2Spread += 2;
+                        } else {
+                            alert(`je hebt nog ${50 - this.money} munten nodig om de kolencentrale te bouwen!`);
+                        };
+                    };
+                };
+            };
+
+            //Info knop park
+            if (event.x > this._canvas.getWidth() / 2.42 && event.x < this._canvas.getWidth() / 2.42 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 3.2 && event.y < this._canvas.getHeight() / 3.2 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats kolencentrale: kost 50 munten, inkomsten 6 munten en 2 energie, verhoogt c02 met 2% `);
+                };
+            };
 
             //Bouwplek rightroad
             if (this._canvas._buildingHammer13.src !== this._windmolens.src) {
                 if (event.x > this._canvas.getWidth() / 1.2 && event.x < this._canvas.getWidth() / 1.2 + this._canvas._buildingHammer13.width / 7) {
                     if (event.y > this._canvas.getHeight() / 1.8 && event.y < this._canvas.getHeight() / 1.8 + this._canvas._buildingHammer13.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log("Level3Hammer clicked");
-                        this._canvas._buildingHammer13.width = this._canvas._buildingHammer13.width;
-                        this._canvas._buildingHammer13.height = this._canvas._buildingHammer13.height;
-                        this._canvas._buildingHammer13.src = this._windmolens.src;
-                        console.log(this.money);
-                    }
-                }
-            }
+                        if (this.money >= 80) {
+                            console.log(event.x);
+                            console.log(event.y);
+                            console.log("Level3Hammer clicked");
+                            this._canvas._buildingHammer13.width = this._canvas._buildingHammer13.width;
+                            this._canvas._buildingHammer13.height = this._canvas._buildingHammer13.height;
+                            this._canvas._buildingHammer13.src = this._windmolens.src;
+                            this._gameItem.changeMoney(-80);
+                            alert(`Je hebt een windmolen gebouwd!`);
+                            this.income += 4;
+                            this.energyGain += 1;
+                            this.co2Spread -= 1;
+                        } else {
+                            alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
+                        };
+                    };
+                };
+            };
+
+            //Info knop rightroad
+            if (event.x > this._canvas.getWidth() / 1.193 && event.x < this._canvas.getWidth() / 1.193 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 1.58 && event.y < this._canvas.getHeight() / 1.58 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats windmolen: kost 80 munten, inkomsten 4 munten en 1 energie, verlaagt c02 met 1% `);
+                };
+            };
 
             //Bouwplek mountainrange
             if (this._canvas._buildingHammer14.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 1.32 && event.x < this._canvas.getWidth() / 1.32 + this._canvas._buildingHammer14.width / 7) {
                     if (event.y > this._canvas.getHeight() / 6.5 && event.y < this._canvas.getHeight() / 6.5 + this._canvas._buildingHammer14.height / 7) {
-                        console.log(event.x);
-                        console.log(event.y);
-                        console.log("Level3Hammer clicked");
-                        this._canvas._buildingHammer14.width = this._canvas._buildingHammer14.width;
-                        this._canvas._buildingHammer14.height = this._canvas._buildingHammer14.height;
-                        this._canvas._buildingHammer14.src = this._aardwarmte.src;
-                        console.log(this.money);
-                    }
-                }
-            }
+                        if (this.money >= 150) {
+                            console.log(event.x);
+                            console.log(event.y);
+                            console.log("Level3Hammer clicked");
+                            this._canvas._buildingHammer14.width = this._canvas._buildingHammer14.width;
+                            this._canvas._buildingHammer14.height = this._canvas._buildingHammer14.height;
+                            this._canvas._buildingHammer14.src = this._aardwarmte.src;
+                            this._gameItem.changeMoney(-150);
+                            this.income += 8;
+                            this.energyGain += 3;
+                            this.co2Spread -= 1.5;
+                            alert(`Je hebt een aardwarmtecentrale gebouwd!`);
+                        } else {
+                            alert(`Je hebt nog ${150 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                        };
+                    };
+                };
+            };
+
+            //Info knop mountainrange
+            if (event.x > this._canvas.getWidth() / 1.313 && event.x < this._canvas.getWidth() / 1.313 + this._canvas._infoButton.width / 10) {
+                if (event.y > this._canvas.getHeight() / 4.4 && event.y < this._canvas.getHeight() / 4.4 + this._canvas._infoButton.height / 10) {
+                    //*debug*
+                    console.log(event.x);
+                    console.log(event.y);
+                    alert(`Bouwplaats aardwarmtecentrale: kost 150 munten, inkomsten 8 munten en 3 energie, verlaagt c02 met 1.5% `);
+                };
+            };
 
             //Bouwplek kanaal
 
@@ -574,10 +779,10 @@ class GameController {
             }
         }
 
-       //winning level 1
+        //winning level 1
         if (this.co2 <= 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
             console.log(this._startscreen._levelsUnlocked)
-            
+
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this._startscreen._levelsUnlocked = 2;
@@ -607,7 +812,21 @@ class GameController {
         }
 
         //losing level 1
-        if(this.co2 >= 100 && this.currentScreen == `Level1` ){
+        if (this.co2 >= 100 && this.currentScreen == `Level1`) {
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Verloren!</span>`;
+            this.co2 = 1;
+        };
+
+        //losing level 2
+        if (this.co2 >= 100 && this.currentScreen == `Level2`) {
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Verloren!</span>`;
+            this.co2 = 1;
+        };
+
+        //losing level 3
+        if (this.co2 >= 100 && this.currentScreen == `Level3`) {
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Verloren!</span>`;
             this._gameItem.setCo2(1);
