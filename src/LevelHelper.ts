@@ -1,10 +1,6 @@
 class LevelHelper {
-    private readonly _canvasElement: HTMLCanvasElement;
-    private readonly _ctx: CanvasRenderingContext2D;
-    private readonly _gameController: GameController;
     private readonly _startscreen: Startscreen;
     private _canvas: Canvas;
-    private production: number;
     private _level1background: HTMLImageElement;
     private _level2background: HTMLImageElement;
     private _level3background: HTMLImageElement;
@@ -175,7 +171,7 @@ class LevelHelper {
         //money
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
         this._canvas.writeTextToCanvas(`${gameController.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
-        console.log(gameController.money);
+        //console.log(gameController.money);
 
         //*debug*
         //console.log(`drawCurrencies is working`);

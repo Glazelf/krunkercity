@@ -1,6 +1,5 @@
 class Game {
     private _canvasElement: HTMLCanvasElement;
-    private readonly _ctx: CanvasRenderingContext2D;
     private _canvas: Canvas;
     private _startscreen: Startscreen;
     private _helpscreen: Helpscreen;

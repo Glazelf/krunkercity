@@ -1,7 +1,6 @@
 class Canvas {
     private readonly _canvasElement: HTMLCanvasElement;
     private readonly _ctx: CanvasRenderingContext2D;
-    private _levelHelper: LevelHelper;
     public _buildingHammer1: HTMLImageElement;
     public _buildingHammer2: HTMLImageElement;
     public _buildingHammer3: HTMLImageElement;
@@ -79,7 +78,7 @@ class Canvas {
         color: string = "black",
         alignment: CanvasTextAlign = "center"
     ) {
-        this._ctx.font = `${fontSize}px Minecraft`;
+        this._ctx.font = `${fontSize}px Helvetica`;
         this._ctx.fillStyle = color;
         this._ctx.textAlign = alignment;
         this._ctx.fillText(text, xCoordinate, yCoordinate);

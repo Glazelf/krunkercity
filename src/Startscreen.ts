@@ -1,10 +1,5 @@
 class Startscreen {
-    private readonly _canvasElement: HTMLCanvasElement;
-    private readonly _ctx: CanvasRenderingContext2D;
-    private _game: Game;
     private _canvas: Canvas;
-    private _levelHelper: LevelHelper;
-    private userName: string;
     public _backgroundstart: HTMLImageElement;
     public _level1background: HTMLImageElement;
     public _level2background: HTMLImageElement;
@@ -47,13 +42,16 @@ class Startscreen {
         //background
         this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
 
+        //title
+        // document.getElementById("title").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-50%;color:black;font-size:96px'>Krunker City</span>`;
+
         //level1
         this._canvas.writeTextToCanvas("Level 1", this._canvas.getWidth() / 6, this._canvas.getHeight() / 3.6, 40);
         this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 40, this._canvas.getHeight() / 3.5, this._level1background.width / 2, this._level1background.height / 2);
 
         //level2
         this._canvas.writeTextToCanvas("Level 2", this._canvas.getWidth() / 2, this._canvas.getHeight() / 3.6, 40);
-        if (this._levelsUnlocked > 1) {
+        if (this._levelsUnlocked == 2 || this._levelsUnlocked == 3) {
             this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
         } else {
             this._canvas.writeImageToCanvas(this._level2locked, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
@@ -61,7 +59,7 @@ class Startscreen {
 
         //level3
         this._canvas.writeTextToCanvas("Level 3", this._canvas.getWidth() / 1.23, this._canvas.getHeight() / 3.6, 40);
-        if (this._levelsUnlocked > 2) {
+        if (this._levelsUnlocked == 3) {
             this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
         } else {
             this._canvas.writeImageToCanvas(this._level3locked, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
