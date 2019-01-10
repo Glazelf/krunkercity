@@ -386,8 +386,8 @@ class GameController {
                             this._gameItem.changeMoney(-80);
                             alert(`Je hebt een windmolen gebouwd!`);
                             this.income += 4;
-                            this.energyGain += 50;
-                            this.co2Spread -= 50;
+                            this.energyGain += 1;
+                            this.co2Spread -= 1;
                         } else {
                             alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
                         };
