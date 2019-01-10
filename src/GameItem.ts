@@ -8,19 +8,19 @@ class GameItem {
         this.co2 = co2;
         this.energy = energy;
         this.money = money;
-    };
+    }
 
     public getCo2(): number {
         return this.co2;
-    };
+    }
 
     public getEnergy(): number {
         return this.energy;
-    };
+    }
 
     public getMoney(): number {
         return this.money;
-    };
+    }
 
     public changeMoney(amount: number): void {
         this.money += amount;
@@ -33,4 +33,4 @@ class GameItem {
     public changeCo2(amount: number): void {
         this.co2 += amount;
     }
-};
+}

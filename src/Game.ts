@@ -18,54 +18,54 @@ class Game {
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
         // this.music();
-    };
+    }
 
     public drawStart = () => {
         //console.log(this._canvas)
         if (this._gameController.currentScreen == 'StartScreen') {
             this._startscreen.draw();
-        };
+        }
         if (this._gameController.currentScreen == 'LevelIntro1') {
             this._levelHelper.drawLevelIntro1(this._gameController);
-        };
+        }
         if (this._gameController.currentScreen == 'Level1') {
             this._levelHelper.drawLevel1(this._gameController);
-        };
+        }
         if (this._gameController.currentScreen == 'LevelIntro2') {
             this._levelHelper.drawLevelIntro2(this._gameController);
-        };
+        }
         if (this._gameController.currentScreen == 'Level2') {
             this._levelHelper.drawLevel2(this._gameController);
-        };
+        }
         if (this._gameController.currentScreen == 'LevelIntro3') {
             this._levelHelper.drawLevelIntro3(this._gameController);
-        };
+        }
         if (this._gameController.currentScreen == 'Level3') {
             this._levelHelper.drawLevel3(this._gameController);
-        };
+        }
         if (this._gameController.currentScreen == 'HelpScreen') {
             this._helpscreen.drawHelp();
-        };
-    };
+        }
+    }
 
     public drawHelp = () => {
         console.log(this._canvas)
         this._helpscreen.drawHelp();
-    };
+    }
 
     // public drawLevel = () => {
     // this._levelHelper.drawLevel1();
     //this._levelHelper.drawLevel2();
     //this._levelHelper.drawLevel3();
-    // };
+    // }
 
     // public music() {
     //     if (this.playPromise !== null){
     //     this.Music.loop = true;
     //     this.Music.play();
-    //     };
-    // };
-};
+    //     }
+    // }
+}
 
 window.addEventListener('load', init);
 function init(): void {
@@ -73,4 +73,4 @@ function init(): void {
     window.setInterval(KrunkerCity.drawStart, 1000 / 60);
     //window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
     //window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
-};
+}

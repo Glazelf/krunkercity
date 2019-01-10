@@ -61,13 +61,13 @@ class Canvas {
         this._menuKnop.src = "./assets/images/menu_knop.png";
         this._nextButton = new Image();
         this._nextButton.src = "./assets/images/next_button.png";
-    };
+    }
 
     //clearing the screen
     public clearScreen(): void {
         // clear the screen
         this._ctx.clearRect(0, 0, this._canvasElement.width, this._canvasElement.height);
-    };
+    }
 
     //drawing text
     public writeTextToCanvas(
@@ -82,7 +82,7 @@ class Canvas {
         this._ctx.fillStyle = color;
         this._ctx.textAlign = alignment;
         this._ctx.fillText(text, xCoordinate, yCoordinate);
-    };
+    }
 
     //drawing images
     public writeImageToCanvas(
@@ -93,7 +93,7 @@ class Canvas {
         height: number,
     ) {
         this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
-    };
+    }
 
     //drawing hammers faster
     public writeHammerToCanvas(
@@ -104,20 +104,20 @@ class Canvas {
         height: number = this._buildingHammer1.height / 7,
     ) {
         this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
-    };
+    }
 
     //rng
     public randomNumber(min: number, max: number): number {
         return Math.round(Math.random() * (max - min) + min);
-    };
+    }
 
     //canvas width const
     public getWidth(): number {
         return this._canvasElement.width
-    };
+    }
 
     //canvas height const
     public getHeight(): number {
         return this._canvasElement.height
-    };
-};
+    }
+}
