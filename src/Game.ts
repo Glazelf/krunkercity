@@ -16,8 +16,8 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
-        //this.music();
-    };
+        // this.music();
+    }
 
     public drawStart = () => {
         //console.log(this._canvas)
@@ -62,7 +62,7 @@ class Game {
     public drawHelp = () => {
         console.log(this._canvas)
         this._helpscreen.drawHelp();
-    };
+    }
 
     public drawTimer(){
         document.getElementById("playtime").innerHTML = `<span style=font-family:helvetica;float:left;position:relative;margin-left:32%;margin-top:-5%;color:black;font-size:48px>Je hebt al ${Math.floor(this._gameController._playtimeMinutes/60/60)} minuten en ${Math.round(this._gameController._playtimeSeconds/60)} seconden gespeeld!</span>`
@@ -75,15 +75,14 @@ class Game {
     // this._levelHelper.drawLevel1();
     //this._levelHelper.drawLevel2();
     //this._levelHelper.drawLevel3();
-    // };
+    // }
 
-    public music() {
-        if (this.playPromise !== null){
-        this.Music.loop = true;
-        this.Music.play();
-        };
-    };
-};
+    //     if (this.playPromise !== null){
+    //     this.Music.loop = true;
+    //     this.Music.play();
+    //     }
+    // }
+}
 
 window.addEventListener('load', init);
 function init(): void {
@@ -91,4 +90,4 @@ function init(): void {
     window.setInterval(KrunkerCity.drawStart, 1000 / 60);
     //window.setInterval(KrunkerCity.drawHelp, 1000 / 60);
     //window.setInterval(KrunkerCity.drawLevel, 1000 / 60);
-};
+}

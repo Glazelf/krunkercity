@@ -35,7 +35,7 @@ class Startscreen {
         this._levelIntro2 = new Image();
         this._levelIntro2.src = "./assets/images/level2_uitleg.png";
         //console.log(canvas);
-    };
+    }
 
     public draw = () => {
         // this._canvas.writeImageToCanvas(this._level1background, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
@@ -55,7 +55,7 @@ class Startscreen {
             this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
         } else if (this._levelsUnlocked == 1) {
             this._canvas.writeImageToCanvas(this._level2locked, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
-        };
+        }
 
         //level3
         this._canvas.writeTextToCanvas("Level 3", this._canvas.getWidth() / 1.23, this._canvas.getHeight() / 3.6, 40);
@@ -63,10 +63,10 @@ class Startscreen {
             this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
         } else if (this._levelsUnlocked == 1 || this._levelsUnlocked == 2) {
             this._canvas.writeImageToCanvas(this._level3locked, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
-        };
+        }
 
         //helpbutton
         this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
         this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
-    };
-};
+    }
+}

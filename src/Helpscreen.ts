@@ -39,7 +39,7 @@ class Helpscreen {
         this._kolenCentrale.src = "./assets/images/kolencentrale_uitleg.png";
         this._menuKnop = new Image();
         this._menuKnop.src = "./assets/images/menu_knop.png";
-    };
+    }
 
     public drawHelp() {
         //background image
@@ -88,5 +88,5 @@ class Helpscreen {
         //menuKnop image
         this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 7.5, this._canvas.getHeight() / 1.3,
             this._menuKnop.width / 3.2, this._menuKnop.height / 3.2)
-    };
-};
+    }
+}
