@@ -21,6 +21,21 @@ class GameItem {
         return this.money;
     }
 
+    public setCo2(amount: number): number {
+        this.co2 = amount;
+        return this.co2;
+    }
+
+    public setEnergy(amount: number): number {
+        this.energy = amount;
+        return this.energy;
+    }
+
+    public setMoney(amount: number): number {
+        this.money = amount;
+        return this.money;
+    }
+
     public changeMoney(amount: number): void {
         this.money += amount;
     }
