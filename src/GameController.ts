@@ -101,10 +101,7 @@ class GameController {
 
     public playtime() {
             this._playtimeSeconds++;
-            if (Math.round(this._playtimeSeconds / 60) == 60) {
-                this._playtimeSeconds = 0;
-                this._playtimeMinutes++;
-            };
+            this._playtimeMinutes++;
             console.log(`${Math.round(this._playtimeMinutes / 60)} & ${Math.round(this._playtimeSeconds / 60)}`);
     };
 

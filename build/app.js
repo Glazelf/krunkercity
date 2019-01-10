@@ -140,7 +140,11 @@ class Game {
     }
     ;
     drawTimer() {
-        document.getElementById("playtime").innerHTML = `<span style=font-family:helvetica;float:left;position:relative;margin-left:32%;margin-top:-5%;color:black;font-size:48px>Je hebt al ${Math.round(this._gameController._playtimeMinutes / 60)} minuten en ${Math.round(this._gameController._playtimeSeconds / 60)} seconden gespeeld!</span>`;
+        document.getElementById("playtime").innerHTML = `<span style=font-family:helvetica;float:left;position:relative;margin-left:32%;margin-top:-5%;color:black;font-size:48px>Je hebt al ${Math.floor(this._gameController._playtimeMinutes / 60 / 60)} minuten en ${Math.round(this._gameController._playtimeSeconds / 60)} seconden gespeeld!</span>`;
+        if (Math.round(this._gameController._playtimeSeconds / 60) == 60) {
+            this._gameController._playtimeSeconds = 0;
+        }
+        ;
     }
     ;
     music() {
@@ -253,11 +257,7 @@ class GameController {
     ;
     playtime() {
         this._playtimeSeconds++;
-        if (Math.round(this._playtimeSeconds / 60) == 60) {
-            this._playtimeSeconds = 0;
-            this._playtimeMinutes++;
-        }
-        ;
+        this._playtimeMinutes++;
         console.log(`${Math.round(this._playtimeMinutes / 60)} & ${Math.round(this._playtimeSeconds / 60)}`);
     }
     ;
@@ -1143,7 +1143,7 @@ class LevelHelper {
 ;
 class Startscreen {
     constructor(canvas) {
-        this._levelsUnlocked = 3;
+        this._levelsUnlocked = 1;
         this.draw = () => {
             this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
             document.getElementById("title").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-50%;color:black;font-size:96px'>Krunker City</span>`;
@@ -1153,7 +1153,7 @@ class Startscreen {
             if (this._levelsUnlocked == 2 || this._levelsUnlocked == 3) {
                 this._canvas.writeImageToCanvas(this._level2background, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
             }
-            else {
+            else if (this._levelsUnlocked == 1) {
                 this._canvas.writeImageToCanvas(this._level2locked, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
             }
             ;
@@ -1161,7 +1161,7 @@ class Startscreen {
             if (this._levelsUnlocked == 3) {
                 this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
             }
-            else {
+            else if (this._levelsUnlocked == 1 || this._levelsUnlocked == 2) {
                 this._canvas.writeImageToCanvas(this._level3locked, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
             }
             ;
