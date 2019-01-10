@@ -211,6 +211,7 @@ class GameController {
                     console.log('Level 1 clicked');
                     this.currentScreen = `LevelIntro1`;
                     document.getElementById("wintext").innerHTML = ``;
+                    document.getElementById("title").innerHTML = ``;
                 }
             }
             if (this._startscreen._levelsUnlocked > 1) {
@@ -221,6 +222,7 @@ class GameController {
                         console.log('Level 2 clicked');
                         this.currentScreen = `LevelIntro2`;
                         document.getElementById("wintext").innerHTML = ``;
+                        document.getElementById("title").innerHTML = ``;
                     }
                 }
             }
@@ -232,6 +234,7 @@ class GameController {
                         console.log('Level 3 clicked');
                         this.currentScreen = `LevelIntro3`;
                         document.getElementById("wintext").innerHTML = ``;
+                        document.getElementById("title").innerHTML = ``;
                     }
                 }
             }
@@ -242,6 +245,7 @@ class GameController {
                     console.log('HelpScreen clicked');
                     this.currentScreen = `HelpScreen`;
                     document.getElementById("wintext").innerHTML = ``;
+                    document.getElementById("title").innerHTML = ``;
                 }
             }
         }
@@ -745,6 +749,7 @@ class Startscreen {
         this._levelsUnlocked = 1;
         this.draw = () => {
             this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
+            document.getElementById("title").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-50%;color:black;font-size:96px'>Krunker City</span>`;
             this._canvas.writeTextToCanvas("Level 1", this._canvas.getWidth() / 6, this._canvas.getHeight() / 3.6, 40);
             this._canvas.writeImageToCanvas(this._level1background, this._canvas.getWidth() / 40, this._canvas.getHeight() / 3.5, this._level1background.width / 2, this._level1background.height / 2);
             this._canvas.writeTextToCanvas("Level 2", this._canvas.getWidth() / 2, this._canvas.getHeight() / 3.6, 40);
