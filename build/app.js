@@ -666,7 +666,7 @@ class GameController {
             ;
         }
         ;
-        if (this.co2 == 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
+        if (this.co2 <= 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
             console.log(this._startscreen._levelsUnlocked);
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
@@ -675,14 +675,14 @@ class GameController {
             console.log(this._startscreen._levelsUnlocked);
         }
         ;
-        if (this.co2 == 0 && this.energy >= 200 && this.currentScreen == `Level2`) {
+        if (this.co2 <= 0 && this.energy >= 200 && this.currentScreen == `Level2`) {
             this._startscreen._levelsUnlocked = 3;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
         }
         ;
-        if (this.co2 == 0 && this.energy >= 750 && this.currentScreen == `Level3`) {
+        if (this.co2 <= 0 && this.energy >= 750 && this.currentScreen == `Level3`) {
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
