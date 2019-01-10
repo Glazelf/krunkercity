@@ -17,6 +17,8 @@ class GameController {
     public _stuwdam: HTMLImageElement;
     public _windmolens: HTMLImageElement;
     public _zonnepaneel: HTMLImageElement;
+    public _playtimeSeconds: number = 0;
+    public _playtimeMinutes: number = 0;
 
     public constructor(canvas: Canvas) {
         this._startscreen = new Startscreen(this._canvasElement);
@@ -47,6 +49,7 @@ class GameController {
         this._zonnepaneel.width = this._zonnepaneel.width * 1.2;
         this._zonnepaneel.height = this._zonnepaneel.height * 1.2;
         this.timer();
+        this.playtime();
     };
 
     public assignCurrencies() {
@@ -73,7 +76,7 @@ class GameController {
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
-        }
+        };
         // console.log(this.currentScreen);
         // console.log(this.co2, this.energy, this.money);
         // console.log(this._gameItem.getCo2, this._gameItem.getEnergy(), this._gameItem.getMoney());
@@ -81,27 +84,36 @@ class GameController {
 
     public increaseIncome(amount: number) {
         this.income += amount;
-    }
+    };
 
     public increaseEnergyGain(amount: number) {
         this.energyGain += amount;
-    }
+    };
 
     public increaseCo2Spread(amount: number) {
         this.co2Spread += amount;
-    }
+    };
 
     public timer() {
         setInterval(() => this.updateCurrencies(), 1500);
         console.log(`tick`);
-    }
+    };
+
+    public playtime() {
+            this._playtimeSeconds++;
+            if (Math.round(this._playtimeSeconds / 60) == 60) {
+                this._playtimeSeconds = 0;
+                this._playtimeMinutes++;
+            };
+            console.log(`${Math.round(this._playtimeMinutes / 60)} & ${Math.round(this._playtimeSeconds / 60)}`);
+    };
 
     public updateCurrencies() {
         console.log(`I am looping`);
         this._gameItem.changeMoney(this.income);
         this._gameItem.changeEnergy(this.energyGain);
         this._gameItem.changeCo2(this.co2Spread);
-    }
+    };
 
     public clickEventHandler(): void {
         document.addEventListener('click', (event: MouseEvent) => {
@@ -126,6 +138,7 @@ class GameController {
                     this.currentScreen = `LevelIntro1`;
                     document.getElementById("wintext").innerHTML = ``;
                     document.getElementById("title").innerHTML = ``;
+                    document.getElementById("playtime").innerHTML = ``;
                 };
             };
 
@@ -189,6 +202,8 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
+                    this._playtimeSeconds = 0;
+                    this._playtimeMinutes = 0;
                 };
             };
         };
@@ -206,6 +221,8 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
+                    this._playtimeSeconds = 0;
+                    this._playtimeMinutes = 0;
                 };
             };
         };
@@ -223,6 +240,8 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 3 clicked');
                     this.currentScreen = `Level3`;
+                    this._playtimeSeconds = 0;
+                    this._playtimeMinutes = 0;
                 };
             };
         };
@@ -574,15 +593,15 @@ class GameController {
             };
         };
 
-       //winning level 1
+        //winning level 1
         if (this.co2 <= 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
             console.log(this._startscreen._levelsUnlocked)
-            
+
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this._startscreen._levelsUnlocked = 2;
             this.co2 = 1;
-           console.log(this._startscreen._levelsUnlocked)
+            console.log(this._startscreen._levelsUnlocked)
         };
 
         //winning level 2
@@ -601,7 +620,7 @@ class GameController {
         };
 
         //losing level 1
-        if(this.co2 >= 100 && this.currentScreen == `Level1` ){
+        if (this.co2 >= 100 && this.currentScreen == `Level1`) {
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Verloren!</span>`;
             this.co2 = 1;
@@ -611,4 +630,4 @@ class GameController {
         //console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);
         //console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startscreen._level1background.height / 5);
     };
-}
+};

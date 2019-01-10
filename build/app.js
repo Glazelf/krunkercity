@@ -82,34 +82,45 @@ class Game {
         this.drawStart = () => {
             if (this._gameController.currentScreen == 'StartScreen') {
                 this._startscreen.draw();
+                document.getElementById("playtime").innerHTML = ``;
             }
             ;
             if (this._gameController.currentScreen == 'LevelIntro1') {
                 this._levelHelper.drawLevelIntro1(this._gameController);
+                document.getElementById("playtime").innerHTML = ``;
             }
             ;
             if (this._gameController.currentScreen == 'Level1') {
                 this._levelHelper.drawLevel1(this._gameController);
+                this._gameController.playtime();
+                this.drawTimer();
             }
             ;
             if (this._gameController.currentScreen == 'LevelIntro2') {
                 this._levelHelper.drawLevelIntro2(this._gameController);
+                document.getElementById("playtime").innerHTML = ``;
             }
             ;
             if (this._gameController.currentScreen == 'Level2') {
                 this._levelHelper.drawLevel2(this._gameController);
+                this._gameController.playtime();
+                this.drawTimer();
             }
             ;
             if (this._gameController.currentScreen == 'LevelIntro3') {
                 this._levelHelper.drawLevelIntro3(this._gameController);
+                document.getElementById("playtime").innerHTML = ``;
             }
             ;
             if (this._gameController.currentScreen == 'Level3') {
                 this._levelHelper.drawLevel3(this._gameController);
+                this._gameController.playtime();
+                this.drawTimer();
             }
             ;
             if (this._gameController.currentScreen == 'HelpScreen') {
                 this._helpscreen.drawHelp();
+                document.getElementById("playtime").innerHTML = ``;
             }
             ;
         };
@@ -124,6 +135,10 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
+    }
+    ;
+    drawTimer() {
+        document.getElementById("playtime").innerHTML = `<span style=font-family:helvetica;float:left;position:relative;margin-left:32%;margin-top:-5%;color:black;font-size:48px>Je hebt al ${Math.round(this._gameController._playtimeMinutes / 60)} minuten en ${Math.round(this._gameController._playtimeSeconds / 60)} seconden gespeeld!</span>`;
     }
     ;
 }
@@ -143,6 +158,8 @@ class GameController {
         this.energyGain = 0;
         this.co2Spread = 0;
         this.currentScreen = 'StartScreen';
+        this._playtimeSeconds = 0;
+        this._playtimeMinutes = 0;
         this._startscreen = new Startscreen(this._canvasElement);
         this._helpscreen = new Helpscreen(this._canvasElement);
         this._canvas = canvas;
@@ -171,6 +188,7 @@ class GameController {
         this._zonnepaneel.width = this._zonnepaneel.width * 1.2;
         this._zonnepaneel.height = this._zonnepaneel.height * 1.2;
         this.timer();
+        this.playtime();
     }
     ;
     assignCurrencies() {
@@ -203,27 +221,43 @@ class GameController {
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        ;
     }
     ;
     increaseIncome(amount) {
         this.income += amount;
     }
+    ;
     increaseEnergyGain(amount) {
         this.energyGain += amount;
     }
+    ;
     increaseCo2Spread(amount) {
         this.co2Spread += amount;
     }
+    ;
     timer() {
         setInterval(() => this.updateCurrencies(), 1500);
         console.log(`tick`);
     }
+    ;
+    playtime() {
+        this._playtimeSeconds++;
+        if (Math.round(this._playtimeSeconds / 60) == 60) {
+            this._playtimeSeconds = 0;
+            this._playtimeMinutes++;
+        }
+        ;
+        console.log(`${Math.round(this._playtimeMinutes / 60)} & ${Math.round(this._playtimeSeconds / 60)}`);
+    }
+    ;
     updateCurrencies() {
         console.log(`I am looping`);
         this._gameItem.changeMoney(this.income);
         this._gameItem.changeEnergy(this.energyGain);
         this._gameItem.changeCo2(this.co2Spread);
     }
+    ;
     clickEventHandler() {
         document.addEventListener('click', (event) => {
             this.onClick(event);
@@ -240,6 +274,7 @@ class GameController {
                     this.currentScreen = `LevelIntro1`;
                     document.getElementById("wintext").innerHTML = ``;
                     document.getElementById("title").innerHTML = ``;
+                    document.getElementById("playtime").innerHTML = ``;
                 }
                 ;
             }
@@ -295,6 +330,8 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
+                    this._playtimeSeconds = 0;
+                    this._playtimeMinutes = 0;
                 }
                 ;
             }
@@ -308,6 +345,8 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
+                    this._playtimeSeconds = 0;
+                    this._playtimeMinutes = 0;
                 }
                 ;
             }
@@ -321,6 +360,8 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 3 clicked');
                     this.currentScreen = `Level3`;
+                    this._playtimeSeconds = 0;
+                    this._playtimeMinutes = 0;
                 }
                 ;
             }
@@ -701,6 +742,7 @@ class GameController {
     }
     ;
 }
+;
 class GameItem {
     constructor(co2, energy, money) {
         this.co2 = 1;
