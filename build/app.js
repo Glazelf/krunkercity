@@ -340,8 +340,6 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 1 clicked');
                     this.currentScreen = `Level1`;
-                    this._playtimeSeconds = 0;
-                    this._playtimeMinutes = 0;
                 }
                 ;
             }
@@ -355,8 +353,6 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 2 clicked');
                     this.currentScreen = `Level2`;
-                    this._playtimeSeconds = 0;
-                    this._playtimeMinutes = 0;
                 }
                 ;
             }
@@ -370,8 +366,6 @@ class GameController {
                     console.log(event.y);
                     console.log('Level 3 clicked');
                     this.currentScreen = `Level3`;
-                    this._playtimeSeconds = 0;
-                    this._playtimeMinutes = 0;
                 }
                 ;
             }
@@ -915,6 +909,8 @@ class GameController {
             this._startscreen._levelsUnlocked = 2;
             this.co2 = 1;
             console.log(this._startscreen._levelsUnlocked);
+            this._playtimeSeconds = 0;
+            this._playtimeMinutes = 0;
         }
         ;
         if (this.co2 <= 0 && this.energy >= 200 && this.currentScreen == `Level2`) {
@@ -922,30 +918,40 @@ class GameController {
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
+            this._playtimeSeconds = 0;
+            this._playtimeMinutes = 0;
         }
         ;
         if (this.co2 <= 0 && this.energy >= 750 && this.currentScreen == `Level3`) {
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this.co2 = 1;
+            this._playtimeSeconds = 0;
+            this._playtimeMinutes = 0;
         }
         ;
         if (this.co2 >= 100 && this.currentScreen == `Level1`) {
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Verloren!</span>`;
             this.co2 = 1;
+            this._playtimeSeconds = 0;
+            this._playtimeMinutes = 0;
         }
         ;
         if (this.co2 >= 100 && this.currentScreen == `Level2`) {
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Verloren!</span>`;
             this.co2 = 1;
+            this._playtimeSeconds = 0;
+            this._playtimeMinutes = 0;
         }
         ;
         if (this.co2 >= 100 && this.currentScreen == `Level3`) {
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Verloren!</span>`;
             this.co2 = 1;
+            this._playtimeSeconds = 0;
+            this._playtimeMinutes = 0;
         }
         ;
     }
