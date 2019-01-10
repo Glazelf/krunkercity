@@ -34,6 +34,11 @@ class GameItem {
 
     }
 
+    public changeCo2(amount: number): void {
+        this.co2 += amount;
+
+    }
+
     public generateCurrencies() {
         this.timer();
         if (this.counter=240){

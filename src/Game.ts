@@ -7,8 +7,8 @@ class Game {
     private _gameController: GameController;
     private _levelHelper: LevelHelper;
     private _gameItem: GameItem;
-    // private Music = new Audio('./assets/mp3/pokemon.mp3');
-    // private playPromise = this.Music.play();
+    private Music = new Audio('./assets/mp3/pokemon.mp3');
+    private playPromise = this.Music.play();
 
     constructor() {
         this._canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -18,7 +18,7 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
-        this.music();
+        //this.music();
     };
 
     public drawStart = () => {

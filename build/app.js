@@ -124,7 +124,6 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
-        this.music();
     }
     ;
     music() {
@@ -313,16 +312,39 @@ class GameController {
             if (this._canvas._buildingHammer1.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
                     if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
-                        if (this.money >= 200) {
+                        if (this.money >= 50) {
                             console.log(event.x, event.y);
                             console.log("Level1Hammer clicked");
                             this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
                             this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
                             this._canvas._buildingHammer1.src = this._aardwarmte.src;
-                            this._gameItem.changeMoney(-200);
+                            this._gameItem.changeMoney(-50);
+                            this._gameItem.changeCo2(+80);
+                            this._gameItem.changeEnergy(+30);
                         }
                         else {
-                            alert(`Je hebt nog ${200 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                            alert(`Je hebt nog ${50 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                        }
+                        ;
+                    }
+                    ;
+                }
+                ;
+            }
+            ;
+            if (this._canvas._buildingHammer1.src == this._aardwarmte.src) {
+                if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer1.width / 7) {
+                    if (event.y > this._canvas.getHeight() / 3 && event.y < this._canvas.getHeight() / 3 + this._canvas._buildingHammer1.height / 7) {
+                        if (this.energy >= 40) {
+                            console.log(event.x, event.y);
+                            console.log("Level1Hammer clicked");
+                            this._canvas._buildingHammer1.width = this._canvas._buildingHammer1.width;
+                            this._canvas._buildingHammer1.height = this._canvas._buildingHammer1.height;
+                            this._canvas._buildingHammer1.src = this._aardwarmte.src;
+                            this._gameItem.changeEnergy(-40);
+                        }
+                        else {
+                            alert(`Je hebt nog ${40 - this.energy} punten nodig om de aardwarmtecentrale te upgraden!`);
                         }
                         ;
                     }
@@ -334,17 +356,17 @@ class GameController {
             if (this._canvas._buildingHammer2.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 9 && event.x < this._canvas.getWidth() / 9 + this._canvas._buildingHammer2.width / 7) {
                     if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._buildingHammer2.height / 7) {
-                        if (this.money >= 10) {
+                        if (this.money >= 100) {
                             console.log(event.x, event.y);
                             console.log("Level1Hammer clicked");
                             this._canvas._buildingHammer2.width = this._canvas._buildingHammer2.width;
                             this._canvas._buildingHammer2.height = this._canvas._buildingHammer2.height;
                             this._canvas._buildingHammer2.src = this._aardwarmte.src;
-                            this._gameItem.changeMoney(-10);
+                            this._gameItem.changeMoney(-100);
                             this._gameItem.buildings++;
                         }
                         else {
-                            alert(`Je hebt nog ${10 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
+                            alert(`Je hebt nog ${100 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
                         }
                         ;
                     }
@@ -629,7 +651,7 @@ class GameController {
             ;
         }
         ;
-        if (this.co2 == 0 && this.currentScreen == `Level1`) {
+        if (this.co2 == 0 && this.energy >= 50 && this.currentScreen == `Level1`) {
             this._startscreen._levelsUnlocked = 2;
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
@@ -646,6 +668,12 @@ class GameController {
         if (this.co2 == 0 && this.currentScreen == `Level3`) {
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
+            this.co2 = 1;
+        }
+        ;
+        if (this.co2 >= 100 && this.currentScreen == `Level1`) {
+            this.currentScreen = `StartScreen`;
+            document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Verloren!</span>`;
             this.co2 = 1;
         }
         ;
@@ -685,7 +713,10 @@ class GameItem {
     changeEnergy(amount) {
         this.energy += amount;
     }
-    generateCurrencies(amountPerInterval) {
+    changeCo2(amount) {
+        this.co2 += amount;
+    }
+    generateCurrencies() {
         this.timer();
         if (this.counter = 240) {
             this.counter = 0;
