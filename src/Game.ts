@@ -64,8 +64,8 @@ class Game {
         this._helpscreen.drawHelp();
     };
 
-    public drawTimer(){
-        document.getElementById("playtime").innerHTML = `<span style=font-family:helvetica;float:left;position:relative;margin-left:32%;margin-top:-5%;color:black;font-size:48px>Je hebt al ${Math.floor(this._gameController._playtimeMinutes/60/60)} minuten en ${Math.round(this._gameController._playtimeSeconds/60)} seconden gespeeld!</span>`
+    public drawTimer() {
+        document.getElementById("playtime").innerHTML = `<span style=font-family:helvetica;float:left;position:relative;margin-left:32%;margin-top:-5%;color:black;font-size:48px>Je hebt al ${Math.floor(this._gameController._playtimeMinutes / 60 / 60)} minuten en ${Math.round(this._gameController._playtimeSeconds / 60)} seconden gespeeld!</span>`
         if (Math.round(this._gameController._playtimeSeconds / 60) == 60) {
             this._gameController._playtimeSeconds = 0;
         };
@@ -78,9 +78,9 @@ class Game {
     // };
 
     public music() {
-        if (this.playPromise !== null){
-        this.Music.loop = true;
-        this.Music.play();
+        if (this.playPromise !== null) {
+            this.Music.loop = true;
+            this.Music.play();
         };
     };
 };

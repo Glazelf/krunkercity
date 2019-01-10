@@ -100,9 +100,9 @@ class GameController {
     };
 
     public playtime() {
-            this._playtimeSeconds++;
-            this._playtimeMinutes++;
-            console.log(`${Math.round(this._playtimeMinutes / 60)} & ${Math.round(this._playtimeSeconds / 60)}`);
+        this._playtimeSeconds++;
+        this._playtimeMinutes++;
+        console.log(`${Math.round(this._playtimeMinutes / 60)} & ${Math.round(this._playtimeSeconds / 60)}`);
     };
 
     public updateCurrencies() {
