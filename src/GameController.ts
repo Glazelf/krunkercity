@@ -80,7 +80,7 @@ class GameController {
         // console.log(this.currentScreen);
         // console.log(this.co2, this.energy, this.money);
         // console.log(this._gameItem.getCo2, this._gameItem.getEnergy(), this._gameItem.getMoney());
-    }
+    };
 
     public increaseIncome(amount: number) {
         this.income += amount;
@@ -116,7 +116,7 @@ class GameController {
         document.addEventListener('click', (event: MouseEvent) => {
             this.onClick(event);
         });
-    }
+    };
 
     private onClick(event: any): void {
         /**
@@ -151,9 +151,9 @@ class GameController {
                         this.currentScreen = `LevelIntro2`;
                         document.getElementById("wintext").innerHTML = ``;
                         document.getElementById("title").innerHTML = ``;
-                    }
-                }
-            }
+                    };
+                };
+            };
 
             //Button for level 3 on StartScreen
             if (this._startscreen._levelsUnlocked > 2) {
@@ -167,9 +167,9 @@ class GameController {
                         this.currentScreen = `LevelIntro3`;
                         document.getElementById("wintext").innerHTML = ``;
                         document.getElementById("title").innerHTML = ``;
-                    }
-                }
-            }
+                    };
+                };
+            };
 
             //Button for HelpScreen on StartScreen
             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
@@ -182,9 +182,9 @@ class GameController {
                     this.currentScreen = `HelpScreen`;
                     document.getElementById("wintext").innerHTML = ``;
                     document.getElementById("title").innerHTML = ``;
-                }
-            }
-        }
+                };
+            };
+        };
 
         /**
          * ClickHandlers for LevelIntro1
@@ -292,10 +292,10 @@ class GameController {
                             alert(`Je hebt een aardwarmtecentrale gebouwd!`);
                         } else {
                             alert(`Je hebt nog ${150 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
-                        }
-                    }
-                }
-            }
+                        };
+                    };
+                };
+            };
 
             //Info knop leftroad
             if (event.x > this._canvas.getWidth() / 8.75 && event.x < this._canvas.getWidth() / 8.75 + this._canvas._infoButton.width / 10) {
@@ -325,10 +325,10 @@ class GameController {
                             //console.log(this.money);
                         } else {
                             alert(`Je hebt nog ${400 - this.money} munten nodig om de kerncentrale te bouwen!`);
-                        }
-                    }
-                }
-            }
+                        };
+                    };
+                };
+            };
 
             //Info knop large forest
             if (event.x > this._canvas.getWidth() / 2.48 && event.x < this._canvas.getWidth() / 2.48 + this._canvas._infoButton.width / 10) {
@@ -357,10 +357,10 @@ class GameController {
                             this.co2Spread += 2;
                         } else {
                             alert(`je hebt nog ${50 - this.money} munten nodig om de kolencentrale te bouwen!`);
-                        }
-                    }
-                }
-            }
+                        };
+                    };
+                };
+            };
 
             //Info knop bottomright from last one
             if (event.x > this._canvas.getWidth() / 1.885 && event.x < this._canvas.getWidth() / 1.885 + this._canvas._infoButton.width / 10) {
@@ -390,10 +390,10 @@ class GameController {
                             this.co2Spread -= 50;
                         } else {
                             alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
-                        }
-                    }
-                }
-            }
+                        };
+                    };
+                };
+            };
 
             //Info knop bottomright
             if (event.x > this._canvas.getWidth() / 1.49 && event.x < this._canvas.getWidth() / 1.49 + this._canvas._infoButton.width / 10) {
@@ -424,10 +424,10 @@ class GameController {
                             this.co2Spread -= 1.5;
                         } else {
                             alert(`Je hebt nog ${90 - this.money} munten nodig om de zonnepanelen te bouwen!`);
-                        }
-                    }
-                }
-            }
+                        };
+                    };
+                };
+            };
 
             //Info knop mountainrange
             if (event.x > this._canvas.getWidth() / 1.313 && event.x < this._canvas.getWidth() / 1.313 + this._canvas._infoButton.width / 10) {
@@ -449,8 +449,8 @@ class GameController {
                     console.log(event.y);
                     console.log('HelpScreen clicked');
                     this.currentScreen = `HelpScreen`;
-                }
-            }
+                };
+            };
 
             //Button for returning to StartScreen on level1
             if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
@@ -461,9 +461,9 @@ class GameController {
                     console.log(event.y);
                     console.log('Return to StartScreen clicked');
                     this.currentScreen = `StartScreen`;
-                }
-            }
-        }
+                };
+            };
+        };
 
         /**
          *ClickHandlers for Level2
@@ -610,8 +610,8 @@ class GameController {
                     console.log(event.y);
                     console.log('HelpScreen clicked');
                     this.currentScreen = `HelpScreen`;
-                }
-            }
+                };
+            };
 
             //Button for returning to StartScreen on level2
             if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
@@ -622,9 +622,9 @@ class GameController {
                     console.log(event.y);
                     console.log('Return to StartScreen clicked');
                     this.currentScreen = `StartScreen`;
-                }
-            }
-        }
+                };
+            };
+        };
 
         /**
         *ClickHandlers for Level3
@@ -740,8 +740,9 @@ class GameController {
                     console.log(event.y);
                     console.log('HelpScreen clicked');
                     this.currentScreen = `HelpScreen`;
-                }
-            }
+                };
+            };
+
             //Button for returning to StartScreen on level3
             if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
                 if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
@@ -751,9 +752,9 @@ class GameController {
                     console.log(event.y);
                     console.log('Return to StartScreen clicked');
                     this.currentScreen = `StartScreen`;
-                }
-            }
-        }
+                };
+            };
+        };
 
         /**
          * ClickHandlers for HelpScreen
@@ -768,9 +769,9 @@ class GameController {
                     //console.log(event.y);
                     //console.log('Return to StartScreen clicked');
                     this.currentScreen = `StartScreen`;
-                }
-            }
-        }
+                };
+            };
+        };
 
         //winning level 1
         if (this.co2 <= 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
@@ -844,5 +845,5 @@ class GameController {
         //*debug*
         //console.log(event.x, this._canvas.getWidth() / 1.05, this._canvas.getWidth() / 1.05 + this._startscreen._level1background.width / 5);
         //console.log(event.y, this._canvas.getHeight() / 50, this._canvas.getHeight() / 50 + this._startscreen._level1background.height / 5);
-    }
-}
+    };
+};

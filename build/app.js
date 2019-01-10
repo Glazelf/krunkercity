@@ -47,28 +47,36 @@ class Canvas {
     clearScreen() {
         this._ctx.clearRect(0, 0, this._canvasElement.width, this._canvasElement.height);
     }
+    ;
     writeTextToCanvas(text, xCoordinate, yCoordinate, fontSize = 30, color = "black", alignment = "center") {
         this._ctx.font = `${fontSize}px Helvetica`;
         this._ctx.fillStyle = color;
         this._ctx.textAlign = alignment;
         this._ctx.fillText(text, xCoordinate, yCoordinate);
     }
+    ;
     writeImageToCanvas(element, xCoordinate, yCoordinate, width, height) {
         this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
     }
+    ;
     writeHammerToCanvas(element = this._buildingHammer1, xCoordinate, yCoordinate, width = this._buildingHammer1.width / 7, height = this._buildingHammer1.height / 7) {
         this._ctx.drawImage(element, xCoordinate, yCoordinate, width, height);
     }
+    ;
     randomNumber(min, max) {
         return Math.round(Math.random() * (max - min) + min);
     }
+    ;
     getWidth() {
         return this._canvasElement.width;
     }
+    ;
     getHeight() {
         return this._canvasElement.height;
     }
+    ;
 }
+;
 class Game {
     constructor() {
         this.Music = new Audio('./assets/mp3/pokemon.mp3');
@@ -130,6 +138,7 @@ class Game {
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
     }
+    ;
     drawTimer() {
         document.getElementById("playtime").innerHTML = `<span style=font-family:helvetica;float:left;position:relative;margin-left:32%;margin-top:-5%;color:black;font-size:48px>Je hebt al ${Math.floor(this._gameController._playtimeMinutes / 60 / 60)} minuten en ${Math.round(this._gameController._playtimeSeconds / 60)} seconden gespeeld!</span>`;
         if (Math.round(this._gameController._playtimeSeconds / 60) == 60) {
@@ -153,6 +162,7 @@ function init() {
     const KrunkerCity = new Game();
     window.setInterval(KrunkerCity.drawStart, 1000 / 60);
 }
+;
 class GameController {
     constructor(canvas) {
         this.co2 = 1;
@@ -222,6 +232,7 @@ class GameController {
         }
         ;
     }
+    ;
     increaseIncome(amount) {
         this.income += amount;
     }
@@ -257,6 +268,7 @@ class GameController {
             this.onClick(event);
         });
     }
+    ;
     onClick(event) {
         if (this.currentScreen == `StartScreen`) {
             if (event.x > this._canvas.getWidth() / 40 && event.x < this._canvas.getWidth() / 40 + this._startscreen._level1background.width / 2) {
@@ -282,8 +294,11 @@ class GameController {
                         document.getElementById("wintext").innerHTML = ``;
                         document.getElementById("title").innerHTML = ``;
                     }
+                    ;
                 }
+                ;
             }
+            ;
             if (this._startscreen._levelsUnlocked > 2) {
                 if (event.x > this._canvas.getWidth() / 1.5 && event.x < this._canvas.getWidth() / 1.5 + this._startscreen._level3background.width / 2) {
                     if (event.y > this._canvas.getHeight() / 3.5 && event.y < this._canvas.getHeight() / 3.5 + this._startscreen._level3background.height / 2) {
@@ -294,8 +309,11 @@ class GameController {
                         document.getElementById("wintext").innerHTML = ``;
                         document.getElementById("title").innerHTML = ``;
                     }
+                    ;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 1.05 && event.x < this._canvas.getWidth() / 1.05 + this._canvas._helpButton.width / 5) {
                 if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._helpButton.height / 5) {
                     console.log(event.x);
@@ -305,8 +323,11 @@ class GameController {
                     document.getElementById("wintext").innerHTML = ``;
                     document.getElementById("title").innerHTML = ``;
                 }
+                ;
             }
+            ;
         }
+        ;
         if (this.currentScreen == `LevelIntro1`) {
             if (event.x > this._canvas.getWidth() / 2.2 && event.x < this._canvas.getWidth() / 2.2 + this._canvas._nextButton.width / 5) {
                 if (event.y > this._canvas.getHeight() / 1.23 && event.y < this._canvas.getHeight() / 1.23 + this._canvas._nextButton.height / 5) {
@@ -397,9 +418,13 @@ class GameController {
                         else {
                             alert(`Je hebt nog ${150 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
                         }
+                        ;
                     }
+                    ;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 8.75 && event.x < this._canvas.getWidth() / 8.75 + this._canvas._infoButton.width / 10) {
                 if (event.y > this._canvas.getHeight() / 1.55 && event.y < this._canvas.getHeight() / 1.55 + this._canvas._infoButton.height / 10) {
                     console.log(event.x);
@@ -427,9 +452,13 @@ class GameController {
                         else {
                             alert(`Je hebt nog ${400 - this.money} munten nodig om de kerncentrale te bouwen!`);
                         }
+                        ;
                     }
+                    ;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 2.48 && event.x < this._canvas.getWidth() / 2.48 + this._canvas._infoButton.width / 10) {
                 if (event.y > this._canvas.getHeight() / 3.1 && event.y < this._canvas.getHeight() / 3.1 + this._canvas._infoButton.height / 10) {
                     console.log(event.x);
@@ -457,9 +486,13 @@ class GameController {
                         else {
                             alert(`je hebt nog ${50 - this.money} munten nodig om de kolencentrale te bouwen!`);
                         }
+                        ;
                     }
+                    ;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 1.885 && event.x < this._canvas.getWidth() / 1.885 + this._canvas._infoButton.width / 10) {
                 if (event.y > this._canvas.getHeight() / 2.3 && event.y < this._canvas.getHeight() / 2.3 + this._canvas._infoButton.height / 10) {
                     console.log(event.x);
@@ -488,9 +521,13 @@ class GameController {
                         else {
                             alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
                         }
+                        ;
                     }
+                    ;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 1.49 && event.x < this._canvas.getWidth() / 1.49 + this._canvas._infoButton.width / 10) {
                 if (event.y > this._canvas.getHeight() / 1.75 && event.y < this._canvas.getHeight() / 1.75 + this._canvas._infoButton.height / 10) {
                     console.log(event.x);
@@ -519,9 +556,13 @@ class GameController {
                         else {
                             alert(`Je hebt nog ${90 - this.money} munten nodig om de zonnepanelen te bouwen!`);
                         }
+                        ;
                     }
+                    ;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 1.313 && event.x < this._canvas.getWidth() / 1.313 + this._canvas._infoButton.width / 10) {
                 if (event.y > this._canvas.getHeight() / 4.4 && event.y < this._canvas.getHeight() / 4.4 + this._canvas._infoButton.height / 10) {
                     console.log(event.x);
@@ -538,7 +579,9 @@ class GameController {
                     console.log('HelpScreen clicked');
                     this.currentScreen = `HelpScreen`;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
                 if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
                     console.log(event.x);
@@ -546,8 +589,11 @@ class GameController {
                     console.log('Return to StartScreen clicked');
                     this.currentScreen = `StartScreen`;
                 }
+                ;
             }
+            ;
         }
+        ;
         if (this.currentScreen == `Level2`) {
             if (this._canvas._buildingHammer7.src !== this._aardwarmte.src) {
                 if (event.x > this._canvas.getWidth() / 6.5 && event.x < this._canvas.getWidth() / 6.5 + this._canvas._buildingHammer7.width / 7) {
@@ -696,7 +742,9 @@ class GameController {
                     console.log('HelpScreen clicked');
                     this.currentScreen = `HelpScreen`;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
                 if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
                     console.log(event.x);
@@ -704,8 +752,11 @@ class GameController {
                     console.log('Return to StartScreen clicked');
                     this.currentScreen = `StartScreen`;
                 }
+                ;
             }
+            ;
         }
+        ;
         if (this.currentScreen == `Level3`) {
             if (this._canvas._buildingHammer12.src !== this._kolencentrale.src) {
                 if (event.x > this._canvas.getWidth() / 2.44 && event.x < this._canvas.getWidth() / 2.44 + this._canvas._buildingHammer12.width / 7) {
@@ -819,7 +870,9 @@ class GameController {
                     console.log('HelpScreen clicked');
                     this.currentScreen = `HelpScreen`;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 1.1 && event.x < this._canvas.getWidth() / 1.1 + this._canvas._menuKnop.width / 5) {
                 if (event.y > this._canvas.getHeight() / 50 && event.y < this._canvas.getHeight() / 50 + this._canvas._menuKnop.height / 5) {
                     console.log(event.x);
@@ -827,15 +880,21 @@ class GameController {
                     console.log('Return to StartScreen clicked');
                     this.currentScreen = `StartScreen`;
                 }
+                ;
             }
+            ;
         }
+        ;
         if (this.currentScreen == `HelpScreen`) {
             if (event.x > this._canvas.getWidth() / 7.5 && event.x < this._canvas.getWidth() / 7.5 + this._helpscreen._menuKnop.width) {
                 if (event.y > this._canvas.getHeight() / 1.3 && event.y < this._canvas.getHeight() / 1.3 + this._helpscreen._menuKnop.height) {
                     this.currentScreen = `StartScreen`;
                 }
+                ;
             }
+            ;
         }
+        ;
         if (this.co2 <= 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
             console.log(this._startscreen._levelsUnlocked);
             this._gameItem = null;
@@ -900,7 +959,9 @@ class GameController {
         }
         ;
     }
+    ;
 }
+;
 class GameItem {
     constructor(co2, energy, money) {
         this.co2 = 1;
@@ -977,6 +1038,7 @@ class Helpscreen {
         this._menuKnop = new Image();
         this._menuKnop.src = "./assets/images/menu_knop.png";
     }
+    ;
     drawHelp() {
         this._canvas.writeImageToCanvas(this._backgroundhelp, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
         this._canvas.writeImageToCanvas(this._munten, this._canvas.getWidth() / 32, this._canvas.getHeight() / 64, this._munten.width / 3.2, this._munten.height / 3.2);
@@ -991,7 +1053,9 @@ class Helpscreen {
         this._canvas.writeImageToCanvas(this._kolenCentrale, this._canvas.getWidth() / 2.87, this._canvas.getHeight() / 1.4, this._kolenCentrale.width / 3.2, this._kolenCentrale.height / 3.2);
         this._canvas.writeImageToCanvas(this._menuKnop, this._canvas.getWidth() / 7.5, this._canvas.getHeight() / 1.3, this._menuKnop.width / 3.2, this._menuKnop.height / 3.2);
     }
+    ;
 }
+;
 class LevelHelper {
     constructor(canvas) {
         this.drawLevelIntro1 = (gameController) => {
@@ -1083,6 +1147,7 @@ class LevelHelper {
         this._levelIntro3.src = "./assets/images/level3_uitleg.png";
         console.log(canvas);
     }
+    ;
     drawCurrencies(gameController = null) {
         gameController.assignCurrencies();
         this._canvas.writeImageToCanvas(this._bolt, this._canvas.getWidth() / 500, this._canvas.getHeight() / 10, this._bolt.width / 8, this._bolt.height / 8);
@@ -1092,7 +1157,9 @@ class LevelHelper {
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
         this._canvas.writeTextToCanvas(`${gameController.money}`, this._canvas.getWidth() / 14.5, this._canvas.getHeight() / 4, 60);
     }
+    ;
 }
+;
 class Startscreen {
     constructor(canvas) {
         this._levelsUnlocked = 1;
@@ -1108,6 +1175,7 @@ class Startscreen {
             else if (this._levelsUnlocked == 1) {
                 this._canvas.writeImageToCanvas(this._level2locked, this._canvas.getWidth() / 2.9, this._canvas.getHeight() / 3.5, this._level2background.width / 2, this._level2background.height / 2);
             }
+            ;
             this._canvas.writeTextToCanvas("Level 3", this._canvas.getWidth() / 1.23, this._canvas.getHeight() / 3.6, 40);
             if (this._levelsUnlocked == 3) {
                 this._canvas.writeImageToCanvas(this._level3background, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
@@ -1115,6 +1183,7 @@ class Startscreen {
             else if (this._levelsUnlocked == 1 || this._levelsUnlocked == 2) {
                 this._canvas.writeImageToCanvas(this._level3locked, this._canvas.getWidth() / 1.5, this._canvas.getHeight() / 3.5, this._level3background.width / 2, this._level3background.height / 2);
             }
+            ;
             this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
             this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
         };
@@ -1136,5 +1205,7 @@ class Startscreen {
         this._levelIntro2 = new Image();
         this._levelIntro2.src = "./assets/images/level2_uitleg.png";
     }
+    ;
 }
+;
 //# sourceMappingURL=app.js.map

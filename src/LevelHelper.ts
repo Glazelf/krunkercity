@@ -34,7 +34,7 @@ class LevelHelper {
         this._levelIntro3 = new Image();
         this._levelIntro3.src = "./assets/images/level3_uitleg.png";
         console.log(canvas);
-    }
+    };
 
     public drawLevelIntro1 = (gameController: GameController) => {
         //draw level1
@@ -42,12 +42,12 @@ class LevelHelper {
 
         //levelIntro image
         this._canvas.writeImageToCanvas(this._levelIntro1, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
-            this._levelIntro1.width / 1.5, this._levelIntro1.height / 1.5)
+            this._levelIntro1.width / 1.5, this._levelIntro1.height / 1.5);
 
         //ga verder image
         this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
         this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
-    }
+    };
 
     public drawLevel1 = (gameController: GameController) => {
         //console.log(gameController)
@@ -68,29 +68,29 @@ class LevelHelper {
         //mountainrange
         this._canvas.writeHammerToCanvas(this._canvas._buildingHammer6, this._canvas.getWidth() / 1.32, this._canvas.getHeight() / 6.5);
         //helpbutton
-        this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
-        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
+        this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
+        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
         //menuKnop image
         this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-            this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
+            this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5);
         //infoButton trainstation
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 6.35, this._canvas.getHeight() / 2.45,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton leftroad
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 8.75, this._canvas.getHeight() / 1.55,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton largeforest
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 2.48, this._canvas.getHeight() / 3.1,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton bottomright from last one
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 1.885, this._canvas.getHeight() / 2.3,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton bottomright
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 1.49, this._canvas.getHeight() / 1.75,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton mountainrange
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 1.313, this._canvas.getHeight() / 4.4,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //currencies
         this.drawCurrencies(gameController);
 
@@ -102,7 +102,7 @@ class LevelHelper {
 
         //levelIntro image
         this._canvas.writeImageToCanvas(this._levelIntro2, this._canvas.getWidth() / 5, this._canvas.getHeight() / 5,
-            this._levelIntro2.width / 1.5, this._levelIntro2.height / 1.5)
+            this._levelIntro2.width / 1.5, this._levelIntro2.height / 1.5);
 
         //ga verder image
         this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
@@ -127,28 +127,28 @@ class LevelHelper {
 
         //helpbutton
         this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7)
-        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
+        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
         //menuKnop image
         this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
-            this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5)
+            this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5);
         //infoButton trainstation
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 6.35, this._canvas.getHeight() / 2.45,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton leftroad
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 8.75, this._canvas.getHeight() / 1.55,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton bottomright
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 1.49, this._canvas.getHeight() / 1.75,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton park
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 2.42, this._canvas.getHeight() / 3.2,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //currencies
         this.drawCurrencies(gameController);
-    }
+    };
 
     public drawLevelIntro3 = (gameController: GameController) => {
-        console.log(gameController)
+        console.log(gameController);
         //draw level 3
         this.drawLevel3(gameController);
 
@@ -159,7 +159,7 @@ class LevelHelper {
         //ga verder image
         this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
         this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
-    }
+    };
 
     public drawLevel3 = (gameController: GameController) => {
         //background
@@ -176,22 +176,22 @@ class LevelHelper {
 
         //helpbutton
         this._canvas.writeTextToCanvas("Help", this._canvas.getWidth() / 1.03, this._canvas.getHeight() / 7);
-        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5)
+        this._canvas.writeImageToCanvas(this._canvas._helpButton, this._canvas.getWidth() / 1.05, this._canvas.getHeight() / 50, this._canvas._helpButton.width / 5, this._canvas._helpButton.height / 5);
         //menuKnop image
         this._canvas.writeImageToCanvas(this._canvas._menuKnop, this._canvas.getWidth() / 1.1, this._canvas.getHeight() / 50,
             this._canvas._menuKnop.width / 5, this._canvas._menuKnop.height / 5);
         //infoButton park
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 2.42, this._canvas.getHeight() / 3.2,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton rightroad
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 1.193, this._canvas.getHeight() / 1.58,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //infoButton mountainrange
         this._canvas.writeImageToCanvas(this._canvas._infoButton, this._canvas.getWidth() / 1.313, this._canvas.getHeight() / 4.4,
-            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
+            this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10);
         //currencies
         this.drawCurrencies(gameController);
-    }
+    };
 
     public drawCurrencies(gameController: GameController = null) {
         gameController.assignCurrencies();
@@ -201,7 +201,7 @@ class LevelHelper {
 
         //co2
         this._canvas.writeImageToCanvas(this._pollution, this._canvas.getWidth() / 500, this._canvas.getHeight() / 60, this._pollution.width / 11, this._pollution.height / 11);
-        this._canvas.writeTextToCanvas(`${gameController.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60)
+        this._canvas.writeTextToCanvas(`${gameController.co2}%`, this._canvas.getWidth() / 11.5, this._canvas.getHeight() / 13, 60);
 
         //money
         this._canvas.writeImageToCanvas(this._coins, this._canvas.getWidth() / 500, this._canvas.getHeight() / 5.5, this._coins.width / 3, this._coins.height / 3);
@@ -210,5 +210,5 @@ class LevelHelper {
 
         //*debug*
         //console.log(`drawCurrencies is working`);
-    }
-}
+    };
+};
