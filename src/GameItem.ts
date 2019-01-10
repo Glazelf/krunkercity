@@ -1,5 +1,4 @@
 class GameItem {
-    private _gameController: GameController;
     private co2: number = 1;
     private energy: number = 1;
     private money: number = 1;
