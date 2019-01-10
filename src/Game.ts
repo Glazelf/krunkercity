@@ -16,7 +16,7 @@ class Game {
         this._gameController = new GameController(this._canvas);
         this._gameController.clickEventHandler();
         this._levelHelper = new LevelHelper(this._canvas);
-        // this.music();
+        //this.music();
     };
 
     public drawStart = () => {
@@ -58,12 +58,12 @@ class Game {
     //this._levelHelper.drawLevel3();
     // };
 
-    // public music() {
-    //     if (this.playPromise !== null){
-    //     this.Music.loop = true;
-    //     this.Music.play();
-    //     };
-    // };
+    public music() {
+        if (this.playPromise !== null){
+        this.Music.loop = true;
+        this.Music.play();
+        };
+    };
 };
 
 window.addEventListener('load', init);
