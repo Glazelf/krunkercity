@@ -666,7 +666,7 @@ class GameController {
             ;
         }
         ;
-        if (this.co2 == 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
+        if (this.co2 <= 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
             console.log(this._startscreen._levelsUnlocked);
             this.currentScreen = `StartScreen`;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;

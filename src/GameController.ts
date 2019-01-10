@@ -571,7 +571,7 @@ class GameController {
         };
 
        //winning level 1
-        if (this.co2 == 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
+        if (this.co2 <= 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
             console.log(this._startscreen._levelsUnlocked)
             
             this.currentScreen = `StartScreen`;
