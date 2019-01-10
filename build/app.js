@@ -322,6 +322,9 @@ class GameController {
                     this.currentScreen = `Level2`;
                     this._playtimeSeconds = 0;
                     this._playtimeMinutes = 0;
+                    this._gameItem.setCo2(1);
+                    this._gameItem.setEnergy(1);
+                    this._gameItem.setMoney(1);
                 }
                 ;
             }
@@ -477,8 +480,8 @@ class GameController {
                             this._gameItem.changeMoney(-80);
                             alert(`Je hebt een windmolen gebouwd!`);
                             this.income += 4;
-                            this.energyGain += 1;
-                            this.co2Spread -= 1;
+                            this.energyGain += 50;
+                            this.co2Spread -= 50;
                         }
                         else {
                             alert(`Je hebt nog ${80 - this.money} munten nodig om de windmolen te bouwen!`);
@@ -833,28 +836,35 @@ class GameController {
         }
         if (this.co2 <= 0 && this.energy >= 100 && this.currentScreen == `Level1`) {
             console.log(this._startscreen._levelsUnlocked);
+            this._gameItem = null;
             this.currentScreen = `StartScreen`;
+            this.income = 0;
+            this.energyGain = 0;
+            this.co2Spread = 0;
+            this.assignCurrencies();
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
             this._startscreen._levelsUnlocked = 2;
-            this.co2 = this._gameItem.setCo2(1);
-            this.energy = this._gameItem.setEnergy(1);
-            this.money = this._gameItem.setMoney(1);
             console.log(this._startscreen._levelsUnlocked);
         }
         if (this.co2 <= 0 && this.energy >= 200 && this.currentScreen == `Level2`) {
             this._startscreen._levelsUnlocked = 3;
+            this._gameItem = null;
             this.currentScreen = `StartScreen`;
+            this.income = 0;
+            this.energyGain = 0;
+            this.co2Spread = 0;
+            this.assignCurrencies();
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
-            this.co2 = this._gameItem.setCo2(1);
-            this.energy = this._gameItem.setEnergy(1);
-            this.money = this._gameItem.setMoney(1);
         }
         if (this.co2 <= 0 && this.energy >= 750 && this.currentScreen == `Level3`) {
             this.currentScreen = `StartScreen`;
+            this._gameItem.setCo2(1);
+            this._gameItem.setEnergy(1);
+            this._gameItem.setMoney(1);
+            this.income = 0;
+            this.energyGain = 0;
+            this.co2Spread = 0;
             document.getElementById("wintext").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-8%;color:black;font-size:96px'>Gewonnen!</span>`;
-            this.co2 = this._gameItem.setCo2(1);
-            this.energy = this._gameItem.setEnergy(1);
-            this.money = this._gameItem.setMoney(1);
         }
         if (this.co2 >= 100 && this.currentScreen == `Level1`) {
             this.currentScreen = `StartScreen`;
@@ -897,15 +907,12 @@ class GameItem {
     }
     setCo2(amount) {
         this.co2 = amount;
-        return this.co2;
     }
     setEnergy(amount) {
         this.energy = amount;
-        return this.energy;
     }
     setMoney(amount) {
         this.money = amount;
-        return this.money;
     }
     changeMoney(amount) {
         this.money += amount;
@@ -1063,7 +1070,7 @@ class LevelHelper {
 }
 class Startscreen {
     constructor(canvas) {
-        this._levelsUnlocked = 3;
+        this._levelsUnlocked = 1;
         this.draw = () => {
             this._canvas.writeImageToCanvas(this._backgroundstart, 0, 0, this._canvas.getWidth(), this._canvas.getHeight());
             document.getElementById("title").innerHTML = `<span style='font-family:helvetica;float:left;position:relative;margin-left:34%;margin-top:-50%;color:black;font-size:96px'>Krunker City</span>`;

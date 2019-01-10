@@ -14,7 +14,7 @@ class Startscreen {
     public yPosLevel3Background: number;
     public _levelIntro1: HTMLImageElement;
     public _levelIntro2: HTMLImageElement;
-    public _levelsUnlocked: number = 3;
+    public _levelsUnlocked: number = 1;
 
     constructor(canvas: Canvas) {
         this._canvas = canvas;
