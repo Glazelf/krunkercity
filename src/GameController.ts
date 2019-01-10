@@ -125,6 +125,7 @@ class GameController {
                     console.log('Level 1 clicked');
                     this.currentScreen = `LevelIntro1`;
                     document.getElementById("wintext").innerHTML = ``;
+                    document.getElementById("title").innerHTML = ``;
                 };
             };
 
@@ -139,6 +140,7 @@ class GameController {
                         console.log('Level 2 clicked');
                         this.currentScreen = `LevelIntro2`;
                         document.getElementById("wintext").innerHTML = ``;
+                        document.getElementById("title").innerHTML = ``;
                     };
                 };
             };
@@ -154,6 +156,7 @@ class GameController {
                         console.log('Level 3 clicked');
                         this.currentScreen = `LevelIntro3`;
                         document.getElementById("wintext").innerHTML = ``;
+                        document.getElementById("title").innerHTML = ``;
                     };
                 };
             };
@@ -168,6 +171,7 @@ class GameController {
                     console.log('HelpScreen clicked');
                     this.currentScreen = `HelpScreen`;
                     document.getElementById("wintext").innerHTML = ``;
+                    document.getElementById("title").innerHTML = ``;
                 };
             };
         };
