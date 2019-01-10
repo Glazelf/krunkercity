@@ -34,7 +34,7 @@ class LevelHelper {
         this._levelIntro3 = new Image();
         this._levelIntro3.src = "./assets/images/level3_uitleg.png";
         console.log(canvas);
-    };
+    }
 
     public drawLevelIntro1 = (gameController: GameController) => {
         //draw level1
@@ -47,7 +47,7 @@ class LevelHelper {
         //ga verder image
         this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
         this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
-    };
+    }
 
     public drawLevel1 = (gameController: GameController) => {
         //console.log(gameController)
@@ -94,8 +94,7 @@ class LevelHelper {
         //currencies
         this.drawCurrencies(gameController);
 
-
-    };
+    }
 
     public drawLevelIntro2 = (gameController: GameController) => {
         //draw level2
@@ -108,7 +107,7 @@ class LevelHelper {
         //ga verder image
         this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
         this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
-    };
+    }
 
     public drawLevel2 = (gameController: GameController) => {
         console.log(gameController)
@@ -146,7 +145,7 @@ class LevelHelper {
             this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
         //currencies
         this.drawCurrencies(gameController);
-    };
+    }
 
     public drawLevelIntro3 = (gameController: GameController) => {
         console.log(gameController)
@@ -160,7 +159,7 @@ class LevelHelper {
         //ga verder image
         this._canvas.writeTextToCanvas("Ga verder", this._canvas.getWidth() / 2.1, this._canvas.getHeight() / 1.06);
         this._canvas.writeImageToCanvas(this._canvas._nextButton, this._canvas.getWidth() / 2.2, this._canvas.getHeight() / 1.23, this._canvas._nextButton.width / 5, this._canvas._nextButton.height / 5);
-    };
+    }
 
     public drawLevel3 = (gameController: GameController) => {
         //background
@@ -192,7 +191,7 @@ class LevelHelper {
             this._canvas._infoButton.width / 10, this._canvas._infoButton.height / 10)
         //currencies
         this.drawCurrencies(gameController);
-    };
+    }
 
     public drawCurrencies(gameController: GameController = null) {
         gameController.assignCurrencies();
@@ -211,5 +210,5 @@ class LevelHelper {
 
         //*debug*
         //console.log(`drawCurrencies is working`);
-    };
-};
+    }
+}
