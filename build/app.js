@@ -910,34 +910,45 @@ class GameItem {
         this.energy = energy;
         this.money = money;
     }
+    ;
     getCo2() {
         return this.co2;
     }
+    ;
     getEnergy() {
         return this.energy;
     }
+    ;
     getMoney() {
         return this.money;
     }
+    ;
     setCo2(amount) {
         this.co2 = amount;
     }
+    ;
     setEnergy(amount) {
         this.energy = amount;
     }
+    ;
     setMoney(amount) {
         this.money = amount;
     }
+    ;
     changeMoney(amount) {
         this.money += amount;
     }
+    ;
     changeEnergy(amount) {
         this.energy += amount;
     }
+    ;
     changeCo2(amount) {
         this.co2 += amount;
     }
+    ;
 }
+;
 class Helpscreen {
     constructor(canvas) {
         this._canvas = canvas;
