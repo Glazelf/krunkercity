@@ -56,23 +56,23 @@ class GameController {
         if (this.currentScreen == `Level1`) {
             if (this._gameItem == null) {
                 this._gameItem = new GameItem(60, 20, 90);
-            }
+            };
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
-        }
+        };
         if (this.currentScreen == `Level2`) {
             if (this._gameItem == null) {
                 this._gameItem = new GameItem(20, 10, 80);
-            }
+            };
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
-        }
+        };
         if (this.currentScreen == `Level3`) {
             if (this._gameItem == null) {
                 this._gameItem = new GameItem(10, 0, 70);
-            }
+            };
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
@@ -260,10 +260,10 @@ class GameController {
                             this.co2Spread -= 1.5;
                         } else {
                             alert(`Je hebt nog ${150 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
-                        }
-                    }
-                }
-            }
+                        };
+                    };
+                };
+            };
 
             //Info knop trainstation
             if (event.x > this._canvas.getWidth() / 6.35 && event.x < this._canvas.getWidth() / 6.35 + this._canvas._infoButton.width / 10) {

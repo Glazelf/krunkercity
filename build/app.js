@@ -210,22 +210,27 @@ class GameController {
             if (this._gameItem == null) {
                 this._gameItem = new GameItem(60, 20, 90);
             }
+            ;
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        ;
         if (this.currentScreen == `Level2`) {
             if (this._gameItem == null) {
                 this._gameItem = new GameItem(20, 10, 80);
             }
+            ;
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
         }
+        ;
         if (this.currentScreen == `Level3`) {
             if (this._gameItem == null) {
                 this._gameItem = new GameItem(10, 0, 70);
             }
+            ;
             this.co2 = this._gameItem.getCo2();
             this.energy = this._gameItem.getEnergy();
             this.money = this._gameItem.getMoney();
@@ -388,9 +393,13 @@ class GameController {
                         else {
                             alert(`Je hebt nog ${150 - this.money} munten nodig om de aardwarmtecentrale te bouwen!`);
                         }
+                        ;
                     }
+                    ;
                 }
+                ;
             }
+            ;
             if (event.x > this._canvas.getWidth() / 6.35 && event.x < this._canvas.getWidth() / 6.35 + this._canvas._infoButton.width / 10) {
                 if (event.y > this._canvas.getHeight() / 2.45 && event.y < this._canvas.getHeight() / 2.45 + this._canvas._infoButton.height / 10) {
                     console.log(event.x);
